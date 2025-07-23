@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklists</title>
+    <style>
+        /* Стили для модального окна */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .flex-container {
+            display: flex;
+            align-items: center;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Чек-листы</h1>
+    <button type="button" onclick="window.location.href='/'">Назад</button>
+    <button type="button" id="createChecklistBtn">Создать чек-лист</button>
+    <div id="checklists">
+        {% for checklist in checklists %}
+            <div class="flex-container">
+                <h2>{{ checklist.name }}</h2>
+                <form action="/delete_checklist/{{ checklist._id }}" method="post">
+                    <button type="submit" class="btn">Удалить</button>
+                </form>
+            </div>
+            <table>
+                <tr>
+                    <th>Показатель</th>
+                    <th>Шкала</th>
+                    <th>Действия</th>
+                </tr>
+                {% for item in checklist.get('items', []) %}
+                <tr>
+                    <td>{{ item.get('item_name') }}</td>
+                    <td>{% if item.get('type') == 'boolean' %} Да/Нет {% elif item.get('type') == 'integer' %} 1-10 {% endif %}</td>
+                    <td>
+                        <button type="button" onclick="openEditModal('{{ checklist._id }}', '{{ loop.index0 }}')">Редактировать</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% endfor %}
+    </div>
+
+    <!-- Модальное окно для создания чек-листа -->
+    <div id="checklistModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Создать чек-лист</h2>
+            <form id="checklistForm" action="/add_checklist" method="post">
+                <input type="text" name="name" placeholder="Название чек-листа" required>
+                <div id="items">
+                    <div class="item">
+                        <input type="text" name="item_name[]" placeholder="Показатель" required>
+                        <select name="item_type[]">
+                            <option value="boolean">Boolean (Да/Нет)</option>
+                            <option value="integer">Integer (1-10)</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="button" id="addItemBtn">Добавить Показатель</button>
+                <button type="submit">Создать</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно для редактирования элемента чек-листа -->
+    <div id="editItemModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeEditModal">&times;</span>
+            <h2>Редактировать Показатель</h2>
+            <form id="editItemForm" action="" method="post">
+                <label for="edit_item_name">Показатель:</label>
+                <input type="text" id="edit_item_name" name="item_name" required>
+                <label for="edit_item_type">Шкала:</label>
+                <select id="edit_item_type" name="item_type">
+                    <option value="boolean">Boolean (Да/Нет)</option>
+                    <option value="integer">Integer (1-10)</option>
+                </select>
+                <label for="edit_item_value">Значение:</label>
+                <input type="text" id="edit_item_value" name="item_value">
+                <button type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Получаем модальное окно для создания чек-листа
+        var checklistModal = document.getElementById("checklistModal");
+        var createChecklistBtn = document.getElementById("createChecklistBtn");
+        var closeChecklistModal = document.getElementsByClassName("close")[0];
+
+        createChecklistBtn.onclick = function() {
+            checklistModal.style.display = "block";
+        }
+
+        closeChecklistModal.onclick = function() {
+            checklistModal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == checklistModal) {
+                checklistModal.style.display = "none";
+            }
+        }
+
+        document.getElementById("addItemBtn").onclick = function() {
+            var itemsDiv = document.getElementById("items");
+            var newItemDiv = document.createElement("div");
+            newItemDiv.classList.add("item");
+            newItemDiv.innerHTML = `
+                <input type="text" name="item_name[]" placeholder="Показатель" required>
+                <select name="item_type[]">
+                    <option value="boolean">Boolean (Да/Нет)</option>
+                    <option value="integer">Integer (1-10)</option>
+                </select>
+            `;
+            itemsDiv.appendChild(newItemDiv);
+        }
+
+        // Получаем модальное окно для редактирования элемента чек-листа
+        var editItemModal = document.getElementById("editItemModal");
+        var closeEditModal = document.getElementById("closeEditModal");
+
+        closeEditModal.onclick = function() {
+            editItemModal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == editItemModal) {
+                editItemModal.style.display = "none";
+            }
+        }
+
+        function openEditModal(checklistId, itemIndex) {
+            fetch(`/get_item/${checklistId}/${itemIndex}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("edit_item_name").value = data.item_name;
+                    document.getElementById("edit_item_type").value = data.type;
+                    document.getElementById("edit_item_value").value = data.value;
+                    document.getElementById("editItemForm").action = `/edit_item/${checklistId}/${itemIndex}`;
+                    editItemModal.style.display = "block";
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+</body>
+</html>

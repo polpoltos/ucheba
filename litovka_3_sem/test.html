@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Перекрывающиеся цилиндры с учетом пересечения</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #controls, canvas {
+      margin: 10px;
+    }
+    table {
+      margin-top: 20px;
+      border-collapse: collapse;
+      width: 80%;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+    th, td {
+      padding: 10px;
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 10px;
+    }
+    canvas {
+      cursor: grab;
+    }
+  </style>
+</head>
+<body>
+  <h1>Моделирование перекрывающихся цилиндров</h1>
+  <div id="controls">
+    <div class="form-group">
+      <h3>Параметры первого цилиндра</h3>
+      <label>Радиус (мм): <input type="number" id="radius1" min="1" value="100"></label>
+      <label>Высота (мм): <input type="number" id="height1" min="1" value="200"></label>
+      <label>Смещение по X (мм): <input type="number" id="offsetX1" value="0"></label>
+      <label>Смещение по Y (мм): <input type="number" id="offsetY1" value="0"></label>
+      <label>Смещение по Z (мм): <input type="number" id="offsetZ1" value="0"></label>
+    </div>
+    <div class="form-group">
+      <h3>Параметры второго цилиндра</h3>
+      <label>Радиус (мм): <input type="number" id="radius2" min="1" value="50"></label>
+      <label>Высота (мм): <input type="number" id="height2" min="1" value="150"></label>
+      <label>Смещение по X (мм): <input type="number" id="offsetX2" value="50"></label>
+      <label>Смещение по Y (мм): <input type="number" id="offsetY2" value="0"></label>
+      <label>Смещение по Z (мм): <input type="number" id="offsetZ2" value="50"></label>
+    </div>
+    <button onclick="calculate()">Рассчитать</button>
+  </div>
+  <div id="visualization"></div>
+  <table>
+    <thead>
+      <tr>
+        <th>Параметр</th>
+        <th>Значение</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Общий момент инерции</td>
+        <td id="inertia">-</td>
+      </tr>
+      <tr>
+        <td>Объем пересечения</td>
+        <td id="intersectionVolume">-</td>
+      </tr>
+    </tbody>
+  </table>
+  <script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 600, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth * 0.8, 600);
+    document.getElementById("visualization").appendChild(renderer.domElement);
+
+    let cylinder1, cylinder2;
+
+    function calculateIntersectionVolume(r1, h1, x1, y1, z1, r2, h2, x2, y2, z2) {
+      // Оценка объема пересечения цилиндров методом Монте-Карло
+      const samples = 100000; // Количество случайных точек
+      let insideCount = 0;
+
+      const bounds = {
+        xMin: Math.min(x1 - r1, x2 - r2),
+        xMax: Math.max(x1 + r1, x2 + r2),
+        yMin: Math.min(y1 - h1 / 2, y2 - h2 / 2),
+        yMax: Math.max(y1 + h1 / 2, y2 + h2 / 2),
+        zMin: Math.min(z1 - r1, z2 - r2),
+        zMax: Math.max(z1 + r1, z2 + r2),
+      };
+
+      for (let i = 0; i < samples; i++) {
+        const x = bounds.xMin + Math.random() * (bounds.xMax - bounds.xMin);
+        const y = bounds.yMin + Math.random() * (bounds.yMax - bounds.yMin);
+        const z = bounds.zMin + Math.random() * (bounds.zMax - bounds.zMin);
+
+        const inCylinder1 = (x - x1) ** 2 + (z - z1) ** 2 <= r1 ** 2 && Math.abs(y - y1) <= h1 / 2;
+        const inCylinder2 = (x - x2) ** 2 + (z - z2) ** 2 <= r2 ** 2 && Math.abs(y - y2) <= h2 / 2;
+
+        if (inCylinder1 && inCylinder2) {
+          insideCount++;
+        }
+      }
+
+      const totalVolume = (bounds.xMax - bounds.xMin) * (bounds.yMax - bounds.yMin) * (bounds.zMax - bounds.zMin);
+      return totalVolume * (insideCount / samples);
+    }
+
+    function calculate() {
+      const density = 7800; // Плотность стали, кг/м³
+      const pi = Math.PI;
+
+      // Параметры первого цилиндра
+      const r1 = parseFloat(document.getElementById("radius1").value) / 1000;
+      const h1 = parseFloat(document.getElementById("height1").value) / 1000;
+      const x1 = parseFloat(document.getElementById("offsetX1").value) / 1000;
+      const y1 = parseFloat(document.getElementById("offsetY1").value) / 1000;
+      const z1 = parseFloat(document.getElementById("offsetZ1").value) / 1000;
+
+      // Параметры второго цилиндра
+      const r2 = parseFloat(document.getElementById("radius2").value) / 1000;
+      const h2 = parseFloat(document.getElementById("height2").value) / 1000;
+      const x2 = parseFloat(document.getElementById("offsetX2").value) / 1000;
+      const y2 = parseFloat(document.getElementById("offsetY2").value) / 1000;
+      const z2 = parseFloat(document.getElementById("offsetZ2").value) / 1000;
+
+      const volume1 = pi * r1 ** 2 * h1;
+      const volume2 = pi * r2 ** 2 * h2;
+
+      // Расчет объема пересечения
+      const intersectionVolume = calculateIntersectionVolume(r1, h1, x1, y1, z1, r2, h2, x2, y2, z2);
+
+      const netVolume1 = volume1 - intersectionVolume;
+      const netVolume2 = volume2 - intersectionVolume;
+
+      const mass1 = netVolume1 * density;
+      const mass2 = netVolume2 * density;
+
+      const inertia1 = (1 / 2) * mass1 * r1 ** 2;
+      const inertia2 = (1 / 2) * mass2 * r2 ** 2;
+
+      const totalInertia = inertia1 + inertia2;
+
+      // Обновление визуализации
+      if (cylinder1) scene.remove(cylinder1);
+      if (cylinder2) scene.remove(cylinder2);
+
+      const geometry1 = new THREE.CylinderGeometry(r1, r1, h1, 32);
+      cylinder1 = new THREE.Mesh(geometry1, new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true }));
+      cylinder1.position.set(x1, y1, z1);
+      scene.add(cylinder1);
+
+      const geometry2 = new THREE.CylinderGeometry(r2, r2, h2, 32);
+      cylinder2 = new THREE.Mesh(geometry2, new THREE.MeshBasicMaterial({ color: 0x0000ff, wireframe: true }));
+      cylinder2.position.set(x2, y2, z2);
+      scene.add(cylinder2);
+
+      // Обновление результатов
+      document.getElementById("inertia").textContent = totalInertia.toFixed(4);
+      document.getElementById("intersectionVolume").textContent = intersectionVolume.toFixed(6);
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      renderer.render(scene, camera);
+    }
+
+    camera.position.z = 5;
+    animate();
+  </script>
+</body>
+</html>

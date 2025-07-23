@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тёмная сторона: Лабы</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #121212;
+            color: #ffffff;
+        }
+        header {
+            background: #1e1e2f;
+            color: #bb86fc;
+            text-align: center;
+            padding: 1.5em 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        main {
+            padding: 2em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2em;
+        }
+        .dropdown-container {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+            font-size: 1.2em;
+        }
+        select {
+            padding: 0.5em 1em;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background: #2a2a2a;
+            color: white;
+            cursor: pointer;
+            outline: none;
+        }
+        select:focus {
+            border-color: #bb86fc;
+            box-shadow: 0 0 5px #bb86fc;
+        }
+        iframe {
+            width: 80%;
+            height: 60vh;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+            background: #1e1e2f;
+        }
+        * {
+            box-sizing: border-box
+        }
+
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+
+        /* Hide the images by default */
+        .mySlides {
+            display: none;
+        }
+
+        /* Next & previous buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -22px;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+            /* On hover, add a black background color with a little bit see-through */
+            .prev:hover, .next:hover {
+                background-color: rgba(0,0,0,0.8);
+            }
+
+        /* Caption text */
+        .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Number text (1/3 etc) */
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+
+        /* The dots/bullets/indicators */
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+            .active, .dot:hover {
+                background-color: #717171;
+            }
+
+        /* Fading animation */
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @-webkit-keyframes fade {
+            from {
+                opacity: .4
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes fade {
+            from {
+                opacity: .4
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Сборник лабораторных</h1>
+    </header>
+    <main>
+        <div class="dropdown-container">
+            <label for="links">"Подсказка"</label>
+            <select id="links">
+                <option value="http://falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgoqoQFMBaMMAKACUQUUAWcYlcISph+4TsiopoSKUiowELMIV6YBIgbl4ao1ObtogAZgEMANgGc6UFhc48+AtY90RTluiwDuIbITwuCNzaopDevv72vAhgTg5hPn4BKAiEINx4kqk2iZEoeAHByQU5EQHYaOnKvpVhYJTpGb6QvCpUWroCwuHc1RVURTXySg04aWgBeCqc+J2u4W3NvFO8HWEAkhTBLhgtLvLS4CybMXGtJVy8B0ismxlZaYTZKWnXRz67IQJj+wsXDj9LjZ6lRiLFONxhJBnpC5t0fCsZgEwU5ZgkQCikRjwUD0YiOmB8OU9nUGoSLhh1CgKpxKXD3sgLiVycSruFCTCoRdYeiWRCuclsnjphMQIjIcMfL00v0qmluMRXj0mvlCk1uNN0fdONltdwaVrqgr5dNjaVBhreJb0pqeqbpggMCa2SCKE70pkQJ8PfJxPCfekad79V0RlRg008EampJ5h89tbg57SVQCgNqoSHNL6awEaa4GLPRLSlH5ZGizHwmnAwJq4NeZAsxmeIVqrzqU46bEVXTSVSmtg-OAKuUh7H-d3kl2W0NSpPfAh+62lXdTYr0uuzW9cxv5evHXulT4nuNsoQ6S9SuenNlMZf0dedY86Y-0Unw3tFimvZ-sqWQCeOYLC+dLeq+4Q-DoPwHqUpxRBQ4JCAE6JwUhXpDmh37QaI1YIKEfpHK61aEA4fIkVcBE7rhOGephVbVIB-5fvRjywsRPI9EWNLapSkqNIUppNBgi7mkam7VBgeBsncQkiYuATCV0UCHDuPGVPJXq1GGFD5OhaTej844Mtmkm8AZUmlAZkTmWyCK0bM1a8ZZFmKYW4Yid+jlDnyhmUSM6hEgBXYjkFSlKTuZGkYFgENiU-gBD5Y4LM8Z7ZMwoY+EEXxbMsfGDKq-EejYMmFIUm7IcpNw9H0lTZm21VpGJjVKq6Zo0mhBriBAO5ZWKVCMcMrqAeurnrrG3ULLMQYiQaEEzd8Im2q6rmeoiyZdQy8XwVtYDbA+zLbIiu22WK0zHad2jgp50zrhyaRjRtrD1Oo2DbGa9QiVufk+GAIWDo1IXaryIWPr9ulwcD4Pgr92wQ+ygOejDVrJv54AICJBVgE6kglONDIfQI73o5oJLstC92NQgQ5jeyVMU2jQ7OLydO0uoxOs3O2OcMyXMMCjP2856op83xwtC7MsTISwACyWKSxz8vqNpBkiaZXoeX5QA">Лаба 1</option>
+                <option value="http://falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgoqoQFMBaMMAKACVxiVwAWH3-mD7gQ3MHFHQkKKVChSWYQvxQpBw7NkIC5SKvrlUAZgEMANgGc6UFgHcQ2NDoQo8OyHYdOwGbT2LaPtoe9o5UaG48yqL4NqFOalQ8jqI8+p5hohjcaeHZcSCEeG4oCNp4EqXBnhXhZSC1omo2YJQNlbFcJbHhcqz2ydyJIIMjEiFjeTkSoxNRKrHzDkUF-oG+IwEOWgUubkL8ew6Q-BNHuIeum9UDW5p+W0dz0VqR0WXpAzMpuYXNcz9vtwEFwbABJEbvQhUHDaD6GWSsVowpzQtx4aJouTcKhItqkYEbZgrBAbXq4zwEihXKnwiYY-hYqlYia00HMnosCHnE4gbJUC4IpB4lECpx4HhuTLk8A1SVeKjEDRODzIkBK-jYFzIfJanGiPqU5WKjQ7VkaFYahwS3ZXNbUtxFNxzR52rb81ZQpLRDDagHA0GjDA2uYSQjNX54JS2x3FPm8p2e-i+7gYXkplptNPJla+Nx57GGtXZ+M5-O8mUivm5nZdPlmg0U+wFkstlWeFvalsrVX4q4F4n5nuN2X2Ouw9X9v2KbWDwr5IT1Qj5SueOekwJKR31CZzxNzgusq4RHVDTmtMSQfKufbYMBDOOr+zia+xF9DFdrq-cQXvhzTr4qCjbQ62AgpxxtUDow8CFl1TJxWxVeRhS5edUxtVsQ2Q0drj5VF8g9f0+RtODiNOTwjkTI5ik+XCPXtYh7yTPltSWK0iODfhRjIG5JgaaNfnETl7GoipCjSBoxJdECmOURUmKInjCnqJTeyoOSGndFY8C2Vc1UIFToWrNwAgMfU8TEHh6jApR5TAp9eCXBcrPKcYZzEQhoklXFiB2bzCybcBPK4rYlGiey12UdFozC-gIufO8H32KLREfSL5RvIL5SWXcUqWWLIXI59fL8MSwC4KgmGEXcKpAKrBG0Jgrlyur72S9wWAAWSCnQGBSA4DVYCxOEslRmgG3EQFMSw6FQo4BpBUahRw+0ggdcAyTmozMADD99RgFDAKyYFts-AYUmGeFhmeBY3EWmJnRnWhQXK+CfP1cynooUEqkKONfr0rNvCMxolDMw1m28DYPVe3YXuEGHqpqCQwfad7VjuHYPXucE-siFIM1mbD+jxvjRl+CZE3JoFMxhbVsBtCUpSwz61SZkZoytHhoJHEnCZSdnZjlZm4uytyx2EbmQI0EMWAADwabw7OwchWggTVuEIeXNO0XAIF8iBBQ15BUPDQ5QQ9e79ERTwze+nIUitii3W0Cd7TU+s4SYhkKAU3mOx2eEfbpL7g5pDYnn9+xg+EYOjNZCOaVBJ5teIBBsBoEC40oYgRi8IKvoLRjuCtYuApwov+0teOvtLozxEM8HAtLpjS6R5sViEkzhC78DhCUq1e93SBG8ckCa+fFyGn6qfTJsBXinzTmUAzjByrzi7WAX3yGiwSd0TE42iDmq41vutbrcOihtok+7rs8JZXlJp+YOf3N6eHA6cKpiRCbc2CJJ2w9HbS+spuTJ37IHZqxNbaAIjGGf4qE2LCAMtLU4MCISCTgEOfY2Dlok3ukce0KcgA">Лаба 2</option>
+                <option value="http://falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgoqoQFMBaMMAKACVxiVwAWH3-mD7gQ3MHFHQkKKVChSWYQvxQpBw7NkIC5SKvrlUAZgEMANgGc6UFgFlw2ofwbYxwsSwuc3KtToOmlnQsAO7gKEpyYBHaTNE2YdGRcWKxzNyQoQ4gKdlOCSCuVPk8eMXCmWFF4BjafHg12pWFaKL4IDyRaA3N1WpU2HgqPPpZfRjc2AjcmBksAJKFQ6IjFIRU-YayrFXTohNrGweZYJSHogjahAcol3IZ4AsdXe3TDd1bSKyL9Y0UKA0wLVPo9TrQAd4QNcxFx7lFFGdoaI-GUNn4NvCwkjNti7s0kWBYdj2s1fkC6qVCloCp1tB9aYVCD0EVRflNuG9CnsMcUsgytA02UybKduKiVlRiPFNjzHmFSuV+Jz8s1lcJOdUTmcELDNFdVnq4bywhq9jrJtyWVC7tUcNpNaJMVCDdTCDbqfibndsXhmVibr7rXTA-i7gCGm77ZB+M07S0qOLNVlxbdtInWr1lptBvwGb09rMudxfplFuyOpSeK4Kz15F8xssGVXi5Etazq83zp3Zd9-g1qpcBhm63LzgPdRm+ZEBc86hJSZERrRhEuRdr1rOQBho5ue1kECuJIOOvP9xuBxueMoCser-xt7nr22tzvO+Lu47jS-c5SHx0nwi3BSjMdziO0qZGqO77VsBHTVs0sGFrB3ZZGB7ygTEFxNKhmEQUkTQ2EAA">Лаба 3</option>
+                <option value="http://falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcMBMcUHYMGZIA4UA2ATmIxAUgoqoQFMBaMMAKACVxiVwAWH3-mD7gQ3MHFHQkKKVChSWYQvxQpBw7NkIC5SKvrlUAZgEMANgGc6UFgFlw2ofwbYxwsSwuc3KtToOmlnQsAO7gKEogTGBi2tHckKEOUcyx-ooIEHgSDGh4yPhReXIJ4EnihbmFFflMXDZhNUV+TVX5iWCZBbXFzJDOxVSlrAAeFITkudkghDmY5Cr8gLgggKggLGPEJEWE+cR4cURIiyCAGCDlaFS5PFQxc36JjRdFCI5PV-oZELeXajcom0VriU5KxHjkwBhXuDZg1wuD6t8UpCbJ0vm8Ia8AUxkUMQZ9wljejw-G1gTdzoSgTFCfcKXEwAj-vScetwhEioyMBApsQQMcToBsEDOYReP0KopS9Qe4x+fglpI6XXlxUILyKhVx5MaCAQ3GwuvAOr1O1hnQNuEERpArg+qMN5q0Dmmmm0mrKdqEaq0+TNxvaojxjR4XoNnu03tNwfDJrD1rw-EVXyj1v69r1qbdoN4apQeB9yYtka9qdjNtNWHD8fAFb5EmlEORLurjYNieb0Z9xFTEcz+KU02uNxrg7JZUaOyo2Cr-aoI-rE9rNwXPEibZn1sdDfDjt74+daCdk535QXTfX+oSSVUQOK18u03rEXpMVEvxSL+ld-f3C-DAfSTLJwKGEIDpUA5FMjEFkwjLYoeGmQYAIPN8+HyN8wOQjBuBXbRMEvO0EARZEdh9HEAy1CgXwxCgiNdJJCNiWhaNhBjq20ViGXwroJh-QpITQjVyLHGjePyHjRA1JJxM4mYsIk9opLklUlNpMJ4KGcV6kQgjc1EIFCD8dChKzVC9NoXT0Poiy5QsoFpV1NCgQc0Q1TbMhHARSA5Jk3cQHcti-ORHykn8mT-O0rp+O8QKPNKYYpLzAKouotzkRQNVxCU1zjJCtKgXC1zctwtVwrktsovS7QCtdHKwgMxYqAquykhw0Q5Iqsq+1zIYWmwNL7lq8IEOqbrXwTc4EJaUbLI9LyfymyaE0GzKxE8pTJMaOazOQLK6JFEDhAQDRW3xI7+AvGYgQu3yzo3djjsvfbzoNW6e3oqiIJfKdxrU4b8nUvlV3xDADRHeN-rrQaQb1KtocXWE4ZHRGgYI4QkdByH4pFL6q1eqtpQB1rbta6VlEnA1wetE7Zq9adOhhpaseQL0Y0gWmfuZytBDZ7Q53xSnvs5uNGcDEABYp+DrRNestsqna9WPTa5LPem7tNVWVfNamujALRJxjAtpeWvWqbEE23sac2Y3N-G+w162YR7Y3+vUQzVN4N3XfOjNymJb31GLDnCciQnlFhUyUMlngAQJyI8MB9jdLbEi+WmDAqwB3yU54MPs--OrEoB7OY-xQnpjzgwmdM6PeYHEuad5sPmFBsPfPENVTPbxuOa7vkm551PbS6Smc+5jvW6hjPphH-OxcliMR8l5PxV0jBU2cm7dOc2Z8g3qTxRfHeKCT-fd90o-btjxOz5vhH1905vuD3xpVecx++XrnWTYB2NM+NmFR7gG-rPXWADpigNnJ-L4qsf7AMrqLX+4DlD-RAcgweDgo51hPJgpcA4sGNC7OdE0qg-AW1fKQ4hb4yFfgjF+RCQA">Лаба 4</option>
+                <option value="https://falstad.com/circuit/circuitjs.html?ctz=CQAgjCBsB0BMCsBTAtGCYAMcMdgdjwGYMAOWSATgrxHg1pABZDaU0AoMSRqHr+ipHCR69eCFESp9AGYBDADYBnRBPZKQqIf00l6OyfOWJ2AJV36RmnTZCwmsHE5wNY0caPfsAksPqwSEnAKewCgz3F4Tjpg0LxQxn94qXsxdgB3Pzt4bRDsoQwMrLA8wkdYtTAYwkggxyDGLjtSFKkoqvoausCmJrDWtN9CGrtkrtHUiXdaHwmQYh4F+YweCJnMsv1S8vxUos254aFdtQ3ykvtxi9PDlfzl1aKEISXnu1hHzJ1YD-ufz7+v3G-xuSzBtQeoLuYLuBminXOjEWELASIG60hOgOcLO+gC9zA+MKmTehLqOSyxIJVhsVipHySCU6EPpiXmEOYlxZ8KY3Hm5XghP5kkm7RiSLqv0YgneqzsbR5EvAaOl2jR-gVGxRKpcqIBiX0Orx4SKBvA+KVZJujWOLSV9WtZXZDSdR0dlxGnLsbKpXoZTEYdR9pqd-q9OKYTp0lrpIY9QkYfLdvr6PXtPV9gbsaazS0zQSWicWd0KVXs8HxYDwQng1fAdY1aTLUF+-sgFP9jYxquVPEF9j1N37vdoQojw50FaCEZ7IOHIKp89+E7yi7HeSnFUXdarNbrC6KteOv0grd+a8uArRB0X16vPDeVNPD4p8DRj84p6gHbZeDu-vsAATRB5AAVwUAAXZAFEQQDwGkKYMDAdgAHMQD-B9fwrb1JCpLQsj5OEAHtaGOKREioRCnGrWAKEIChGHgQhCQ8aBnGodtTw8eUKUIdgSPgOpyIwSjMConAOJyBBWkE+Z2CAA">Лаба 5</option>
+                <option value="https://falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWEAmZ0FmQdgCw4QgBz4LZK4hIKSUCmAtGGAFABKIjkCAbB8pIQ5NSfAeBQgAzNxpokcqFHTMwBDgE51yPjhr1uyHDtmVmAdw7FBjLL3pWOkyEcjnLOa06P1N2+l6g3Hy1HZw0Q+kMaVwt7dTsoyzhjQNjCZMjdJL1+QRj3azBbS3ihYvz9LJs7bkJC8qCECMT6Jr9c1I5a6xa2lIqsYlDvQe9Eiu4qgPpR4c7KvSKaqbDXVSQZocy9HDAErO0EIJxJPyWOD0WG2IRi-zDWu-Hj07nHuwCKk7O777m1tTvFKRMTbCRHNIZDqbMZiCp9EHWW4JOFBXxlOzoxjIPJBWbVDj4zC42JY4mErbk+F3c5A7Ekinecl0qmNGk4xy1IQcirSQocxgybkMwWLDl4fm41Q7aweEBy+hykxUNHNUFgLgokUaniiQqarouIKEUpguIfbQTOrA7qKK15eUO-IKvaOu3HdLAy5SS0qahu-zaMB4RyW8GmaXgEOClBVV0mGgQ+VK5OSzrBlxRoyvVwASSEBsqBdBkzt6AjamRoZA6mjr19Fkk0kUEvdFlbifKnW4WG0rywYRzbgH2e0I6SnXH9k7dk9+Sr08odyHFh7fn7zcDnRarqbvGizHzis9rwzPrLKrSptex+reeL1lLt6L0XLRwA9op4-LIJpKEp4F-WweGQJAEykZhP39b9dD-MDYHgdRgIMMDwRoSRmCAA">Лаба 6: Легкая</option>
+                <option value="http://falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcAOaAmA7MgnGB-kA2MAFgwTRAUiqpoQFMBaMMAKDyQwGZCRuKIbNkoDKfSGwBKIDJBL9kCwpGSKFESmmog00JHqQ0YCDkpDIwfBBj7Jk9W1HBmkYbPKpP3aRxJecsuaEGJRg8jQhlMYcOmAOatp87p5Jzv6mAO4W3KLmSmrc5pLZBfy+srzlMdk8fLk0dfyCJTmigjj1LWyluSAkVhaECgMSPbKeRQpNU1DjZQ0WJIXF89hdlJ3qc6Xr27h5Cq2sk+asFbPH4Qpi4Nfbx5AI9RXhzw-jB-skN6vZ1zRRuBIKF+oNHiQaLcTjdutlsD9qkJEbdHu9FgibhUIVCzk96qtApjmmFfFDBGN-twwIdwLkVkdxmBqe0wiyPv80MMkTTuZcmTTcRo8LTjmhlmDkmgHJKduBxYVBMyaSS5axBIt1ay1VysTQtUixRLZrzfozAgboZDFeI1RQheAEFV+f97aqRQ7jmRRK9vRy6dLtsyVP7SO8gaR7LKveilW7UUzeFDXknVV7QZrU4sYwSNH7+Ras0riBsQJTwIQZZrK56mU7c47K6HCNyI4Q9kDji3YWFQja7U3Nc9+12q69h4amd2gzWPhaJ9DkOLVeW5GaJgobGMAJIbrx2QZb5wmKjjNf7vcqNStc9XiyDO-HPvu5++a91i5xipoZfHdnQ9lxRqIQVSPMAMBEC8n0gsCINETxoPgjQEn4BD5hlKJwGwKpMOODwFDSFJNxDPDPGefVkHeci1XwqgQyIqCmUo6x6OY2Q4RQd5yDCNisEZf5ePMPign4kSxOE89WnsRoqmk2QmykmVbDUbj5PfWpBGU9jxFBG8KVBYTcPGMk-F0eAqBVVoTIssIJwQSy6ybezbKbTtHLUZy6RDTy-28lVg0BcFEz8sIRRstUws8g03P+SKVWJHzPkRTziRi5FNxVJpEtqKpPKaNLrLvXw+kfYzIBK1QzL6ZZgOKygaorDsZS7DtBisJrgPavgGsjNQGq9KMI2WPrmqZYb+hlGkZX6plpUCqVptGzlFv1VQRs6taJtW0EZv+EF6sm-boyZI6GqIEYlqGEZBnOra5S2aU1C2BNYtSUEYTTJlX0q+JKrfOZdw9XRl1+xJfygfRTypFUgJQP7IXuvZHrhxIoyuN6eL+3S2AAe3ACtnEhYRaBgeBIGwWxnm0Zwwn4XGy24AnAXJ7ASdgeAKcIKmjF0Bm6aAA">Лаба 6: Сложная</option>
+            </select>
+        </div>
+        <iframe id="preview" src=""></iframe>
+        <p style="font-size: 1em; color: #bb86fc; text-align: center; font-family: 'Courier New', Courier, monospace;">Воровская жизнь не лёгкая</p>
+        <!-- Slideshow container -->
+        <div class="slideshow-container">
+
+            <!-- Full-width images with number and caption text -->
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 6</div>
+                <img src="video/no.gif" style="width:100%">
+                <div class="text">Элемент НЕ</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 6</div>
+                <img src="video/and.gif" style="width:100%">
+                <div class="text">Элемент И</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 6</div>
+                <img src="video/or.gif" style="width:100%">
+                <div class="text">Элемент ИЛИ</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">4 / 6</div>
+                <img src="video/xor.gif" style="width:100%">
+                <div class="text">Элемент ИСКЛЮЧАЮЩЕЕ ИЛИ</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">5 / 6</div>
+                <img src="video/or-no.gif" style="width:100%">
+                <div class="text">Элемент ИЛИ-НЕ</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">6 / 6</div>
+                <img src="video/and-no.gif" style="width:100%">
+                <div class="text">Элемент И-НЕ</div>
+            </div>
+
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+
+        <!-- The dots/circles -->
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+            <span class="dot" onclick="currentSlide(6)"></span>
+        </div>
+    </main>
+    <script>
+        const dropdown = document.getElementById('links');
+        const iframe = document.getElementById('preview');
+
+        dropdown.addEventListener('change', () => {
+            iframe.src = dropdown.value;
+        });
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        // Next/previous controls
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
+</body>
+</html>

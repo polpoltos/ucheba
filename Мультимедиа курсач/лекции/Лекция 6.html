@@ -1,0 +1,3537 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title>Введение в цифровую схемотехнику</title>
+	<meta name="generator" content="LibreOffice 24.8.3.2 (Linux)"/>
+	<meta name="author" content="MyComputer"/>
+	<meta name="created" content="2008-12-11T20:34:00"/>
+	<meta name="changedby" content="MyComputer"/>
+	<meta name="changed" content="2009-03-01T18:41:00"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin-left: 0.87in; margin-right: 0.59in; margin-top: 0.79in; margin-bottom: 0.49in }
+		p { color: #000000; line-height: 115%; orphans: 2; widows: 2; margin-bottom: 0.1in; direction: ltr; background: transparent }
+		p.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ru-RU }
+		p.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+		p.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+		h3 { color: #000000; orphans: 2; widows: 2; margin-bottom: 0.04in; direction: ltr; background: transparent; page-break-after: avoid }
+		h3.western { font-family: "Arial", sans-serif; font-size: 13pt; so-language: ru-RU; font-weight: bold }
+		h3.cjk { font-family: "Times New Roman", serif; font-size: 13pt; font-weight: bold }
+		h3.ctl { font-family: "Arial", sans-serif; font-size: 13pt; so-language: ar-SA; font-weight: bold }
+		a:link { color: #0000ff; text-decoration: underline }
+		a:visited { color: #0000ff; text-decoration: underline }
+	</style>
+</head>
+<body lang="en-US" text="#000000" link="#0000ff" vlink="#0000ff" dir="ltr"><p lang="ru-RU" class="western" align="center" style="line-height: 100%; margin-bottom: 0in">
+6. Лекция</p>
+<p lang="ru-RU" class="western" align="center" style="line-height: 100%; margin-bottom: 0in">
+Комбинационные микросхемы. 
+</p>
+<p lang="ru-RU" class="western" align="center" style="line-height: 100%; margin-bottom: 0in">
+Часть 2.</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+В лекции рассказывается о комбинационных
+микросхемах: сумматорах, преобразователях
+кодов, одновибраторах и генераторах,
+об их алгоритмах работы, параметрах,
+типовых схемах включения, а также о
+реализации на их основе некоторых часто
+встречающихся функций.</p>
+<h3 lang="ru-RU" class="western" align="justify"><font size="3" style="font-size: 12pt">Сумматоры</font></h3>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Микросхемы сумматоров (английское
+Adder), как следует из их названия,
+предназначены для суммирования двух
+входных двоичных кодов, то есть выходной
+код будет равен арифметической сумме
+двух входных кодов. Например, если один
+входной код - 7 (0111), а второй - 5 (0101), то
+суммарный код на выходе будет 12 (1100).
+Сумма двух двоичных чисел с числом
+разрядов N может иметь число разрядов
+(N + 1). Например, при суммировании чисел
+13 (1101) и 6 (0110) получается число 19 (10011).
+Поэтому количество выходов сумматора
+на единицу больше количества разрядов
+входных кодов. Этот дополнительный
+(старший) разряд называется выходом
+переноса.</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+На схемах сумматоры обозначаются буквами
+SM. В отечественных сериях код, обозначающий
+микросхему сумматора, - ИМ.</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Сумматоры бывают одноразрядные (для
+суммирования двух одноразрядных чисел),
+2-х разрядные (суммируют 2-х разрядные
+числа) и 4-х разрядные (суммируют 4-х
+разрядные числа). Чаще всего применяют
+именно 4-разрядные сумматоры. На <font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C6%5Cdigs_6.html#image.6.1%23image.6.1">рис.
+6.1</a></u></font> показаны для примера 2-разрядный
+и 4-разрядный сумматоры. Микросхема ИМ6
+отличается от ИМ3 только повышенным
+быстродействием и номерами используемых
+выводов микросхемы, функция же выполняется
+та же самая.</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-bottom: 0in"><a name="image.6.1"></a>
+<img src="7e2f7dfbfdd02bcefb71c498844ec6c7_html_788a1554.png" name="Image1" align="bottom" width="347" height="160" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-bottom: 0.19in">
+<b>Рис. 6.1.</b>&nbsp; Примеры микросхем
+сумматоров</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Помимо выходных разрядов суммы и выхода
+переноса, сумматоры имеют вход расширения
+(другое название - вход переноса) С для
+объединения нескольких сумматоров с
+целью увеличения разрядности. Если на
+этот вход приходит единица, то выходная
+сумма увеличивается на единицу, если
+же приходит нуль, то выходная сумма не
+увеличивается. Если используется одна
+микросхема сумматора, то на ее вход
+расширения С необходимо подать нуль.</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Для примера в <font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C6%5Cdigs_6.html#table.6.1%23table.6.1">табл.
+6.1</a></u></font> приведена полная таблица
+истинности 2-разрядного сумматора ИМ2.
+Как видно из таблицы, выходной 3-разрядный
+код (Р, S1, S0) равен сумме входных 2-разрядных
+кодов (А1, А0) и (В1, В0), а также сигнала С.
+Нулевые разряды - младшие, первые разряды
+- старшие. Полная таблица истинности
+4-разрядного сумматора будет чрезмерно
+большой, поэтому она не приводится. Но
+суть работы остается точно такой же,
+как и в случае 2-разрядного сумматора.</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0.08in">
+Сумматоры могут использоваться также
+для суммирования чисел в отрицательной
+логике (когда логической единице
+соответствует электрический нуль, и
+наоборот, логическому нулю соответствует
+электрическая единица). Но в этом случае
+входной сигнал переноса С также становится
+инверсным, поэтому при использовании
+одной микросхемы сумматора на вход С
+надо подать электрическую единицу
+(высокий уровень напряжения). Инверсным
+становится и выходной сигнал переноса
+Р, низкий уровень напряжения на нем
+(электрический нуль) соответствует
+наличию переноса. То есть получается,
+что сумматор абсолютно одинаково
+работает как с положительной, так и с
+отрицательной логикой.</p>
+<center>
+	<table width="533" cellpadding="2" cellspacing="0">
+		<col width="57"/>
+		<col width="57"/>
+		<col width="55"/>
+		<col width="55"/>
+		<col width="33"/>
+		<col width="50"/>
+		<col width="50"/>
+		<col width="33"/>
+		<col width="50"/>
+		<col width="51"/>
+		<tr>
+			<td colspan="10" width="529" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center"><a name="table.6.1"></a>
+				Таблица 6.1. Таблица истинности
+				микросхемы 2-разрядного сумматора
+				ИМ2</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" width="236" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>Входы</b></p>
+			</td>
+			<td colspan="6" width="289" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>Выходы</b></p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" width="236" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<br/>
+
+				</p>
+			</td>
+			<td colspan="3" width="142" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>C=0</b></p>
+			</td>
+			<td colspan="3" width="143" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>C=1</b></p>
+			</td>
+		</tr>
+		<tr>
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>A1</b></p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>A0</b></p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>B1</b></p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>B0</b></p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>P</b></p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>S1</b></p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>S0</b></p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>P</b></p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>S1</b></p>
+			</td>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>S0</b></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="55" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="33" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+	</table>
+</center>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+Рассмотрим<span lang="en-US"> </span>пример<span lang="en-US">.
+</span>Пусть нам надо сложить два числа 5
+и 7 в отрицательной логике. Числу 5 в
+положительной логике соответствует
+двоичный код 0101, а в отрицательной - код
+1010. Числу 7 в положительной логике
+соответствует двоичный код 0111, а в
+отрицательной - код 1000. При подаче на
+вход сумматора кодов 1010 (десятичное
+число 10 в положительной логике) и 1000
+(десятичное число 8 в положительной
+логике) получаем сумму 10 + 8 = 18, то есть
+код 10010 в положительной логике. С учетом
+входного сигнала переноса С=1 (отсутствие
+входного переноса в отрицательной
+логике) выходной код сумматора получится
+на единицу больше: 18 + 1 = 19, то есть 10011.
+При отрицательной логике это будет
+соответствовать числу 01100, то есть 12 при
+отсутствии выходного переноса. В
+результате получили 5+7=12.</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Сумматор может вычислять не только
+сумму, но и разность входных кодов, то
+есть работать вычитателем. Для этого
+вычитаемое число надо просто поразрядно
+проинвертировать, а на вход переноса С
+подать единичный сигнал <font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C6%5Cdigs_6.html#image.6.2%23image.6.2">(рис.
+6.2)</a></u></font>.</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.6.2"></a>
+<img src="7e2f7dfbfdd02bcefb71c498844ec6c7_html_fc4914cd.png" name="Image2" align="bottom" width="520" height="196" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in">
+<b>Рис. 6.2.</b>&nbsp; 4-х разрядный вычитатель
+на сумматоре ИМ6 и инверторах ЛН1</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Например, пусть нам надо вычислить
+разность между числом 11 (1011) и числом 5
+(0101). Инвертируем поразрядно число 5 и
+получаем 1010, то есть десятичное 10.
+Сумматор при суммировании 11 и 10 даст
+21, то есть двоичное число 10101. Если сигнал
+С равен 1, то результат будет 10110.
+Отбрасываем старший разряд (выходной
+сигнал Р) и получаем разность 0110, то есть
+6. 
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Еще пример. Пусть надо вычислить разность
+между числом 12 (1100) и числом 9 (1001).
+Инвертируем поразрядно 9, получаем 0110,
+то есть десятичное 6. Находим сумму 12 и
+6, получаем 18, а с учетом С = 1 получаем
+19, то есть двоичное 10011. В четырех младших
+разрядах имеем 0011, то есть десятичное
+3.</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Каскадировать сумматоры для увеличения
+разрядности очень просто. Надо сигнал
+с выхода переноса сумматора, обрабатывающего
+младшие разряды, подать на вход переноса
+сумматора, обрабатывающего старшие
+разряды <font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C6%5Cdigs_6.html#image.6.3%23image.6.3">(рис.
+6.3)</a></u></font>. При объединении трех
+4-разрядных сумматоров получается
+12-разрядный сумматор, имеющий дополнительный
+13-й разряд (выход переноса Р).</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.6.3"></a>
+<img src="7e2f7dfbfdd02bcefb71c498844ec6c7_html_47ebe34a.png" name="Image3" align="bottom" width="500" height="215" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in">
+<b>Рис. 6.3.</b>&nbsp; Каскадирование сумматоров
+ИМ6 для увеличения разрядности</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+Неопределенные состояния на выходах
+сумматора могут возникать при любом
+изменении любого из входных кодов <font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C6%5Cdigs_6.html#image.6.4%23image.6.4">(рис.
+6.4)</a></u></font>. Выходной код суммы может
+принимать в течение короткого времени
+значения, никак не связанные с входными
+кодами, а на выходе переноса могут
+появляться короткие паразитные импульсы.
+Это связано прежде всего с неодновременным
+изменением разрядов входных кодов.
+Чтобы избежать влияния этих неопределенных
+состояний на дальнейшую схему, необходимо
+предусматривать синхронизацию или
+стробирование выходных сигналов. Но
+для этого надо располагать информацией
+о моментах изменения входных кодов,
+которая имеется далеко не всегда.</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.6.4"></a>
+<img src="7e2f7dfbfdd02bcefb71c498844ec6c7_html_3519dd93.png" name="Image4" align="bottom" width="312" height="127" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in">
+<b>Рис. 6.4.</b>&nbsp; Неопределенные состояния
+на выходах сумматора при изменении
+входных кодов</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+Задержки сумматора ИМ6 от входов до
+выходов суммы примерно вдвое превышает
+задержку логического элемента, а от
+входов до выхода переноса - примерно в
+полтора раза. Задержки сумматора ИМ3
+больше задержек ИМ6 почти вдвое. Поэтому
+в схемах, где важно быстродействие,
+лучше использовать ИМ6. Особенно это
+существенно при каскадировании для
+увеличения разрядности, так как там
+задержки отдельных микросхем суммируются.
+Точные величины задержек надо смотреть
+в справочниках.</p>
+<h3 lang="ru-RU" class="western" align="justify"><font size="3" style="font-size: 12pt">Преобразователи
+кодов</font></h3>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Микросхемы преобразователей кодов
+(англ. сonverter) служат для преобразования
+входных двоичных кодов в выходные
+двоично-десятичные и наоборот - входных
+двоично-десятичных кодов в выходные
+двоичные. Они используются довольно
+редко, так как применение двоично-десятичных
+кодов ограничено узкой областью,
+например, они применяются в схемах
+многоразрядной десятичной индикации.
+К тому же при правильной организации
+схемы часто можно обойтись без
+преобразования в двоично-десятичный
+код, например, выбирая счетчики, работающие
+в двоично-десятичном коде. Преобразование
+двоично-десятичного кода в двоичный
+встречается еще реже.</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+На схемах микросхемы преобразователей
+обозначаются буквами X/Y. В отечественных
+сериях преобразователи имеют обозначения
+ПР.</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Кроме того, надо учесть, что любые
+преобразования параллельных кодов,
+даже самые экзотические, могут быть
+легко реализованы на микросхемах
+постоянной памяти нужного объема. Обычно
+это намного удобнее, чем брать стандартные
+микросхемы преобразователей кодов.</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.6.5"></a>
+<img src="7e2f7dfbfdd02bcefb71c498844ec6c7_html_b10d5d59.png" name="Image5" align="bottom" width="427" height="153" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in">
+<b>Рис. 6.5.</b>&nbsp; Микросхемы преобразователей
+кодов</p>
+<p align="justify">
+	В стандартные серии входят две микросхемы преобразователей кодов: ПР6 для преобразования двоично-десятичного кода в двоичный и ПР7 для преобразования двоичного кода в двоично-десятичный <font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C6%5Cdigs_6.html#image.6.5%23image.6.5">(рис.	6.5)</a></u></font>. Обе микросхемы имеют выходы
+	ОК, поэтому к ним надо присоединять нагрузочные резисторы величиной около 1 кОм, но для удобства в дальнейших схемах эти резисторы не показаны. Обе микросхемы имеют также вход разрешения выхода -ЕО при нулевом уровне на котором все выходы активны, а при единичном - переходят в состояние единицы. Преобразователь ПР6 имеет дополнительные выходы А, В, С, не участвующие в основном преобразовании.
+	</p>
+	
+<center>
+	<table width="385" cellpadding="2" cellspacing="0">
+		<col width="60"/>
+		<col width="35"/>
+		<col width="35"/>
+		<col width="27"/>
+		<col width="27"/>
+		<col width="27"/>
+		<col width="35"/>
+		<col width="35"/>
+		<col width="20"/>
+		<col width="20"/>
+		<col width="20"/>
+		<tr>
+			<td colspan="11" width="381" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="justify"><a name="table.6.2"></a>
+				Таблица 6.2. Таблица истинности
+				преобразователя ПР6</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="6" width="230" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<b>Входы</b></p>
+			</td>
+			<td colspan="5" width="147" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<b>Выходы</b></p>
+			</td>
+		</tr>
+		<tr>
+			<td width="60" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<b>-EO</b></p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<b>20</b></p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<b>10</b></p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<b>8</b></p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<b>4</b></p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<b>2</b></p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<b>32</b></p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<b>16</b></p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<b>8</b></p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<b>4</b></p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<b>2</b></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="60" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				X</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				X</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				X</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				X</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				X</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="60" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="60" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="60" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="60" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="60" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="60" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="60" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="60" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="60" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="60" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="60" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="60" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="60" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="60" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="60" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="60" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="60" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="60" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="60" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="60" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="27" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+	</table>
+</center>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+Таблицы истинности преобразователей
+просты (<font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C6%5Cdigs_6.html#table.6.2%23table.6.2">табл.
+6.2</a></u></font> и <font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C6%5Cdigs_6.html#table.6.3%23table.6.3">6.3</a></u></font>).
+Например, двоично-десятичный код без
+младшего разряда на входе ПР6 преобразуется
+в двоичный код без младшего разряда на
+выходе ПР6. Младший разряд не участвует
+в преобразовании, он непосредственно
+передается со входа на выход. Одна
+микросхема ПР6 обрабатывает входные
+коды в диапазоне от 0 (двоично-десятичный
+код 00 000) до 39 (код 11 1001).</p>
+<center>
+	<table width="385" cellpadding="2" cellspacing="0">
+		<col width="52"/>
+		<col width="31"/>
+		<col width="31"/>
+		<col width="24"/>
+		<col width="24"/>
+		<col width="24"/>
+		<col width="31"/>
+		<col width="31"/>
+		<col width="31"/>
+		<col width="18"/>
+		<col width="18"/>
+		<col width="19"/>
+		<tr>
+			<td colspan="12" width="381" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="justify"><a name="table.6.3"></a>
+				Таблица 6.3. Таблица истинности
+				преобразователя ПР7</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="6" width="207" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>Входы</b></p>
+			</td>
+			<td colspan="6" width="170" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>Выходы</b></p>
+			</td>
+		</tr>
+		<tr>
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>-EO</b></p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>32</b></p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>16</b></p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>8</b></p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>4</b></p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>2</b></p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>40</b></p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>20</b></p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>10</b></p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>8</b></p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>4</b></p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<b>2</b></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				X</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				X</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				X</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				X</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				X</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="52" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+			<td width="31" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="18" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				0</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+	</table>
+</center>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+Точно так же двоичный код без младшего
+разряда на входе ПР7 преобразуется в
+двоично-десятичный код без младшего
+разряда на выходе ПР7. Одна микросхема
+ПР7 может обрабатывать входные коды в
+диапазоне от 0 (двоичный код 000000) до 63
+(код 111111). Младшие разряды входных кодов
+передаются на выход без обработки в
+обход микросхемы, так как они одинаковые
+как в двоичном, так и в двоично-десятичном
+кодах. Простейшие схемы включения
+одиночных микросхем ПР6 и ПР7 приведены
+на <font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C6%5Cdigs_6.html#image.6.6%23image.6.6">рис.
+6.6</a></u></font>.</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.6.6"></a>
+<img src="7e2f7dfbfdd02bcefb71c498844ec6c7_html_7bc284e1.png" name="Image6" align="bottom" width="486" height="166" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in">
+<b>Рис. 6.6.</b>&nbsp; Простейшее включение
+одиночных преобразователей кода ПР6 и
+ПР7</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.6.7"></a>
+<img src="7e2f7dfbfdd02bcefb71c498844ec6c7_html_9ea38642.png" name="Image7" align="bottom" width="443" height="211" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in">
+<b>Рис. 6.7.</b>&nbsp; Преобразователь
+двоично-десятичного кода от 0 до 99 в
+двоичный код</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+Каскадировать преобразователи ПР6 и
+ПР7 для увеличения разрядности также
+несложно. Для преобразования
+двоично-десятичных кодов от 0 до 99
+достаточно двух микросхем ПР6 <font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C6%5Cdigs_6.html#image.6.7%23image.6.7">(рис.
+6.7)</a></u></font>, а для преобразования двоичных
+кодов от 0 до 255 требуется три микросхемы
+ПР7 <font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C6%5Cdigs_6.html#image.6.8%23image.6.8">(рис.
+6.8)</a></u></font>. Если надо преобразовывать
+двоично-десятичные коды до 999, то
+понадобится 6 микросхем ПР6, а для
+преобразования двоичных кодов до 511
+потребуется 4 микросхемы ПР7. На всех
+выходах микросхем необходимо включать
+нагрузочные резисторы.</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.6.8"></a>
+<img src="7e2f7dfbfdd02bcefb71c498844ec6c7_html_d73845c5.png" name="Image8" align="bottom" width="471" height="223" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in">
+<b>Рис. 6.8.</b>&nbsp; Преобразователь двоичного
+кода от 0 до 255 в двоично-десятичный код</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+Наличие дополнительных выходов А, В, С
+у микросхемы ПР6 позволяет преобразовывать
+двоично-десятичный код от 0 до 9 в код
+дополнения до 9 или до 10 <font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C6%5Cdigs_6.html#image.6.9%23image.6.9">(рис.
+6.9)</a></u></font>. То есть сумма входного и
+выходного кодов в этом случае равна,
+соответственно, 9 или 10. Например, при
+входном коде 6 на выходе схемы а будет
+код 3, а на выходе схемы б - код 4. В схеме
+б при входном коде 0 на выходе также
+формируется код 0. Как и все остальные
+выходы микросхемы ПР6, выходы А, В, С
+имеют тип ОК, поэтому к ним необходимо
+присоединять нагрузочные резисторы,
+для удобства не показанные на схеме.
+Такие схемы &quot;дополнителей&quot;
+применяются редко, поэтому о них упоминают
+не во всех справочниках и учебниках, но
+иногда подобные функции бывают довольно
+удобны.</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.6.9"></a>
+<img src="7e2f7dfbfdd02bcefb71c498844ec6c7_html_959f71e.png" name="Image9" align="bottom" width="408" height="168" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in">
+<b>Рис. 6.9.</b>&nbsp; Преобразователи входного
+кода в дополнение до 9 (а) и в дополнение
+до 10 (б)</p>
+
+
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+Задержки преобразователей кодов примерно
+вдвое превосходят задержки логических
+элементов. Точные величины задержек
+надо смотреть в справочниках.</p>
+<h3 lang="ru-RU" class="western" align="justify"><font size="3" style="font-size: 12pt">Одновибраторы
+и генераторы</font></h3>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Одновибраторы и генераторы вообще-то
+нельзя отнести к комбинационным
+микросхемам. Они занимают промежуточное
+положение между комбинационными
+микросхемами и микросхемами с внутренней
+памятью. Их выходные сигналы не
+определяются однозначно входными
+сигналами, как у комбинационных микросхем.
+Но в то же время они и не хранят информацию
+длительное время.</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Одновибраторы (&quot;ждущие мультивибраторы&quot;,
+английское название &quot;Monostable
+Multivibrator&quot;) представляют собой микросхемы,
+которые в ответ на входной сигнал
+(логический уровень или фронт) формируют
+выходной импульс заданной длительности.
+Длительность определяется внешними
+времязадающими резисторами и
+конденсаторами. То есть можно считать,
+что у одновибраторов есть внутренняя
+память, но эта память хранит информацию
+о входном сигнале строго заданное время,
+а потом информация исчезает. На схемах
+одновибраторы обозначаются буквами
+G1.</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+В стандартные серии микросхем входят
+одновибраторы двух основных типов
+(отечественное обозначение функции
+микросхемы - АГ):</p>
+<ul>
+	<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-bottom: 0in">
+	Одновибраторы без перезапуска (АГ1 -
+	одиночный одновибратор, АГ4 - два
+	одновибратора в корпусе). 
+	</p></li>
+	<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-bottom: 0.19in">
+	Одновибраторы с перезапуском (АГ3 - два
+	одновибратора в корпусе).</p></li>
+</ul>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+Разница между этими двумя типами
+иллюстрируется <font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C6%5Cdigs_6.html#image.6.10%23image.6.10">рис.
+6.10</a></u></font>. Одновибратор без перезапуска
+не реагирует на входной сигнал до
+окончания своего выходного импульса.
+Одновибратор с перезапуском начинает
+отсчет нового времени выдержки Т с
+каждым новым входным сигналом независимо
+от того, закончилось ли предыдущее время
+выдержки. В случае, когда период следования
+входных сигналов меньше времени выдержки
+Т, выходной импульс одновибратора с
+перезапуском не прерывается. Если период
+следования входных запускающих импульсов
+больше времени выдержки одновибратора
+Т, то оба типа одновибраторов работают
+одинаково.</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.6.10"></a>
+<img src="7e2f7dfbfdd02bcefb71c498844ec6c7_html_2471b2b3.png" name="Image10" align="bottom" width="556" height="105" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in">
+<b>Рис. 6.10.</b>&nbsp; Принцип работы одновибраторов
+без перезапуска и с перезапуском</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+На <font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C6%5Cdigs_6.html#image.6.11%23image.6.11">рис.
+6.11</a></u></font> приведены обозначения
+микросхем одновибраторов стандартных
+серий. Микросхемы АГ3 и АГ4 отличаются
+друг от друга только тем, что АГ3 работает
+с перезапуском, а АГ4 - без перезапуска.</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.6.11"></a>
+<img src="7e2f7dfbfdd02bcefb71c498844ec6c7_html_3f532688.png" name="Image11" align="bottom" width="372" height="95" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in">
+<b>Рис. 6.11.</b>&nbsp; Микросхемы одновибраторов</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.6.12"></a>
+<img src="7e2f7dfbfdd02bcefb71c498844ec6c7_html_6146efc7.png" name="Image12" align="bottom" width="480" height="81" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in">
+<b>Рис. 6.12.</b>&nbsp; Варианты запуска
+одновибратора АГ1</p>
+
+
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+Микросхемы имеют входы запуска,
+объединенные по И и ИЛИ, прямые и инверсные
+выходы, а также выводы для подключения
+внешних времязадающих цепей (резисторов
+и конденсаторов). Запускается работа
+всех одновибраторов по фронту
+результирующего входного сигнала.
+Использованная логика объединения
+входов микросхем позволяет запустить
+все одновибраторы как по положительному,
+так и по отрицательному фронту входного
+сигнала (<font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C6%5Cdigs_6.html#image.6.12%23image.6.12">
+рис. 6.12</a></u></font> и <font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C6%5Cdigs_6.html#image.6.13%23image.6.13">6.13</a></u></font>).</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.6.13"></a>
+<img src="7e2f7dfbfdd02bcefb71c498844ec6c7_html_78660057.png" name="Image13" align="bottom" width="504" height="70" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in">
+<b>Рис. 6.13.</b>&nbsp; Варианты запуска
+одновибраторов АГ3 и АГ4</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+На неиспользуемые входы при этом надо
+подавать сигналы логического нуля или
+логической единицы. Можно также
+использовать остающиеся входы для
+разрешения или запрещения входного
+запускающего сигнала. 
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Одновибраторы АГ3 и АГ4 имеют также
+дополнительный вход сброса –R, логический
+нуль на котором не только запрещает
+выработку выходного сигнала, но и
+прекращает его. Вход –R можно также
+использовать для запуска одновибратора.</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in">
+<img src="7e2f7dfbfdd02bcefb71c498844ec6c7_html_80aa974f.png" name="Image14" align="bottom" width="467" height="246" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in">
+Таблица истинности одновибратора АГ1</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in">
+<img src="7e2f7dfbfdd02bcefb71c498844ec6c7_html_c1af13c1.png" name="Image15" align="bottom" width="467" height="177" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in">
+Таблица истинности одновибраторов АГ3
+и АГ4</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Таблицы истинности одновибраторов
+приведены выше. Здесь инверсные входные
+сигналы обозначены –А, –А1, –А2, прямые
+входные сигналы - В, а прямой и инверсный
+выходные сигналы - соответственно, Q и
+–Q.</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Стандартное включение одновибраторов
+предполагает подключение внешнего
+резистора и внешнего конденсатора (<font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C6%5Cdigs_6.html#image.6.14%23image.6.14">рис.
+6.14</a></u></font>). 
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Для одновибратора АГ1 длительность
+выходного импульса можно оценить по
+формуле T = 0,7RC. Эта формула работает при
+величине сопротивления резистора в
+пределах от 1,5 кОм до 43 кОм. Емкость
+конденсатора может быть любой. Внутри
+микросхемы имеется внутренний резистор
+сопротивлением около 2 кОм, подключенный
+к выводу R, поэтому можно включать
+одновибратор без внешнего резистора,
+подключая вывод R к напряжению питания.
+Повторный запуск одновибратора невозможен
+сразу после окончания выходного импульса,
+до повторного запуска обязательно
+должен пройти интервал t = C (если емкость
+измеряется в нанофарадах, то временной
+интервал получается в микросекундах).
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.6.14"></a>
+<img src="7e2f7dfbfdd02bcefb71c498844ec6c7_html_5a811168.png" name="Image16" align="bottom" width="528" height="97" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in">
+<b>Рис. 6.14.</b>&nbsp; Стандартные схемы
+включения одновибраторов</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+Для одновибраторов АГ3 и АГ4 длительность
+импульса можно оценить по формуле: T =
+0,32C(R + 0,7), где сопротивление резистора
+измеряется в килоОмах. Сопротивление
+резистора может находиться в пределах
+от 5,1 кОм до 51 кОм, емкость конденсатора
+- любая. Перезапуск одновибратора
+возможен только в том случае, когда
+интервал между входными запускающими
+импульсами больше 0,224С (если емкость
+измеряется в нанофарадах, то временной
+интервал - в микросекундах).</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+Наиболее распространенные применения
+одновибраторов следующие <font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C6%5Cdigs_6.html#image.6.15%23image.6.15">(рис.
+6.15)</a></u></font>:</p>
+
+<ol>
+	<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-bottom: 0in">
+	увеличение длительности входного
+	импульса; 
+	</p></li>
+	<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-bottom: 0in">
+	уменьшение длительности входного
+	импульса; 
+	</p></li>
+	<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-bottom: 0in">
+	деление частоты входного сигнала в
+	заданное число раз; 
+	</p></li>
+	<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-bottom: 0.19in">
+	формирование сигнала огибающей
+	последовательности входных импульсов.</p></li>
+</ol>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+Для увеличения или уменьшения длительности
+входного сигнала (а и б) надо всего лишь
+выбрать сопротивление резистора и
+емкость конденсатора, исходя из требуемой
+длительности выходного сигнала. В этом
+случае можно использовать одновибратор
+любого типа: как с перезапуском, так и
+без перезапуска.</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.6.15"></a>
+<img src="7e2f7dfbfdd02bcefb71c498844ec6c7_html_206d28f8.png" name="Image17" align="bottom" width="468" height="161" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in">
+<b>Рис. 6.15.</b>&nbsp; Стандартные применения
+одновибраторов</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Для деления частоты входных импульсов
+в заданное число раз (в) применяется
+только одновибратор без перезапуска.
+При этом надо выбрать такую длительность
+выходного сигнала, чтобы одновибратор
+пропускал нужное количество входных
+импульсов. Например, если требуется
+разделить на 3 частоту входных импульсов
+f, то длительность выходного сигнала
+одновибратора надо выбрать в пределах
+от 2/f до 3/f. При этом одновибратор будет
+пропускать два входных импульса из
+каждых трех.</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Для формирования огибающей входного
+сигнала (г) используется только
+одновибратор с перезапуском. При этом
+длительность его выходного импульса
+должна быть выбрана такой, чтобы каждый
+следующий входной сигнал перезапускал
+одновибратор. Если частота входного
+сигнала равна f, то длительность выходного
+сигнала одновибратора должна быть не
+меньше, чем 1/f.</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Еще одно важное применение одновибратора
+состоит в подавлении дребезга контактов
+кнопки. Одновибратор с большим временем
+выдержки (порядка нескольких десятых
+долей секунды) надежно подавляет
+паразитные импульсы, возникающие из-за
+дребезга контактов, и формирует идеальные
+импульсы на любое нажатие кнопки (<font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C6%5Cdigs_6.html#image.6.16%23image.6.16">рис.
+6.16</a></u></font>).</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.6.16"></a>
+<img src="7e2f7dfbfdd02bcefb71c498844ec6c7_html_10557cf4.png" name="Image18" align="bottom" width="516" height="126" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in">
+<b>Рис. 6.16.</b>&nbsp; Использование одновибратора
+для подавления дребезга контактов
+кнопки</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Для этого можно использовать как
+одновибратор с перезапуском, так и
+одновибратор без перезапуска (на
+рисунке). Можно также подобрать время
+выдержки так, что одновибратор будет
+давать один импульс по нажатию кнопки,
+а другой импульс - по отпусканию кнопки.
+Иногда это бывает удобнее. 
+</p>
+
+
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Одновибраторы можно также применять
+для построения генераторов (мультивибраторов)
+прямоугольных импульсов с различными
+значениями длительности импульсов и
+паузы между ними. При этом два одновибратора
+замыкаются в кольцо так, что каждый из
+них запускает другой после окончания
+своего выходного импульса <font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C6%5Cdigs_6.html#image.6.17%23image.6.17">(рис.
+6.17)</a></u></font>. Один одновибратор формирует
+длительность импульса, а другой определяет
+паузу между импульсами. Изменяя номиналы
+резисторов и конденсаторов, можно
+получить нужные соотношения импульса
+и паузы.</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.6.17"></a>
+<img src="7e2f7dfbfdd02bcefb71c498844ec6c7_html_ce645334.png" name="Image19" align="bottom" width="500" height="118" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in">
+<b>Рис. 6.17.</b>&nbsp; Генератор импульсов на
+двух одновибраторах</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Таким образом, одновибраторы довольно
+легко позволяют решать самые разные
+задачи. Однако, применяя одновибраторы,
+надо всегда помнить, что длительность
+их выходных импульсов нельзя задать
+очень точно - ведь одновибратор имеет
+аналоговые цепи. На длительность
+выходного импульса одновибратора влияют
+разбросы номиналов резисторов и
+конденсаторов, температура окружающей
+среды, старение элементов, помехи по
+цепям питания и другие факторы. Поэтому
+применение одновибраторов нужно по
+возможности ограничивать только теми
+случаями, когда время выдержки можно
+задавать с не слишком высокой точностью
+(погрешность не менее 20–30%).</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Любую функцию одновибратора может
+выполнить синхронное тактируемое
+устройство (на основе кварцевого
+генератора, триггеров, регистров,
+счетчиков), причем выполнить гораздо
+точнее и надежнее. И ему не нужно никаких
+дополнительных времязадающих элементов
+(резисторов и конденсаторов). Количество
+одновибраторов, использованных в схеме,
+как правило, обратно пропорционально
+уровню мастерства разработчика этой
+схемы.</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Задержки запуска одновибраторов примерно
+в два–три раза превосходят задержку
+логического элемента. Точные величины
+задержек надо смотреть в справочниках.</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Помимо одновибраторов, в стандартные
+серии включены также специализированные
+генераторы (&quot;мультивибраторы&quot;,
+англ. &quot;мultivibrator&quot;). Обозначаются они
+на схемах буквой G. В отечественных
+сериях этот тип микросхемы кодируется
+буквами ГГ. Например, микросхема ГГ1
+представляет собой два генератора в
+одном корпусе.</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Микросхемы генераторов используют
+довольно редко, чаще применяют генераторы
+на инверторах или на триггерах Шмитта,
+описанные в лекциях 3, 4. Однако в некоторых
+случаях генераторы ГГ1 не могут быть
+заменены ничем. Дело в том, что они
+допускают изменение частоты выходных
+импульсов с помощью уровней двух входных
+управляющих напряжений. Поэтому они
+называются также &quot;генераторы,
+управляемые напряжением&quot; или ГУН.
+Эффект изменения частоты можно
+использовать, например, в системах
+автоподстройки частоты (АПЧ) или в
+устройствах с частотной модуляцией
+(ЧМ).</p>
+
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.6.18"></a>
+<img src="7e2f7dfbfdd02bcefb71c498844ec6c7_html_ceb06480.png" name="Image20" align="bottom" width="240" height="109" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in">
+<b>Рис. 6.18.</b>&nbsp; Схема включения генератора
+ГГ1</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Стандартная схема включения генератора
+ГГ1 приведена на <font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C6%5Cdigs_6.html#image.6.18%23image.6.18">рис.
+6.18</a></u></font>. Генератор имеет выводы для
+подключения внешнего конденсатора С1
+и С2, к которым можно также подключать
+кварцевый резонатор, но при этом уже
+нельзя управлять частотой. Имеется два
+входа управления частотой U1 и U2, а также
+вход разрешения –Е, при подаче на который
+логической единицы генерация прекращается
+и на выходе F устанавливается единица.</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Один из входов управления (U1) обычно
+называется диапазонным или U<sub>д</sub>, а
+другой (U2) - входом управления частоты
+или U<sub>ч</sub>. При увеличении напряжения
+U<sub>ч</sub> частота увеличивается, при
+увеличении напряжения на входе U<sub>д</sub>
+- уменьшается. Рекомендуемый диапазон
+изменения напряжения U<sub>д</sub> составляет
+от 2 до 4,5 В, а диапазон изменения U<sub>ч</sub>
+- от 0 до 5 В. В зависимости от напряжения
+U<sub>д</sub> , меняется диапазон изменения
+частоты из-за изменения напряжения U<sub>ч</sub>.
+Например, при U<sub>д</sub> = 2 В и изменении
+U<sub>ч</sub> от 1 до 5 В частота изменяется
+примерно на 15%, а при U<sub>д</sub> = 4 В -
+приблизительно в 4 раза. 
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+Частота выходного сигнала ГГ1 определяется
+также внешним конденсатором, например,
+при U<sub>д</sub> = U<sub>ч</sub> = 2 В и при С = 1 мкФ
+частота будет около 100 Гц, а при С = 100 пФ
+- порядка 10 МГц. Максимально возможное
+значение частоты генератора составляет
+около 80 МГц. В справочниках приводятся
+графики зависимости частоты выходного
+сигнала ГГ1 от уровней управляющих
+напряжений и от величины внешнего
+конденсатора. Однако точно определить
+значение частоты по этим графикам
+невозможно, в любом случае требуется
+подстройка. К тому же наличие в схеме
+аналоговых узлов делает генератор ГГ1
+чувствительным к разбросу номиналов
+конденсаторов, к изменению температуры
+окружающей среды, к старению элементов,
+к помехам по цепям питания и к другим
+факторам. Именно поэтому использование
+этих генераторов крайне ограничено.</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+И последнее. В микросхеме ГГ1 существует
+взаимное влияние двух генераторов друг
+на друга, хотя в ней и приняты меры по
+снижению этого влияния. Поэтому не
+рекомендуется использовать одновременно
+два генератора одной микросхемы в режиме
+генерации частоты, управляемой
+напряжением.</p>
+<p lang="ru-RU" class="western" style="line-height: 100%; margin-bottom: 0in">
+<br/>
+
+</p>
+<p lang="ru-RU" class="western" style="line-height: 100%; margin-bottom: 0in">
+<br/>
+
+</p>
+<div title="footer"><p lang="ru-RU" class="western" align="center" style="line-height: 100%; margin-top: 0.26in; margin-bottom: 0in">
+	<span id="Frame1" dir="ltr" style="position: absolute; top: 0in; left: 0in; width: 0.1in; border: none; padding: 0in; background: #ffffff"><p lang="ru-RU" style="line-height: 100%; margin-bottom: 0in">
+		<span style="background: #c0c0c0"><sdfield type=PAGE subtype=RANDOM format=PAGE>13</sdfield></span></p>
+	</span>Комбинационные микросхемы. Часть
+	2.
+	</p>
+	<p lang="ru-RU" style="line-height: 100%; text-indent: 0.25in; margin-right: 0.25in; margin-bottom: 0in">
+	<br/>
+
+	</p>
+</div>
+</body>
+</html>

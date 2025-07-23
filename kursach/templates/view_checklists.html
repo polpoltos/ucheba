@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Checklist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .checklist {
+            border: 1px solid #ccc;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .checklist h2 {
+            margin-top: 0;
+        }
+        .item {
+            margin-left: 20px;
+        }
+        .item span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Edit Checklist</h1>
+    <form action="/edit_checklist/{{ checklist._id }}" method="post">
+        <label for="name">Название чек-листа:</label>
+        <input type="text" id="name" name="name" value="{{ checklist.name }}" required>
+        <div id="items">
+            {% for item in checklist.items %}
+                <div class="item">
+                    <label for="item_name">Показатель:</label>
+                    <input type="text" name="item_name[]" value="{{ item.item_name }}" required>
+                    <label for="item_type">Шкала:</label>
+                    <select name="item_type[]">
+                        <option value="boolean" {% if item.type == 'boolean' %}selected{% endif %}>Boolean (Да/Нет)</option>
+                        <option value="integer" {% if item.type == 'integer' %}selected{% endif %}>Integer (1-10)</option>
+                    </select>
+                </div>
+            {% endfor %}
+        </div>
+        <button type="submit">Сохранить изменения</button>
+    </form>
+    <button onclick="window.location.href='/checklists'">Назад</button>
+</body>
+</html>

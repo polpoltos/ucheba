@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <style>
+        /* Стили для модального окна */
+        button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Пользователи</h1>
+    <button onclick="window.location.href='/'">Назад</button>
+    <button id="createUserBtn">Создать пользователя</button>
+    <table>
+        <tr>
+            <th>ФИО</th>
+            <th>Должность</th>
+            <th>Объект</th>
+            <th>Действия</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.fio }}</td>
+            <td>{{ user.position }}</td>
+            <td>{{ user.department }}</td>
+            <td>
+                <button onclick="openEditModal('{{ user._id }}', '{{ user.fio }}', '{{ user.position }}', '{{ user.department }}')">Редактировать</button>
+                <button onclick="openDeleteModal('{{ user._id }}')">Удалить</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Модальное окно для создания пользователя -->
+    <div id="userModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Создать пользователя</h2>
+            <form action="/add_user" method="post">
+                <input type="text" name="fio" placeholder="ФИО" required>
+                <input type="text" name="position" placeholder="Должность" required>
+                <input type="text" name="department" placeholder="Объект" required>
+                <button type="submit">Создать</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно для редактирования пользователя -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Редактировать пользователя</h2>
+            <form id="editUserForm" method="post">
+                <input type="text" name="fio" placeholder="ФИО" required>
+                <input type="text" name="position" placeholder="Должность" required>
+                <input type="text" name="department" placeholder="Объект" required>
+                <button type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно для подтверждения удаления пользователя -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Удалить пользователя</h2>
+            <p>Вы уверены, что хотите удалить этого пользователя?</p>
+            <form id="deleteUserForm" method="post">
+                <button type="submit">Удалить</button>
+                <button type="button" onclick="closeDeleteModal()">Отмена</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Получаем модальное окно для создания пользователя
+        var userModal = document.getElementById("userModal");
+
+        // Получаем кнопку, которая открывает модальное окно для создания пользователя
+        var createUserBtn = document.getElementById("createUserBtn");
+
+        // Получаем элемент <span>, который закрывает модальное окно для создания пользователя
+        var closeUserModalSpan = document.getElementsByClassName("close")[0];
+
+        // Когда пользователь нажимает на кнопку, открываем модальное окно для создания пользователя
+        createUserBtn.onclick = function() {
+            userModal.style.display = "block";
+        }
+
+        // Когда пользователь нажимает на <span> (x), закрываем модальное окно для создания пользователя
+        closeUserModalSpan.onclick = function() {
+            userModal.style.display = "none";
+        }
+
+        // Когда пользователь нажимает в любом месте за пределами модального окна, закрываем его
+        window.onclick = function(event) {
+            if (event.target == userModal) {
+                userModal.style.display = "none";
+            } else if (event.target == editModal) {
+                editModal.style.display = "none";
+            } else if (event.target == deleteModal) {
+                deleteModal.style.display = "none";
+            }
+        }
+
+        // Получаем модальное окно для редактирования пользователя
+        var editModal = document.getElementById("editModal");
+
+        // Функция для открытия модального окна редактирования
+        function openEditModal(userId, fio, position, department) {
+            var editForm = document.getElementById("editUserForm");
+            editForm.action = "/edit_user/" + userId;
+            editForm.elements["fio"].value = fio;
+            editForm.elements["position"].value = position;
+            editForm.elements["department"].value = department;
+            editModal.style.display = "block";
+        }
+
+        // Функция для закрытия модального окна редактирования
+        var closeEditModalSpan = document.getElementsByClassName("close")[1];
+        closeEditModalSpan.onclick = function() {
+            editModal.style.display = "none";
+        }
+
+        // Получаем модальное окно для удаления пользователя
+        var deleteModal = document.getElementById("deleteModal");
+
+        // Функция для открытия модального окна удаления
+        function openDeleteModal(userId) {
+            var deleteForm = document.getElementById("deleteUserForm");
+            deleteForm.action = "/delete_user/" + userId;
+            deleteModal.style.display = "block";
+        }
+
+        // Функция для закрытия модального окна удаления
+        function closeDeleteModal() {
+            deleteModal.style.display = "none";
+        }
+    </script>
+</body>
+</html>

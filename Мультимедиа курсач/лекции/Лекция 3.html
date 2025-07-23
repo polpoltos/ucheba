@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title>Введение в цифровую схемотехнику</title>
+	<meta name="generator" content="LibreOffice 24.8.3.2 (Linux)"/>
+	<meta name="author" content="MyComputer"/>
+	<meta name="created" content="2008-12-11T18:55:00"/>
+	<meta name="changedby" content="user"/>
+	<meta name="changed" content="2015-10-21T15:37:00"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin-left: 0.88in; margin-right: 0.59in; margin-top: 0.79in; margin-bottom: 0.79in }
+		p { color: #000000; line-height: 115%; orphans: 2; widows: 2; margin-bottom: 0.1in; direction: ltr; background: transparent }
+		p.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ru-RU }
+		p.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+		p.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+		h4 { color: #000000; orphans: 2; widows: 2; margin-top: 0.19in; margin-bottom: 0.19in; direction: ltr; background: transparent }
+		h4.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ru-RU; font-weight: bold }
+		h4.cjk { font-family: "Times New Roman", serif; font-size: 12pt; font-weight: bold }
+		h4.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA; font-weight: bold }
+		a:link { color: #0000ff; text-decoration: underline }
+	</style>
+</head>
+<body lang="en-US" text="#000000" link="#0000ff" vlink="#800000" dir="ltr"><p lang="ru-RU" class="western" align="center" style="line-height: 0.04in; margin-bottom: 0in">
+<img name="Image1" align="bottom" width="1" height="4" border="0"/>
+<font size="2" style="font-size: 11pt">3.
+Лекция</font></p>
+<p lang="ru-RU" class="western" align="center" style="line-height: 100%; text-indent: 0.38in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Простейшие
+логические элементы.</font></p>
+<p lang="ru-RU" class="western" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">В лекции
+рассматриваются принципы работы,
+характеристики и типовые схемы включения
+простейших логических элементов —
+инверторов, буферов, элементов И и ИЛИ,
+а также приводятся схемотехнические
+решения, позволяющие реализовать на их
+основе часто встречающиеся функции. </font>
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Изучение базовых
+элементов цифровой электроники мы
+начнем с наиболее простых, а затем будем
+рассматривать все более сложные. Примеры
+применения каждого следующего элемента
+будут опираться на все элементы,
+рассмотренные ранее. Таким образом,
+будут постепенно даны главные принципы
+построения довольно сложных цифровых
+устройств.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Логические элементы
+(или, как их еще называют, вентили,
+&quot;gates&quot;) — это наиболее простые
+цифровые микросхемы. Именно в этой
+простоте и состоит их отличие от других
+микросхем. Как правило, в одном корпусе
+микросхемы может располагаться от
+одного до шести одинаковых логических
+элементов. Иногда в одном корпусе могут
+располагаться и разные логические
+элементы. </font>
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Обычно каждый
+логический элемент имеет несколько
+входов (от одного до двенадцати) и один
+выход. При этом связь между выходным
+сигналом и входными сигналами (таблица
+истинности) предельно проста. Каждой
+комбинации входных сигналов элемента
+соответствует уровень нуля или единицы
+на его выходе. Никакой внутренней памяти
+у логических элементов нет, поэтому они
+относятся к группе так называемых
+комбинационных микросхем. Но в отличие
+от более сложных комбинационных
+микросхем, рассматриваемых в следующей
+лекции, логические элементы имеют входы,
+которые не могут быть разделены на
+группы, различающиеся по выполняемым
+ими функциям.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Главные достоинства
+логических элементов, по сравнению с
+другими цифровыми микросхемами, — это
+их высокое быстродействие (малые времена
+задержек), а также малая потребляемая
+мощность (малый ток потребления). Поэтому
+в тех случаях, когда требуемую функцию
+можно реализовать исключительно на
+логических элементах, всегда имеет
+смысл проанализировать этот вариант.
+Недостаток же их состоит в том, что на
+их основе довольно трудно реализовать
+сколько-нибудь сложные функции. Поэтому
+чаще всего логические элементы
+используются только в качестве дополнения
+к более сложным, к более &quot;умным&quot;
+микросхемам. И любой разработчик обычно
+стремится использовать их как можно
+меньше и как можно реже. Существует даже
+мнение, что мастерство разработчика
+обратно пропорционально количеству
+используемых им логических элементов.
+Однако это верно далеко не всегда.</font></p>
+<h4 lang="ru-RU" class="western" align="justify" style="text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Инверторы </font>
+</h4>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Самый простой
+логический элемент — это </font><font size="2" style="font-size: 11pt">инвертор</font><font size="2" style="font-size: 11pt">
+(логический элемент НЕ, &quot;inverter&quot;), уже
+упоминавшийся в </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C1%5C"><font size="2" style="font-size: 11pt">первой
+лекции</font></a></u></font><font size="2" style="font-size: 11pt">.
+Инвертор выполняет простейшую логическую
+функцию — инвертирование, то есть
+изменение уровня входного сигнала на
+противоположный. Он имеет всего один
+вход и один выход. Выход инвертора может
+быть типа 2С или типа ОК. На </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.1%23image.3.1"><font size="2" style="font-size: 11pt">рис.
+3.1</font></a></u></font><font size="2" style="font-size: 11pt">
+показаны условные обозначения инвертора,
+принятые у нас и за рубежом, а в </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#table.3.1%23table.3.1"><font size="2" style="font-size: 11pt">табл.
+3.1</font></a></u></font><font size="2" style="font-size: 11pt">
+представлена таблица истинности
+инвертора.</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in"><a name="image.3.1"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_6455ed3e.png" name="Image2" align="bottom" width="455" height="75" border="0"/>
+<font size="2" style="font-size: 11pt"><br/>
+</font><font size="2" style="font-size: 11pt"><b>Рис.
+3.1.</b></font><font size="2" style="font-size: 11pt">&nbsp; Условные
+обозначения инверторов: зарубежные
+(слева) и отечественные (справа)</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">В одном корпусе
+микросхемы обычно бывает шесть инверторов.
+Отечественное обозначение микросхем
+инверторов — &quot;ЛН&quot;. Примеры: КР1533ЛН1
+(SN74ALS04) — шесть инверторов с выходом 2С,
+КР1533ЛН2 (SN74ALS05) — шесть инверторов с
+выходом ОК. Существуют также инверторы
+с выходом ОК и с повышенным выходным
+током (ЛН4), а также с повышенным выходным
+напряжением (ЛН3, ЛН5). Для инверторов с
+выходом ОК необходимо включение выходного
+нагрузочного резистора pull-up. Его
+минимальную величину можно рассчитать
+очень просто: </font><font size="2" style="font-size: 11pt">R
+&lt; U/I</font><sub><font size="2" style="font-size: 11pt">OL</font></sub><font size="2" style="font-size: 11pt">,
+где </font><font size="2" style="font-size: 11pt">U</font><font size="2" style="font-size: 11pt">
+— напряжение питания, к которому
+подключается резистор. Обычно величина
+резистора выбирается порядка сотен Ом
+— единиц кОм.</font></p>
+<p lang="ru-RU" class="western" align="center" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in"><a name="table.3.1"></a>
+Таблица 3.1. Таблица истинности инвертора</p>
+<center>
+	<table width="98" cellpadding="2" cellspacing="0">
+		<col width="43"/>
+		<col width="45"/>
+		<tr>
+			<td width="43" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center" style="margin-top: 0.08in">
+				<font size="2" style="font-size: 11pt"><b>Вход</b></font></p>
+			</td>
+			<td width="45" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center" style="margin-top: 0.08in">
+				<font size="2" style="font-size: 11pt"><b>Выход</b></font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="43" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center" style="margin-top: 0.08in">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+			<td width="45" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center" style="margin-top: 0.08in">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="43" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center" style="margin-top: 0.08in">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+			<td width="45" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center" style="margin-top: 0.08in">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+		</tr>
+	</table>
+</center>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Две основные
+области применения инверторов — это
+изменение полярности сигнала и изменение
+полярности фронта сигнала </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.2%23image.3.2"><font size="2" style="font-size: 11pt">(рис.
+3.2)</font></a></u></font><font size="2" style="font-size: 11pt">. То
+есть из положительного входного сигнала
+инвертор делает отрицательный выходной
+сигнал и наоборот, а из положительного
+фронта входного сигнала — отрицательный
+фронт выходного сигнала и наоборот. Еще
+одно важное применение инвертора —
+буферирование сигнала (с инверсией), то
+есть увеличение нагрузочной способности
+сигнала. Это бывает нужно в том случае,
+когда какой-то сигнал надо подать на
+много входов, а выходной ток источника
+сигнала недостаточен.</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in"><a name="image.3.2"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_6ebaad3.png" name="Image3" align="bottom" width="396" height="64" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt"><b>Рис. 3.2.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Инверсия полярности сигнала и инверсия
+полярности фронта сигнала</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Именно инвертор,
+как наиболее простой элемент, чаще
+других элементов используется в
+нестандартных включениях. Например,
+инверторы обычно применяются в схемах
+генераторов прямоугольных импульсов
+</font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.3%23image.3.3"><font size="2" style="font-size: 11pt">(рис.
+3.3)</font></a></u></font><font size="2" style="font-size: 11pt">,
+выходной сигнал которых периодически
+меняется с нулевого уровня на единичный
+и обратно. Все приведенные схемы, кроме
+схемы д, выполнены на элементах </font><font size="2" style="font-size: 11pt">К155ЛН1</font><font size="2" style="font-size: 11pt">,
+но могут быть реализованы и на инверторах
+других серий при соответствующем
+изменении номиналов резисторов. Например,
+для серии </font><font size="2" style="font-size: 11pt">К555</font><font size="2" style="font-size: 11pt">
+номиналы резисторов увеличиваются
+примерно втрое. Схема д выполнена на
+элементах </font><font size="2" style="font-size: 11pt">КР531ЛН1</font><font size="2" style="font-size: 11pt">,
+так как она требует высокого быстродействия
+инверторов.</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in"><a name="image.3.3"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_35f19798.png" name="Image4" align="bottom" width="498" height="338" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt"><b>Рис. 3.3.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Схемы генераторов импульсов на инверторах</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Схемы </font><font size="2" style="font-size: 11pt">а,
+б</font><font size="2" style="font-size: 11pt"> и </font><font size="2" style="font-size: 11pt">в</font><font size="2" style="font-size: 11pt">
+представляют собой обычные RC-генераторы,
+характеристики которых (выходную
+частоту, длительность импульса) можно
+рассчитать только приблизительно. Для
+схем </font><font size="2" style="font-size: 11pt">а</font><font size="2" style="font-size: 11pt">
+и </font><font size="2" style="font-size: 11pt">б</font><font size="2" style="font-size: 11pt">
+при указанных номиналах резистора и
+конденсатора частота генерации составит
+порядка 100 кГц, для схемы в — около 1 МГц.
+Эти схемы рекомендуется использовать
+только в тех случаях, когда частота не
+слишком важна, а важен сам факт генерации.
+Если же точное значение частоты
+принципиально, то рекомендуется применять
+схемы г и д, в которых частота выходного
+сигнала определяется только характеристиками
+кварцевого резонатора. Схема г используется
+для кварцевого резонатора, работающего
+на первой (основной) гармонике. Величину
+емкости можно оценить по формуле:</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font face="Courier New, monospace"><font size="2" style="font-size: 11pt">C&gt;1/(2RF)</font></font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">где </font><font size="2" style="font-size: 11pt">F</font><font size="2" style="font-size: 11pt">
+— частота генерации. Схема </font><font size="2" style="font-size: 11pt">д</font><font size="2" style="font-size: 11pt">
+применяется для гармониковых кварцевых
+резонаторов, которые работают на частоте,
+большей основной в 3, 5, 7 раз (это бывает
+нужно для частот генерации выше 20 МГц).</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in"><a name="image.3.4"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_61360005.png" name="Image5" align="bottom" width="506" height="181" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt"><b>Рис. 3.4.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Использование инверторов для задержки
+сигнала</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Инверторы также
+применяются в тех случаях, когда
+необходимо получить задержку сигнала,
+правда, незначительную (от 5 до 100 нс).
+Для получения такой задержки последовательно
+включается нужное количество инверторов
+(</font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.4%23image.3.4"><font size="2" style="font-size: 11pt">рис.
+3.4</font></a></u></font><font size="2" style="font-size: 11pt">,
+вверху). Суммарное время задержки,
+например, для четырех инверторов, можно
+оценить по формуле</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font face="Courier New, monospace"><font size="2" style="font-size: 10pt"><font size="2" style="font-size: 11pt">t</font><sub><font size="2" style="font-size: 11pt">З</font></sub><font size="2" style="font-size: 11pt">
+= 2t</font><sub><font size="2" style="font-size: 11pt">PHL</font></sub><font size="2" style="font-size: 11pt">
++ 2t</font><sub><font size="2" style="font-size: 11pt">PLH</font></sub></font></font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Правда, надо
+учитывать, что обычно реальные задержки
+элементов оказываются существенно ниже
+(иногда даже вдвое), чем табличные
+параметры </font><font size="2" style="font-size: 11pt">t</font><sub><font size="2" style="font-size: 11pt">PHL</font></sub><font size="2" style="font-size: 11pt">
+и </font><font size="2" style="font-size: 11pt">t</font><sub><font size="2" style="font-size: 11pt">PLH</font></sub><font size="2" style="font-size: 11pt">.
+То есть о точном значении получаемой
+задержки говорить не приходится, ее
+можно оценить только примерно.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Для задержки
+сигнала используются также конденсаторы
+</font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.4%23image.3.4"><font size="2" style="font-size: 11pt">(рис.
+3.4, внизу)</font></a></u></font><font size="2" style="font-size: 11pt">.
+При этом задержка возникает из-за
+медленного заряда и разряда конденсатора
+(напряжение на конденсаторе &shy;— UC).
+Схема без резистора (слева на рисунке)
+дает задержку около 100 нс. В схеме с
+резистором (справа на рисунке) номинал
+резистора должен быть порядка сотен
+Ом. Но при выборе таких схем с конденсаторами
+надо учитывать, что некоторые серии
+микросхем (например, </font><font size="2" style="font-size: 11pt">КР1533</font><font size="2" style="font-size: 11pt">)
+плохо работают с затянутыми фронтами
+входных сигналов. Кроме того, надо
+учитывать, что количество времязадающих
+конденсаторов в схеме обратно
+пропорционально уровню мастерства
+разработчика схемы. </font>
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Наконец, еще одно
+применение инверторов, но только с
+выходом ОК, состоит в построении на их
+основе так называемых элементов
+</font><font size="2" style="font-size: 11pt">&quot;Проводного
+ИЛИ&quot;</font><font size="2" style="font-size: 11pt">. Для
+этого выходы нескольких инверторов с
+выходами ОК объединяются, и через
+резистор присоединяются к источнику
+питания </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.5%23image.3.5"><font size="2" style="font-size: 11pt">(рис.
+3.5)</font></a></u></font><font size="2" style="font-size: 11pt">.
+Выходом схемы является объединенный
+выход всех элементов. Такая конструкция
+выполняет логическую функцию ИЛИ-НЕ,
+то есть на выходе будет сигнал логической
+единицы только при нулях на всех входах.
+Но о логических функциях подробнее
+будет рассказано далее.</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in"><a name="image.3.5"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_910367f3.png" name="Image6" align="bottom" width="407" height="126" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt"><b>Рис. 3.5.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Объединение выходов инверторов с ОК
+для функции ИЛИ-НЕ</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">В заключение
+раздела надо отметить, что инверсия
+сигнала применяется и внутри более
+сложных логических элементов, а также
+внутри цифровых микросхем, выполняющих
+сложные функции.</font></p>
+<h4 lang="ru-RU" class="western" align="justify" style="text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Повторители и
+буферы </font>
+</h4>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Повторители</font><font size="2" style="font-size: 11pt">
+и </font><font size="2" style="font-size: 11pt">буферы</font><font size="2" style="font-size: 11pt">
+отличаются от </font><font size="2" style="font-size: 11pt">инверторов</font><font size="2" style="font-size: 11pt">
+прежде всего тем, что они не инвертируют
+сигнал (правда, существуют и инвертирующие
+буферы). Зачем же тогда они нужны?
+Во-первых, они выполняют функцию
+увеличения нагрузочной способности
+сигнала, то есть позволяют подавать
+один сигнал на много входов. Для этого
+имеются буферы с повышенным выходным
+током и выходом 2С, например, ЛП16 (шесть
+буферных повторителей). Во-вторых,
+большинство буферов имеют выход ОК или
+3С, что позволяет использовать их для
+получения двунаправленных линий или
+для мультиплексирования сигналов.
+Поясним подробнее эти термины.</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in"><a name="image.3.6"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_89ebee0f.png" name="Image7" align="bottom" width="528" height="97" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt"><b>Рис. 3.6.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Двунаправленная линия</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Под </font><font size="2" style="font-size: 11pt">двунаправленными
+линиями</font><font size="2" style="font-size: 11pt">
+понимаются такие линии (провода), сигналы
+по которым могут распространяться в
+двух противоположных направлениях. В
+отличие от однонаправленных линий,
+которые идут от одного выхода к одному
+или нескольким входам, к двунаправленной
+линии могут одновременно подключаться
+несколько выходов и несколько входов
+</font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.6%23image.3.6"><font size="2" style="font-size: 11pt">(рис.
+3.6)</font></a></u></font><font size="2" style="font-size: 11pt">.
+Понятно, что двунаправленные линии
+могут организовываться только на основе
+выходов ОК или 3С. Поэтому почти все
+буферы имеют именно такие выходы.</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in"><a name="image.3.7"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_cd9828d2.png" name="Image8" align="bottom" width="529" height="96" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt"><b>Рис. 3.7.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Однонаправленная мультиплексированная
+линия на основе буферов</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Мультиплексированием</font><font size="2" style="font-size: 11pt">
+называется передача разных сигналов
+по одним и тем же линиям в разные моменты
+времени. Основная цель мультиплексирования
+состоит в сокращении общего количества
+соединительных линий. Двунаправленная
+линия обязательно является
+мультиплексированной, а мультиплексированная
+линия может быть как однонаправленной,
+так и двунаправленной. Но в любом случае
+к ней присоединяется несколько выходов,
+только один из которых в каждый момент
+времени находится в активном состоянии.
+Остальные выходы в это время отключаются
+(переводятся в пассивное состояние). В
+отличие от двунаправленной линии, к
+мультиплексированной линии, построенной
+на основе буферов, может быть подключен
+всего лишь один вход, но обязательно
+несколько выходов с ОК или 3С </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.7%23image.3.7"><font size="2" style="font-size: 11pt">(рис.
+3.7)</font></a></u></font><font size="2" style="font-size: 11pt">.
+Мультиплексированные линии могут
+строиться не только на буферах, но и на
+микросхемах мультиплексоров, которые
+будут рассмотрены в лекциях 5, 6.</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in"><a name="image.3.8"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_1603649c.png" name="Image9" align="bottom" width="322" height="98" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt"><b>Рис. 3.8.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Объединение выходов буферов с ОК</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Примером буферов
+с выходом ОК является микросхема ЛП17
+(шесть буферов о ОК). Точно так же, как и
+в случае инверторов с ОК </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5C2.html#image.3.5"><font size="2" style="font-size: 11pt">(см.
+рис. 3.5)</font></a></u></font><font size="2" style="font-size: 11pt">,
+выходы нескольких буферов с ОК могут
+объединяться для получения функции
+&quot;Монтажное И&quot;, то есть на выходе
+будет сигнал логической единицы только
+при единицах на всех входах </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.8%23image.3.8"><font size="2" style="font-size: 11pt">(рис.
+3.8)</font></a></u></font><font size="2" style="font-size: 11pt">. То
+есть реализуется многовходовой элемент
+И.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Буферы</font><font size="2" style="font-size: 11pt">
+с выходом 3С представлены гораздо большим
+количеством микросхем, например, ЛП8,
+ЛП11, АП5, АП6, АП14. Эти буферы обязательно
+имеют управляющий вход EZ (или OE),
+переводящий выходы в третье, пассивное
+состояние. Как правило, третьему состоянию
+соответствует единица на этом входе, а
+активному состоянию выходов — нуль, то
+есть сигнал EZ имеет отрицательную
+полярность.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Буферы бывают
+</font><font size="2" style="font-size: 11pt">однонаправленные</font><font size="2" style="font-size: 11pt">
+или </font><font size="2" style="font-size: 11pt">двунаправленные</font><font size="2" style="font-size: 11pt">,
+с инверсией или без инверсии сигналов,
+с управлением всеми выходами одновременно
+или с управлением группами выходов.
+Всем этим и определяется большое
+разнообразие микросхем буферов.</font></p>
+<p lang="ru-RU" class="western" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in"><a name="table.3.2"></a>
+<font size="2" style="font-size: 11pt">Таблица 3.2. Таблица
+истинности буфера без ин</font>версии</p>
+<center>
+	<table width="151" cellpadding="7" cellspacing="0">
+		<col width="32"/>
+		<col width="30"/>
+		<col width="45"/>
+		<tr valign="top">
+			<td width="32" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt"><b>Вход</b></font></p>
+			</td>
+			<td width="30" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt"><b>-EZ</b></font></p>
+			</td>
+			<td width="45" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt"><b>Выход</b></font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="32" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+			<td width="30" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+			<td width="45" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="32" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+			<td width="30" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+			<td width="45" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="32" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+			<td width="30" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+			<td width="45" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">3C</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="32" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+			<td width="30" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+			<td width="45" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">3C</font></p>
+			</td>
+		</tr>
+	</table>
+</center>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+<font size="2" style="font-size: 11pt">Простейшим
+однонаправленным буфером без инверсии
+является микросхема ЛП8 (четыре буфера
+с выходами типа 3С и раздельным
+управлением). Каждый из четырех буферов
+имеет свой вход разрешения EZ. Таблица
+истинности буфера очень проста </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#table.3.2%23table.3.2"><font size="2" style="font-size: 11pt">(табл.
+3.2)</font></a></u></font><font size="2" style="font-size: 11pt">:
+при нулевом сигнале на входе управления
+выход повторяет вход, а при единичном
+— выход отключен. Эту микросхему удобно
+применять для обработки одиночных
+сигналов, то есть для повторения входного
+сигнала с возможностью отключения
+выхода. </font>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.3.9"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_fa2943b2.png" name="Image10" align="bottom" width="175" height="56" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+<font size="2" style="font-size: 11pt"><b>Рис. 3.9.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Применение буфера с 3С в качестве буфера
+с ОК</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+<font size="2" style="font-size: 11pt">Эти же буферы
+иногда удобно использовать для замещения
+буферов с выходом ОК </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.9%23image.3.9"><font size="2" style="font-size: 11pt">(рис.
+3.9)</font></a></u></font><font size="2" style="font-size: 11pt">. В
+этом случае вход управления служит
+информационным входом. При нуле на входе
+мы получаем нуль на выходе, а при единице
+на входе — третье состояние на выходе.</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.3.10"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_ad53345f.png" name="Image11" align="bottom" width="509" height="250" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in">
+<font size="2" style="font-size: 11pt"><b>Рис. 3.10.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Мультиплексирование двух входных кодов
+с помощью буферов с 3С</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Очень часто надо
+обрабатывать не одиночные сигналы, а
+группы сигналов, например, сигналы,
+передающие многоразрядные коды. В этом
+случае удобно применять буферы с
+групповым управлением, То есть имеющие
+один вход разрешения EZ для нескольких
+выходов. Примерами могут служить
+микросхемы ЛП11 (шесть буферов, разделенные
+на две группы: четыре и два буфера, для
+каждой из которых имеется свой вход
+управления) и АП5 (восемь буферов,
+разделенные на две группы по четыре
+буфера, каждая из которых имеет свой
+вход управления).</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">На </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.10%23image.3.10"><font size="2" style="font-size: 11pt">рис.
+3.10</font></a></u></font><font size="2" style="font-size: 11pt">
+показан пример мультиплексирования
+двух восьмиразрядных кодов с помощью
+двух микросхем АП5. Одноименные выходы
+обеих микросхем объединены между собой.
+Пропускание на выход каждого из двух
+входных кодов разрешается своим
+управляющим сигналом (Упр. 1 и Упр. 2),
+причем должен быть исключен одновременный
+приход этих двух сигналов, чтобы не было
+конфликтов на выходах.</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.3.11"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_f8f21d37.png" name="Image12" align="bottom" width="425" height="225" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+<font size="2" style="font-size: 11pt"><b>Рис. 3.11.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Включение двунаправленного буфера</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Двунаправленные
+буферы, в отличие от однонаправленных,
+позволяют передавать сигналы в обоих
+направлениях. В зависимости от специального
+управляющего сигнала T (другое обозначение
+— BD), входы могут становиться выходами
+и наоборот: выходы — входами. Обязательно
+имеется и вход управления третьим
+состоянием EZ, который может отключить
+как входы, так и выходы. </font>
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">На </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.11%23image.3.11"><font size="2" style="font-size: 11pt">рис.
+3.11</font></a></u></font><font size="2" style="font-size: 11pt"> для
+примера показан двунаправленный буфер
+АП6, который может передавать данные
+между двумя двунаправленными шинами А
+и B в обоих направлениях. При единичном
+уровне на управляющем входе Т (сигнал
+Напр.) данные передаются из шины A в шину
+B, а при нулевом уровне — из шины B в шину
+A </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#table.3.3%23table.3.3"><font size="2" style="font-size: 11pt">(табл.
+3.3)</font></a></u></font><font size="2" style="font-size: 11pt">.
+Единичный уровень на управляющем входе
+EZ (сигнал Откл.) отключает микросхему
+от обеих шин. </font>
+</p>
+<p lang="ru-RU" class="western" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in"><a name="table.3.3"></a>
+<font size="2" style="font-size: 11pt">Таблица 3.3. Таблица
+истинности двунаправленного буфера</font></p>
+<center>
+	<table width="212" cellpadding="7" cellspacing="0">
+		<col width="45"/>
+		<col width="57"/>
+		<col width="66"/>
+		<tr>
+			<td width="45" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt"><b>Вход Т</b></font></p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt"><b>Вход-EZ</b></font></p>
+			</td>
+			<td width="66" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt"><b>Операция</b></font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="45" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+			<td width="66" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">B<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_737241.png" name="Image13" align="bottom" width="15" height="18" border="0"/>
+A</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="45" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+			<td width="66" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">A<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_737241.png" name="Image14" align="bottom" width="15" height="18" border="0"/>
+B</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="45" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+			<td width="66" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">3C</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="45" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+			<td width="66" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">3C</font></p>
+			</td>
+		</tr>
+	</table>
+</center>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Двунаправленную
+передачу можно организовать и на основе
+однонаправленных буферов. На </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.12%23image.3.12"><font size="2" style="font-size: 11pt">рис.
+3.12</font></a></u></font><font size="2" style="font-size: 11pt">
+показано, как это можно сделать на двух
+микросхемах АП5. Здесь при нулевом
+сигнале Упр. 1 информация будет передаваться
+с шины А на шину В, а при нулевом сигнале
+на входе Упр. 2 — с шины В на шину А. Если
+оба входа Упр. 1 и Упр. 2 находятся в
+единичном состоянии, то шины A и В
+отключены друг от друга, а подача нулей
+на оба входа Упр. 1 и Упр. 2 должна быть
+исключена, иначе состояние обеих шин А
+и В будет не определено.</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.3.12"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_f9f7adfd.png" name="Image15" align="bottom" width="506" height="250" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+<font size="2" style="font-size: 11pt"><b>Рис. 3.12.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Организация двунаправленной передачи
+с помощью однонаправленных буферов</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Микросхемы буферов
+в отечественных сериях имеют разнообразные
+обозначения: ЛН, ЛП, АП, ИП, что порой
+затрудняет их выбор. Например, ЛН6, ЛП8,
+ЛП11, АП5, АП6, ИП5, ИП6. Буферы с буквами ЛН
+имеют инверсию, буферы АП и ИП могут
+быть с инверсией и без инверсии. Все
+параметры у буферов довольно близки,
+отличие — в инверсии, в количестве
+разрядов и в управляющих сигналах.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Временные параметры
+буферов включают помимо задержки сигнала
+от информационного входа до информационного
+выхода, также задержки перехода выхода
+в третье состояние и из третьего состояния
+в активное состояние (</font><font size="2" style="font-size: 11pt">t</font><sub><font size="2" style="font-size: 11pt">PHZ</font></sub><font size="2" style="font-size: 11pt">,
+</font><font size="2" style="font-size: 11pt">t</font><sub><font size="2" style="font-size: 11pt">PLZ</font></sub><font size="2" style="font-size: 11pt">
+и </font><font size="2" style="font-size: 11pt">t</font><sub><font size="2" style="font-size: 11pt">PZH</font></sub><font size="2" style="font-size: 11pt">,
+</font><font size="2" style="font-size: 11pt">t</font><sub><font size="2" style="font-size: 11pt">PZL</font></sub><font size="2" style="font-size: 11pt">).
+Величины этих задержек обычно примерно
+вдвое больше, чем величины задержек
+между информационным входом и выходом.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Отключаемый выход
+буферов (как ОК, так и 3С) требует применения
+нагрузочных резисторов. В противном
+случае вход, подключенный к отключенному
+выходу, оказывается подвешенным, в
+результате чего схема может работать
+неустойчиво, давать сбои. Подключение
+резистора в случае выхода ОК (pull-up)
+производится стандартным способом </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.8%23image.3.8"><font size="2" style="font-size: 11pt">(см.
+рис. 3.8)</font></a></u></font><font size="2" style="font-size: 11pt">.
+Точно так же может быть включен резистор
+между выходом 3С и напряжением питания
+</font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.13%23image.3.13"><font size="2" style="font-size: 11pt">(рис.
+3.13)</font></a></u></font><font size="2" style="font-size: 11pt">,
+тогда при отключенном выходе на вход
+будет поступать уровень логической
+единицы. Однако можно включить и резистор
+между выходом и землей, тогда при
+отключенном выходе на вход будет
+поступать сигнал логического нуля.
+Применяется также и включение двух
+резисторов (резистивного делителя), при
+этом величина верхнего резистора
+(присоединенного к шине питания) обычно
+выбирается в 2–3 раза меньше, чем нижнего
+резистора (присоединенного к &quot;земле&quot;),
+а величина параллельного соединенных
+двух резисторов выбирается равной
+примерно 100 Ом. Например, резисторы могут
+иметь номиналы 240 Ом и 120 Ом, 360 Ом и 130 Ом.
+Отключенный выход воспринимается в
+данном случае присоединенным к нему
+входом как единица.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in"><a name="image.3.13"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_1c84e03d.png" name="Image16" align="bottom" width="473" height="157" border="0"/>
+<font size="2" style="font-size: 11pt"><br/>
+</font><font size="2" style="font-size: 11pt"><b>Рис.
+3.13.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Включение резисторов на выходе буферов
+3С</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Иногда к выходам
+3С резисторы не присоединяют вообще, но
+в этом случае надо обеспечить, чтобы
+последующий вход воспринимал сигнал с
+выхода 3С (то есть реагировал на него)
+только тогда, когда выход находится в
+активном состоянии. Иначе возможны сбои
+и отказы в работе устройства.</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in"><a name="image.3.14"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_33b239b4.png" name="Image17" align="bottom" width="371" height="121" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt"><b>Рис. 3.14.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Применение буферов для индикации</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Еще одно типичное
+применение буферов, связанное с их
+большими выходными токами, — это
+светодиодная индикация. Светодиоды
+могут подключаться к выходу буферов
+двумя основными способами </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.14%23image.3.14"><font size="2" style="font-size: 11pt">(рис.
+3.14)</font></a></u></font><font size="2" style="font-size: 11pt">.
+При первом из них (слева на рисунке)
+светодиод горит, когда на выходе 3С или
+2С-сигнал логической единицы, а при
+втором (справа на рисунке) — когда на
+выходе ОК сигнал логического нуля.
+Величина резистора выбирается исходя
+из характеристик светодиода, но обычно
+составляет порядка 1 кОм.</font></p>
+<h4 lang="ru-RU" class="western" align="justify" style="text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Элементы И, И-НЕ,
+ИЛИ, ИЛИ-НЕ</font></h4>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Следующий шаг на
+пути усложнения компонентов цифровой
+электроники — это элементы, выполняющие
+простейшие логические функции. Объединяет
+все эти элементы то, что у них есть
+несколько </font><font size="2" style="font-size: 11pt"><b>равноправных</b></font><font size="2" style="font-size: 11pt">
+входов (от 2 до 12) и один выход, сигнал на
+котором определяется комбинацией
+входных сигналов.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Самые распространенные
+логические функции — это И (в отечественной
+системе обозначений — ЛИ), </font><font size="2" style="font-size: 11pt">И-НЕ</font><font size="2" style="font-size: 11pt">
+(обозначается ЛА), ИЛИ (обозначается ЛЛ)
+и </font><font size="2" style="font-size: 11pt">ИЛИ-НЕ</font><font size="2" style="font-size: 11pt">
+(обозначается Л</font><font size="2" style="font-size: 11pt"><span lang="en-US">E</span></font><font size="2" style="font-size: 11pt">).
+Присутствие слова НЕ в названии элемента
+обозначает только одно — встроенную
+инверсию сигнала. В международной
+системе обозначений используются
+следующие сокращения: AND — функция И,
+NAND — функция </font><font size="2" style="font-size: 11pt">И-НЕ</font><font size="2" style="font-size: 11pt">,
+OR — функция ИЛИ, NOR — функция </font><font size="2" style="font-size: 11pt">ИЛИ-НЕ</font><font size="2" style="font-size: 11pt">.
+</font>
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Название самих
+функций И и ИЛИ говорит о том, при каком
+условии на входах появляется сигнал на
+выходе. При этом важно помнить, что речь
+в данном случае идет о положительной
+логике, о положительных, единичных
+сигналах на входах и на выходе.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Элемент И формирует
+на выходе единицу тогда и только тогда,
+если на всех его входах (и на первом, и
+на втором, и на третьем и т.д.) присутствуют
+единицы. Если речь идет об элементе
+</font><font size="2" style="font-size: 11pt">И-НЕ</font><font size="2" style="font-size: 11pt">,
+то на выходе формируется нуль, когда на
+всех входах — единицы </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#table.3.4%23table.3.4"><font size="2" style="font-size: 11pt">(табл.
+3.4)</font></a></u></font><font size="2" style="font-size: 11pt">.
+Цифра перед названием функции говорит
+о количестве входов элемента. Например,
+8И-НЕ — это восьмивходовой элемент И с
+инверсией на выходе.</font></p>
+<p lang="ru-RU" class="western" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in"><a name="table.3.4"></a>
+<font size="2" style="font-size: 11pt">Таблица 3.4. Таблица
+истинности двухвходовых элементов И,
+И-НЕ, ИЛИ, ИЛИ-НЕ</font></p>
+<center>
+	<table width="486" cellpadding="7" cellspacing="0">
+		<col width="42"/>
+		<col width="43"/>
+		<col width="56"/>
+		<col width="81"/>
+		<col width="77"/>
+		<col width="100"/>
+		<tr>
+			<td width="42" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Вход 1</font></p>
+			</td>
+			<td width="43" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Вход 2</font></p>
+			</td>
+			<td width="56" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Выход И</font></p>
+			</td>
+			<td width="81" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Выход И-НЕ</font></p>
+			</td>
+			<td width="77" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Выход ИЛИ</font></p>
+			</td>
+			<td width="100" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Выход ИЛИ-НЕ</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="42" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+			<td width="43" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+			<td width="56" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+			<td width="81" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+			<td width="77" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+			<td width="100" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="42" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+			<td width="43" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+			<td width="56" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+			<td width="81" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+			<td width="77" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+			<td width="100" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="42" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+			<td width="43" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+			<td width="56" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+			<td width="81" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+			<td width="77" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+			<td width="100" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="42" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+			<td width="43" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+			<td width="56" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+			<td width="81" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+			<td width="77" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+			<td width="100" style="border: 1px solid #000000; padding: 0in 0.08in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+		</tr>
+	</table>
+</center>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+<font size="2" style="font-size: 11pt">Элемент ИЛИ
+формирует на выходе нуль тогда и только
+тогда, если на всех входах нуль. Элемент
+ИЛИ-НЕ дает на выходе нуль при наличии
+хотя бы на одном из входов единицы (</font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#table.3.4%23table.3.4"><font size="2" style="font-size: 11pt">табл.
+3.4</font></a></u></font><font size="2" style="font-size: 11pt">).
+Пример обозначения: 4ИЛИ-НЕ — четырехвходовой
+элемент ИЛИ с инверсией на выходе.</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.3.15"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_53d1115f.png" name="Image18" align="bottom" width="502" height="107" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in">
+<font size="2" style="font-size: 11pt"><b>Рис. 3.15.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Обозначения элементов И, И-НЕ, ИЛИ,
+ИЛИ-НЕ: зарубежные (слева) и отечественные
+(справа)</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Отечественные и
+зарубежные обозначения на схемах
+двухвходовых элементов И, И-НЕ, ИЛИ,
+ИЛИ-НЕ показаны на </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.15%23image.3.15"><font size="2" style="font-size: 11pt">рис.
+3.15</font></a></u></font><font size="2" style="font-size: 11pt">.
+Все эти элементы бывают с выходами типа
+2С, ОК и 3С. В последнем случае обязательно
+имеется вход разрешения –EZ.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Нетрудно заметить
+</font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#table.3.4%23table.3.4"><font size="2" style="font-size: 11pt">(см.
+табл. 3.4)</font></a></u></font><font size="2" style="font-size: 11pt">,
+что в случае отрицательной логики, при
+нулевых входных и выходных сигналах,
+элемент И выполняет функцию ИЛИ, то есть
+на выходе будет нуль в случае, когда
+хотя бы на одном из входов нуль. А элемент
+ИЛИ при отрицательной логике выполняет
+функцию И, то есть на выходе будет нуль
+только тогда, когда на всех входах
+присутствуют нули. И так как в реальных
+электронных устройствах сигналы могут
+быть любой полярности (как положительные,
+так и отрицательные), то надо всегда
+очень аккуратно выбирать требуемый в
+каждом конкретном случае элемент.
+Особенно об этом важно помнить тогда,
+когда последовательно соединяются
+несколько разноименных логических
+элементов с инверсией и без нее для
+получения сложной функции.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Поэтому элементы
+И, И-НЕ, ИЛИ, ИЛИ-НЕ разработчику далеко
+не всегда удобно применять именно как
+выполняющие указанные в их названии
+логические функции. Иногда их удобнее
+использовать как элементы
+разрешения/запрещения или
+смешивания/совпадения. Но сначала мы
+рассмотрим случаи реализации именно
+логических функций на этих элементах.
+</font>
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">На </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.16%23image.3.16"><font size="2" style="font-size: 11pt">рис.
+3.16</font></a></u></font><font size="2" style="font-size: 11pt">
+приведены примеры формирования элементами
+выходных сигналов на основании требуемых
+временных диаграмм входных и выходных
+сигналов. В случае а выходной сигнал
+должен быть равен единице при двух
+единичных входных сигналах, следовательно,
+достаточно элемента 2И. В случае б
+выходной сигнал должен быть равен нулю,
+когда хотя бы один из входных сигналов
+равен единице, следовательно, требуется
+элемент 2ИЛИ-НЕ. Наконец, в случае в
+выходной сигнал должен быть равен нулю
+при одновременном приходе единичного
+сигнала Вх. 1, нулевого сигнала Вх. 2 и
+единичного сигнала Вх. 3. Следовательно,
+требуется элемент 3И-НЕ, причем сигнал
+Вх. 2 надо предварительно проинвертировать.</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in"><a name="image.3.16"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_d4e969ee.png" name="Image19" align="bottom" width="506" height="226" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt"><b>Рис. 3.16.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Примеры применения элементов И и ИЛИ</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Любой из логических
+элементов рассматриваемой группы можно
+рассматривать как управляемый пропускатель
+входного сигнала (с инверсией или без
+нее). </font>
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Например, в случае
+элемента 2И-НЕ один из входов можно
+считать информационным, а другой —
+управляющим. В этом случае при единице
+на управляющем входе выходной сигнал
+будет равен проинвертированному входному
+сигналу, а при нуле на управляющем входе
+выходной сигнал будет постоянно равен
+единице, то есть прохождение входного
+сигнала будет запрещено. Элементы 2И-НЕ
+с выходом ОК часто используют именно в
+качестве управляемых буферов для работы
+на мультиплексированную или двунаправленную
+линию. </font>
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Точно так же в
+качестве элемента разрешения/запрещения
+могут применяться элементы И, ИЛИ, ИЛИ-НЕ
+</font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.17%23image.3.17"><font size="2" style="font-size: 11pt">(рис.
+3.17)</font></a></u></font><font size="2" style="font-size: 11pt">.
+Разница между элементами состоит только
+в полярности управляющего сигнала, в
+инверсии (или ее отсутствии) входного
+сигнала, а также в уровне выходного
+сигнала (нуль или единица) при запрещении
+прохождения входного сигнала. </font>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in"><a name="image.3.17"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_f78440c1.png" name="Image20" align="bottom" width="506" height="197" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt"><b>Рис. 3.17.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Разрешение/запрещение прохождения
+сигналов на элементах И, И-НЕ, ИЛИ, ИЛИ-НЕ</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in"><a name="image.3.18"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_b95ce845.png" name="Image21" align="bottom" width="479" height="121" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt"><b>Рис. 3.18.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Появление лишнего фронта при запрещении
+входного сигнала</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">При использовании
+элементов разрешения/запрещения могут
+возникнуть дополнительные проблемы в
+случае, когда сигнал с выхода элемента
+идет на вход, реагирующий на фронт
+сигнала. В момент перехода из состояния
+разрешения в состояние запрещения и из
+состояния запрещения в состояние
+разрешения в выходном сигнале может
+появиться дополнительный фронт, никак
+не связанный с входным сигналом (рис.
+3.18). Чтобы этого не произошло, надо
+придерживаться следующего простого
+правила: если вход реагирует на
+положительный фронт, то в состоянии
+запрещения на выходе элемента должен
+быть нуль, и наоборот.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Иногда необходимо
+реализовать функцию смешивания двух
+сигналов той или иной полярности. То
+есть выходной сигнал должен вырабатываться
+как при приходе одного входного сигнала,
+так и при приходе другого входного
+сигнала. Если оба входных сигнала
+положительные и выходной сигнал
+положительный, то мы имеем в чистом виде
+функцию ИЛИ, и требуется элемент 2ИЛИ.
+Однако при отрицательных входных
+сигналах и отрицательном выходном
+сигнале для такого же смешивания
+понадобится уже элемент 2И. А если
+полярность входных сигналов не совпадает
+с нужной полярностью выходного сигнала,
+то нужны уже элементы с инверсией (И-НЕ
+при положительных выходных сигналах и
+ИЛИ-НЕ при отрицательных выходных
+сигналах). На </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.19%23image.3.19"><font size="2" style="font-size: 11pt">рис.
+3.19</font></a></u></font><font size="2" style="font-size: 11pt">
+показаны варианты смешивания на разных
+элементах.</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in"><a name="image.3.19"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_c742697c.png" name="Image22" align="bottom" width="506" height="196" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt"><b>Рис. 3.19.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Реализация смешивания двух сигналов</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Наконец,
+рассматриваемые элементы И, И-НЕ, ИЛИ,
+ИЛИ-НЕ иногда бывает удобно применять
+в качестве схем совпадения различных
+сигналов. То есть выходной сигнал должен
+вырабатываться тогда, когда сигналы на
+входах совпадают (приходят одновременно).
+Если же совпадения нет, то выходной
+сигнал должен отсутствовать. На </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.20%23image.3.20"><font size="2" style="font-size: 11pt">рис.
+3.20 </font></a></u></font><font size="2" style="font-size: 11pt">показаны
+варианты таких схем совпадения на
+четырех разных элементах. Различаются
+они полярностями входных сигналов, а
+также наличием или отсутствием инверсии
+выходного сигнала.</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in"><a name="image.3.20"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_f098e6f5.png" name="Image23" align="bottom" width="496" height="194" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt"><b>Рис. 3.20.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Схемы совпадения двух сигналов</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Рассмотрим два
+примера совместного использования
+элементов И, И-НЕ, ИЛИ, ИЛИ-НЕ (</font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.21%23image.3.21"><font size="2" style="font-size: 11pt">рис.
+3.21</font></a></u></font><font size="2" style="font-size: 11pt">).</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in"><a name="image.3.21"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_17ade8af.png" name="Image24" align="bottom" width="534" height="128" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt"><b>Рис. 3.21.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Примеры совместного использования
+элементов</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Пусть необходимо
+смешать два сигнала, каждый из которых
+может быть разрешен или запрещен. Пусть
+полярность входных сигналов и сигналов
+разрешения — положительная, а выходной
+сигнал должен быть отрицательным. В
+этом случае надо взять два двухвходовых
+элемента И и смешать их выходные сигналы
+с помощью двухвходового элемента ИЛИ-НЕ
+(а). </font>
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Пусть необходимо
+смешать два отрицательных сигнала и
+один положительный сигнал, причем
+результирующий сигнал может быть
+разрешен или запрещен. Полярность
+сигнала разрешения — отрицательная,
+полярность выходного сигнала —
+отрицательная. Для этого нужно взять
+трехвходовой элемент И, инвертор для
+отрицательного входного сигнала и
+двухвходовой элемент ИЛИ (б). </font>
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Элементы И, И-НЕ,
+ИЛИ, ИЛИ-НЕ могут использоваться также
+в качестве инверторов или повторителей
+</font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.23%23image.3.23"><font size="2" style="font-size: 11pt">(рис.
+3.22)</font></a></u></font><font size="2" style="font-size: 11pt">,
+для чего необходимо объединить входы
+или на неиспользуемые входы подать
+сигнал нужного уровня. Второе
+предпочтительнее, так как объединение
+входов не только увеличивает входной
+ток, но и несколько снижает быстродействие
+элементов.</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in"><a name="image.3.22"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_e814634e.png" name="Image25" align="bottom" width="580" height="141" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt"><b>Рис. 3.22.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Инверторы и повторители</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in"><a name="image.3.23"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_ff6484d9.png" name="Image26" align="bottom" width="442" height="64" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt"><b>Рис. 3.23.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Объединение по И входов микросхем</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">По функции И часто
+объединяются входы более сложных
+микросхем. Иначе говоря, какая-то функция
+выполняется только тогда, когда на все
+объединенные по И входы поступают
+сигналы нужной полярности. Чаще всего
+по И объединяются входы выбора микросхемы
+CS и входы управления третьим состоянием
+выхода микросхемы EZ. На </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.23%23image.3.23"><font size="2" style="font-size: 11pt">рис.
+3.23</font></a></u></font><font size="2" style="font-size: 11pt">
+показано три примера такого объединения
+по И. При этом надо учитывать, что на
+инверсные входы для выполнения функции
+должны поступать нулевые сигналы, а на
+прямые входы — единичные сигналы.
+Примерами могут служить микросхемы
+КР556РТ4, КР556РТ5, КР1533АП14, КР1533АП15.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">До сих пор,
+рассматривая элементы И, И-НЕ, ИЛИ,
+ИЛИ-НЕ, мы не выходили за рамки первого
+уровня представления (логической
+модели). Это вполне допустимо в том
+случае, когда входные сигналы элементов
+не меняются одновременно или почти
+одновременно, когда их фронты разнесены
+во времени существенно (больше, чем на
+время задержки элемента). При одновременном
+изменении входных сигналов все будет
+гораздо сложнее необходимо привлекать
+второй и порой третий уровень представления.
+В момент изменения входных сигналов
+выходной сигнал становится неопределенным,
+нестабильным, непредсказуемым. В
+результате при неправильном проектировании
+может не работать вся сложная схема,
+целый прибор или даже большая система.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Например, возьмем
+логический элемент 2И-НЕ. Пусть на его
+входы приходят сигналы, изменяющиеся
+одновременно, причем в противофазе, то
+есть один переключается из нуля в
+единицу, а другой — из единицы в нуль.
+Пусть по тем или иным причинам (вследствие
+передачи по проводам, вследствие разных
+задержек элементов и т.д.) один из сигналов
+чуть-чуть сдвинулся во времени относительно
+другого </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.24%23image.3.24"><font size="2" style="font-size: 11pt">(рис.
+3.24)</font></a></u></font><font size="2" style="font-size: 11pt">.
+При этом на двух входах в течение
+кратковременного периода будет
+присутствовать два единичных сигнала.
+В результате выход начнет переключаться
+из единицы в нуль. Он может успеть
+переключиться, и тогда сформируется
+короткий импульс. Он может не успеть
+переключиться, и тогда импульса не
+будет. Он может иногда успевать
+переключиться, а иногда не успевать, и
+тогда выходной импульс то будет
+появляться, то не будет. Здесь все зависит
+от быстродействия элемента и величины
+задержки. Последняя ситуация наиболее
+неприятна, так как может вызвать
+нестабильную неисправность, выявить
+которую крайне сложно. </font>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in"><a name="image.3.24"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_44d4ebaf.png" name="Image27" align="bottom" width="414" height="106" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt"><b>Рис. 3.24.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Короткий импульс на выходе элемента
+2И-НЕ</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">На этапе проектирования
+схемы бороться с такими паразитными
+импульсами довольно просто: надо всего
+лишь обеспечить, чтобы вся дальнейшая
+схема на них не реагировала, например,
+отключалась на некоторое время после
+изменения входных сигналов элементов.
+То есть необходимо временное согласование,
+синхронизация различных элементов
+схемы.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">В качестве примера
+возьмем одно из самых распространенных
+применений рассматриваемых элементов
+И, И-НЕ, ИЛИ, ИЛИ-НЕ — селектирование
+кодов. Суть селектирования сводится к
+следующему. Пусть имеется некоторая
+шина, по которой передаются коды.
+Необходимо выявить появление на этой
+шине какого-то определенного кода, то
+есть сформировать выходной сигнал,
+соответствующий требуемому входному
+коду. </font>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in"><a name="image.3.25"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_290abe8e.png" name="Image28" align="bottom" width="505" height="212" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt"><b>Рис. 3.25.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Селектирование кодов со стробированием</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Схема, выполняющая
+такую функцию, довольно проста </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.25%23image.3.25"><font size="2" style="font-size: 11pt">(рис.
+3.25)</font></a></u></font><font size="2" style="font-size: 11pt">. В
+ее основе — многовходовые элементы
+И-НЕ. При этом сигналы, соответствующие
+разрядам кода, на которых должны быть
+единицы, подаются непосредственно на
+входы элементов И-НЕ. А сигналы,
+соответствующие разрядам кода, на
+которых должны быть нули, подаются на
+входы элементов И-НЕ через инверторы.
+Выходные сигналы элементов И-НЕ
+объединяются с помощью элемента ИЛИ-НЕ.
+В результате на выходе элемента ИЛИ-НЕ
+формируется сигнал Вых. 1 в тот момент,
+когда на входе присутствует нужный код.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Однако в момент
+установления нужного кода и в момент
+его снятия возникает период неопределенности,
+когда в выходном сигнале могут быть
+короткие паразитные импульсы. Это
+связано как с неодновременным приходом
+различных разрядов, так и с внутренними
+задержками нашей схемы. Более того,
+короткие паразитные импульсы могут
+возникать на выходе и в том случае, когда
+любой входной код меняется на любой
+другой входной код, даже если оба эти
+кода не селектируются нашей схемой. То
+есть любое изменение кода всегда
+сопровождается периодом неопределенности
+в сигнале Вых. 1.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Как же добиться,
+чтобы выходной сигнал не имел паразитных
+импульсов, не имел периодов неопределенности?
+Для этого обычно используется стробирование
+или тактирование передаваемого кода.
+То есть, помимо кода, параллельно с ним
+передается стробирующий или тактирующий
+сигнал STR, задержанный во времени
+относительно кода. Активным этот сигнал
+становится тогда, когда все предыдущие
+переходные процессы уже завершены, все
+разряды кода установились в нужные
+уровни и схема, обрабатывающая код, тоже
+закончила свою работу. А пассивным он
+становится, пока еще не начались новые
+переходные процессы. Это называется
+вложенным циклом (то есть в нашем случае
+сигнал STR вложен в сигналы кода). В
+результате, если мы будем разрешать
+выходной сигнал нашей схемы Вых. 1 таким
+сигналом STR с помощью элемента 2И-НЕ, то
+получим сигнал Вых. 2, свободный от
+паразитных импульсов и периодов
+неопределенности.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Подробнее о
+синхронизации будет рассказано в
+следующих лекциях.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Однако бывают
+случаи, когда указанная особенность
+элементов И, И-НЕ, ИЛИ, ИЛИ-НЕ формировать
+короткие импульсы при изменении входных
+сигналов оказывается очень полезной.
+Например, нам необходимо сформировать
+короткий импульс по положительному или
+отрицательному фронту имеющегося
+сигнала. Тогда этот сигнал инвертируют,
+специально задерживают с помощью цепочки
+элементов или емкости и подают исходный
+сигнал и задержанный сигнал на входы
+элемента </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C3%5Cdigs_3.html#image.3.26%23image.3.26"><font size="2" style="font-size: 11pt">(рис.
+3.26)</font></a></u></font><font size="2" style="font-size: 11pt">.</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in"><a name="image.3.26"></a>
+<img src="162c4b080ca1c3f09d3c30b0f76a229f_html_c8c23262.png" name="Image29" align="bottom" width="575" height="128" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt"><b>Рис. 3.26.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Формирователи коротких импульсов по
+фронту входного сигнала</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Импульс по
+положительному фронту входного сигнала
+формируется на элементе 2И или 2И-НЕ (а),
+а импульс по отрицательному фронту
+входного сигнала — на элементе 2ИЛИ или
+2ИЛИ-НЕ (б). Если элемент с инверсией, то
+выходной импульс будет отрицательным,
+если без инверсии, то положительным.
+При указанной на схемах величине емкости
+длительность импульса получается около
+50 нс. Для увеличения длительности
+импульса надо увеличивать величину
+емкости или же количество инверторов
+в цепи задержки (при этом коли&shy;чество
+инверторов обязательно должно быть
+нечетным).</font></p>
+<p lang="ru-RU" class="western" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+<br/>
+
+</p>
+</body>
+</html>

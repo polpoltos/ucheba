@@ -1,0 +1,1915 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title>Введение в цифровую схемотехнику</title>
+	<meta name="generator" content="LibreOffice 24.8.3.2 (Linux)"/>
+	<meta name="author" content="MyComputer"/>
+	<meta name="created" content="2008-12-11T20:30:00"/>
+	<meta name="changedby" content="MyComputer"/>
+	<meta name="changed" content="2009-03-01T18:25:00"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin-left: 0.87in; margin-right: 0.59in; margin-top: 0.79in; margin-bottom: 0.49in }
+		p { color: #000000; line-height: 115%; orphans: 2; widows: 2; margin-bottom: 0.1in; direction: ltr; background: transparent }
+		p.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ru-RU }
+		p.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+		p.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+		a:link { color: #000080; text-decoration: underline }
+	</style>
+</head>
+<body text="#000000" link="#000080" vlink="#800000" dir="ltr">
+<table width="100%" cellpadding="0" cellspacing="0">
+	<col width="256*"/>
+	<tr>
+		<td width="100%" height="2" style="border: none; padding: 0in"><p class="western">
+			<img name="Image1" align="bottom" width="1" height="1" border="0"/>
+</p>
+		</td>
+	</tr>
+</table>
+<p align="center">
+<img name="Image2" align="bottom" width="1" height="8" border="0"/>
+5. Лекция:
+</p>
+<p align="center">
+Комбинационные микросхемы.
+</p>
+<p align="center">
+Часть 1.
+</p>
+<p>
+В лекции рассказывается о комбинационных микросхемах: шифраторах, дешифраторах, мультиплексорах и компараторах кодов, об их алгоритмах работы, параметрах, типовых схемах включения, а также о реализации на их основе некоторых часто встречающихся функций.
+</p>
+<p>
+Комбинационные микросхемы выполняют более сложные функции, чем простые логические элементы. Их входы объединены в функциональные группы и не являются полностью взаимозаменяемыми. Например, любые два входа логического элемента И-НЕ совершенно спокойно можно поменять местами, от этого выходной сигнал никак не изменится, а для комбинационных микросхем это невозможно, так как у каждого входа — своя особая функция.
+</p>
+<p>
+Объединяет комбинационные микросхемы с логическими элементами то, что они не имеют внутренней памяти. То есть уровни их выходных сигналов всегда однозначно определяются текущими уровнями входных сигналов и никак не связаны с предыдущими значениями входных сигналов. Любое изменение входных сигналов обязательно изменяет состояние выходных сигналов. Именно поэтому логические элементы иногда также называют комбинационными микросхемами, в отличие от последовательных (или последовательностных) микросхем, которые имеют внутреннюю память и управляются не уровнями входных сигналов, а их последовательностями.
+</p>
+<p>
+Строго говоря, все комбинационные микросхемы внутри построены из простейших логических элементов, и эта их внутренняя структура часто приводится в справочниках. Но для разработчика цифровой аппаратуры эта информация обычно лишняя, ему достаточно знать только таблицу истинности, только принцип преобразования входных сигналов в выходные, а также величины задержек между входами и выходами и уровни входных и выходных токов и напряжений. Внутренняя же структура важна для разработчиков микросхем, а также в тех редчайших случаях, когда надо построить новую комбинационную микросхему из микросхем простых логических элементов.
+</p>
+<p>
+Состав набора комбинационных микросхем, входящих в стандартные серии, был определен исходя из наиболее часто встречающихся задач. Требуемые для этого функции реализованы в комбинационных микросхемах наиболее оптимально, с минимальными задержками и минимальным потреблением мощности. Поэтому пытаться повторить эту уже проделанную однажды работу не стоит. Надо просто уметь грамотно применять то, что имеется.
+</p>
+<p>
+<b>Дешифраторы и шифраторы</b>
+</p>
+<p>
+Функции дешифраторов и шифраторов понятны из их названий. Дешифратор преобразует входной двоичный код в номер выходного сигнала (дешифрирует код), а шифратор преобразует номер входного сигнала в выходной двоичный код (шифрует номер входного сигнала). Количество выходных сигналов дешифратора и входных сигналов шифратора равно количеству возможных состояний двоичного кода (входного кода у дешифратора и выходного кода у шифратора), то есть 2<sup>n</sup>, где n — разрядность двоичного кода <a href="#image.5.1"><font color="#0000ff"><u>(рис. 5.1)</u></font></a>. Микросхемы дешифраторов обозначаются на схемах буквами DC (от английского Decoder), а микросхемы шифраторов — CD (от английского Coder).
+</p>
+<p align="center">
+<a name="image.5.1"></a>
+<img src="img/les5_1.png" name="Image3" align="bottom" width="468" height="78" border="0"/>
+</p>
+<span class="caption">Рис. 5.1.&nbsp; Функции дешифратора (слева) и шифратора (справа)</span>
+<p>
+На выходе дешифратора всегда присутствует только один сигнал, причем номер этого сигнала однозначно определяется входным кодом. Выходной код шифратора однозначно определяется номером входного сигнала.
+</p>
+<p align="center">
+<b>Рассмотрим подробнее функцию дешифратора.</b>
+</p>
+<p>
+В стандартные серии входят дешифраторы на 4 выхода (2 разряда входного кода), на 8 выходов (3 разряда входного кода) и на 16 выходов (4 разряда входного кода). Они обозначаются соответственно как 2–4, 3–8, 4–16. Различаются микросхемы дешифраторов входами управления (разрешения/запрета выходных сигналов), а также типом выхода: 2С или ОК. Выходные сигналы всех дешифраторов имеют отрицательную полярность. Входы, на которые поступает входной код, называют часто адресными входами. Обозначают эти входы 1, 2, 4, 8, где число соответствует весу двоичного кода (1 — младший разряд, 2 — следующий разряд и т.д.), или А0, А1, А2, А5. В отечественных сериях микросхемы дешифраторов обозначаются буквами ИД. На рис. 5.2 показаны три наиболее типичных микросхемы дешифраторов.
+</p>
+<p align="center">
+<a name="image.5.2"></a>
+<img src="img/les5_2.png" name="Image4" align="bottom" width="372" height="168" border="0"/>
+</p>
+<span class="caption">Рис. 5.2.&nbsp; Примеры микросхем дешифраторов</span>
+<p>
+Код на входах 1, 2, 4, 8 определяет номер активного выхода (вход 1 соответствует младшему разряду кода, вход 8 — старшему разряду кода). Входы разрешения С1, С2, С3 объединены по функции И и имеют указанную на рисунке полярность. Для примера в <a href="#table.5.1"><font color="#0000ff"><u>табл. 5.1</u></font></a> приведена таблица истинности дешифратора ИД7 (3—8). Существуют и дешифраторы 4–10 (например, ИД6), которые обрабатывают не все возможные 16 состояний входного кода, а только первые 10 из них.
+</p>
+<p>
+Первые три строки таблицы соответствуют запрету выходных сигналов. Разрешением выхода будет единица на входе С1 и нули на входах С2 и С5. Символ "Х" обозначает безразличное состояние данного входа (неважно, нуль или единица). Нижние восемь строк соответствуют разрешению выходных сигналов. Номер активного выхода (на котором формируется нулевой сигнал) определяется кодом на входах 1, 2, 4, причем вход 1 соответствует младшему разряду кода, а вход 4 — старшему разряду кода.
+</p>
+<center>
+	<table width="404" cellpadding="2" cellspacing="0">
+		<colgroup>
+			<col width="37"/>
+		</colgroup>
+		<colgroup>
+			<col width="45"/>
+		</colgroup>
+		<colgroup>
+			<col width="45"/>
+		</colgroup>
+		<colgroup>
+			<col width="24"/>
+		</colgroup>
+		<colgroup>
+			<col width="24"/>
+		</colgroup>
+		<colgroup>
+			<col width="24"/>
+			<col width="19"/>
+		</colgroup>
+		<colgroup>
+			<col width="19"/>
+		</colgroup>
+		<colgroup>
+			<col width="19"/>
+		</colgroup>
+		<colgroup>
+			<col width="19"/>
+		</colgroup>
+		<colgroup>
+			<col width="19"/>
+		</colgroup>
+		<colgroup>
+			<col width="19"/>
+		</colgroup>
+		<colgroup>
+			<col width="19"/>
+		</colgroup>
+		<colgroup>
+			<col width="19"/>
+		</colgroup>
+		<tbody>
+			<tr>
+				<td colspan="14" width="400" style="border: none; padding: 0in"><p class="western"><a name="table.5.1"></a>
+					Таблица 5.1. Таблица истинности дешифратора 3–8 (ИД7)</p>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="6" width="219" style="border: none; padding: 0in"><p class="western" align="center">
+					<b>Входы</b></p>
+				</td>
+				<td colspan="8" width="177" style="border: none; padding: 0in"><p class="western" align="center">
+					<b>Выходы</b></p>
+				</td>
+			</tr>
+		</tbody>
+		<tbody>
+			<tr>
+				<td width="37" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					<b>C1</b></p>
+				</td>
+				<td width="45" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					<b>-C2</b></p>
+				</td>
+				<td width="45" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					<b>-C3</b></p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					<b>4</b></p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					<b>2</b></p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					<b>1</b></p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					<b>0</b></p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					<b>1</b></p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					<b>2</b></p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					<b>3</b></p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					<b>4</b></p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					<b>5</b></p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					<b>6</b></p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					<b>7</b></p>
+				</td>
+			</tr>
+		</tbody>
+		<tbody>
+			<tr valign="top">
+				<td width="37" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="45" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					X</p>
+				</td>
+				<td width="45" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					X</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					X</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					X</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					X</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+			</tr>
+		</tbody>
+		<tbody>
+			<tr valign="top">
+				<td width="37" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					X</p>
+				</td>
+				<td width="45" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="45" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					X</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					X</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					X</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					X</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+			</tr>
+		</tbody>
+		<tbody>
+			<tr valign="top">
+				<td width="37" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					X</p>
+				</td>
+				<td width="45" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					X</p>
+				</td>
+				<td width="45" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					X</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					X</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					X</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+			</tr>
+		</tbody>
+		<tbody>
+			<tr valign="top">
+				<td width="37" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="45" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="45" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+			</tr>
+		</tbody>
+		<tbody>
+			<tr valign="top">
+				<td width="37" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="45" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="45" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="24" style="border: 1px солид #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</п>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+			</tr>
+		</tbody>
+		<tbody>
+			<tr valign="top">
+				<td width="37" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="45" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="45" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+			</tr>
+		</tbody>
+		<tbody>
+			<tr valign="top">
+				<td width="37" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="45" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</п>
+				</td>
+				<td width="45" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+			</tr>
+		</tbody>
+		<tbody>
+			<tr valign="top">
+				<td width="37" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="45" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="45" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+			</tr>
+		</tbody>
+		<tbody>
+			<tr valign="top">
+				<td width="37" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="45" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="45" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+			</tr>
+		</tbody>
+		<tbody>
+			<tr valign="top">
+				<td width="37" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="45" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="45" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					0</p>
+				</td>
+				<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+					1</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</center>
+<p>
+Наиболее типичное применение дешифраторов состоит именно в дешифрировании входных кодов, при этом входы С используются как стробирующие, управляющие сигналы. Номер активного (то есть нулевого) выходного сигнала показывает, какой входной код поступил. Если нужно дешифровать код с большим числом разрядов, то можно объединить несколько микросхем дешифраторов (пример показан на <a href="#image.5.3"><font color="#0000ff"><u>рис. 5.3</u></font></a>).
+</p>
+<p align="center">
+<a name="image.5.3"></a>
+<img src="img/les5_3.png" name="Image5" align="bottom" width="403" height="140" border="0"/>
+</p>
+<span class="caption">Рис. 5.3.&nbsp; Увеличение количества разрядов дешифратора</span>
+<p>
+При этом старшие разряды кода подаются на основной дешифратор, выходы которого разрешают работу нескольких дополнительных дешифраторов. На объединенные входы этих дополнительных дешифраторов подаются младшие разряды входного кода. Из пяти микросхем дешифраторов 2–4 можно получить дешифратор 4–16, как показано на рисунке (хотя лучше, конечно, взять готовую микросхему). Точно так же из девяти микросхем 3–8 можно получить дешифратор 6–64, а из семнадцати микросхем 4–16 — дешифратор 8–256. Еще одно распространенное применение дешифраторов — селекция (выбор) заданных входных кодов. Появление отрицательного сигнала на выбранном выходе дешифратора будет означать поступление на вход интересующего нас кода. В данном случае увеличивать число разрядов входного селектируемого кода гораздо проще, чем в предыдущем (см. <a href="#image.5.3"><font color="#0000ff"><u>рис. 5.3</u></font></a>). Например, две микросхемы 4–16 позволяют селектировать 8-разрядный код <a href="#image.5.4"><font color="#0000ff"><u>(рис. 5.4)</u></font></a>. В примере на рисунке селектируется 16-ричный код 2А (двоичный код 0010 1010). При этом один дешифратор работает с младшими четырьмя разрядами кода, а другой — со старшими четырьмя разрядами. Объединяются дешифраторы так, что один из них разрешает работу другого по входам –С1 и –С2. Применяя механические переключатели выходов дешифраторов (тумблеры, перемычки), можно легко изменять код, селектируемый данной схемой.
+</p>
+<p align="center">
+<a name="image.5.4"></a>
+<img src="img/les5_4.png" name="Image6" align="bottom" width="340" height="169" border="0"/>
+</p>
+<span class="caption">Рис. 5.4.&nbsp; Селектирование кода на дешифраторах</span>
+<p>
+Еще одно важное применение дешифраторов состоит в перекоммутации одного входного сигнала на несколько выходов. Или, другими словами, дешифратор в данном случае выступает в качестве демультиплексора входных сигналов, который позволяет разделить входные сигналы, приходящие в разные моменты времени, на одну входную линию (мультиплексированные сигналы). При этом входы 1, 2, 4, 8 дешифратора используются в качестве управляющих, адресных, определяющих, на какой выход переслать пришедший в данный момент входной сигнал <a href="#image.5.5"><font color="#0000ff"><u>(рис. 5.5)</u></font></a>, а один из входов С выступает в роли входного сигнала, который пересылается на заданный выход. Если у микросхемы имеется несколько стробирующих входов С, то оставшиеся входы С можно использовать в качестве разрешающих работу дешифратора.
+</p>
+<p align="center">
+<a name="image.5.5"></a>
+<img src="img/les5_5.png" name="Image7" align="bottom" width="451" height="130" border="0"/>
+</p>
+<span class="caption">Рис. 5.5.&nbsp; Включение дешифратора как демультиплексора</span>
+<p>
+Как и для любых других цифровых микросхем, для дешифраторов наиболее критична ситуация одновременного или почти одновременного изменения входных сигналов. Например, если стробы С постоянно разрешают работу дешифратора, то в момент изменения входного кода на любом выходе дешифратора могут появиться паразитные отрицательные короткие импульсы. Это может быть связано как с неодновременным выставлением разрядов кода (из-за несовершенства микросхем источников кода или из-за разных задержек распространения по линиям связи), так и с внутренними задержками самих микросхем дешифраторов.
+</p>
+<p align="center">
+<a name="image.5.6"></a>
+<img src="img/les5_6.png" name="Image8" align="bottom" width="440" height="127" border="0"/>
+</p>
+<span class="caption">Рис. 5.6.&nbsp; Стробирование выходных сигналов дешифратора</span>
+<p>
+Если такие паразитные импульсы нужно исключить, то можно применять синхронизацию с помощью стробирующих сигналов. Используемый для этого сигнал С должен начинаться после текущего изменения кода, а заканчиваться до следующего изменения кода, то есть должен быть реализован вложенный цикл. На рис. 5.6 показано, как будет выглядеть выходной сигнал дешифратора без стробирования и со стробированием.
+</p>
+<p>
+На втором уровне представления (модель с временными задержками) также надо учитывать, что задержки дешифратора больше задержки простых логических элементов примерно вдвое для входного кода и примерно в полтора раза — для стробирующих входов. То есть если попытаться заменить дешифратор схемой на логических элементах, то такой дешифратор получится медленнее. Точные величины задержек надо смотреть в справочниках.
+</p>
+<p align="center">
+<a name="image.5.7"></a>
+<img src="img/les5_7.png" name="Image9" align="bottom" width="439" height="167" border="0"/>
+</p>
+<span class="caption">Рис. 5.7.&nbsp; Позиционная индикация на дешифраторе с выходами ОК</span>
+<p>
+Дешифраторы, имеющие выходы типа ОК (ИД5, ИД10), удобно применять в схемах позиционной индикации на светодиодах. На <a href="#image.5.7"><font color="#0000ff"><u>рис. 5.7</u></font></a> приведен пример такой индикации на микросхеме ИД5, которая представляет собой два дешифратора 2–4 с объединенными входами для подачи кода и стробами, позволяющими легко строить дешифратор 3–8. При этом старший разряд кода выбирает один из дешифраторов 2–4 (нуль соответствует верхнему по схеме дешифратору, а единица — нижнему). То есть в данном случае номер горящего светодиода равен входному коду дешифратора. Такая индикация называется позиционной.
+</p>
+<p align="center">
+<a name="image.5.8"></a>
+<img src="img/les5_8.png" name="Image10" align="bottom" width="432" height="160" border="0"/>
+</p>
+<span class="caption">Рис. 5.8.&nbsp; Объединение выходов дешифраторов с ОК</span>
+<p>
+Выходы микросхем дешифраторов с ОК можно объединять между собой для реализации проводного ИЛИ <a href="#image.5.8"><font color="#0000ff"><u>(рис. 5.8)</u></font></a>. Нуль на объединенном выходе будет тогда, когда хотя бы на одном из выходов вырабатывается нуль. При равномерном пошаговом наращивании входного кода (например, с помощью счетчика) такое решение позволяет формировать довольно сложные последовательности выходных сигналов. Правда, каждый выход дешифратора может использоваться для получения только одного выходного сигнала. Это ограничивает возможности таких схем.
+</p>
+<p>
+Шифраторы используются гораздо реже, чем дешифраторы. Это связано с более специфической областью их применения. Значительно меньше и выбор микросхем шифраторов в стандартных сериях. В отечественных сериях шифраторы имеют в названии буквы ИВ.
+</p>
+<p>
+На <a href="#image.5.9"><font color="#0000ff"><u>рис. 5.9</u></font></a> показаны для примера две микросхемы шифраторов ИВ1 и ИВ5. Первая имеет 8 входов и 3 выхода (шифратор 8–3), а вторая — 9 входов и 4 выхода (шифратор 9–4). Все входы шифраторов — инверсные (активные входные сигналы — нулевые). Все выходы тоже инверсные, то есть формируется инверсный код. Микросхема ИВ1, помимо 8 информационных входов и 3 разрядов выходного кода (1, 2, 4), имеет инверсный вход разрешения –ЕI, выход признака прихода любого входного сигнала –GS, а также выход переноса –EO, позволяющий объединять несколько шифраторов для увеличения разрядности.
+</p>
+<p align="center">
+<a name="image.5.9"></a>
+<img src="img/les5_9.png" name="Image11" align="bottom" width="384" height="147" border="0"/>
+</p>
+<span class="caption">Рис. 5.9.&nbsp; Микросхемы шифраторов</span>
+<p>
+Таблица истинности шифратора ИВ1 приведена в <a href="#table.5.2"><font color="#0000ff"><u>табл. 5.2</u></font></a>.
+</p>
+<center>
+	<table width="417" cellpadding="2" cellspacing="0">
+		<col width="41"/>
+		<col width="21"/>
+		<col width="19"/>
+		<col width="21"/>
+		<col width="21"/>
+		<col width="20"/>
+		<col width="22"/>
+		<col width="20"/>
+		<col width="29"/>
+		<col width="29"/>
+		<col width="26"/>
+		<col width="24"/>
+		<col width="32"/>
+		<col width="38"/>
+		<tr>
+			<td colspan="14" width="413" style="border: none; padding: 0in"><p class="western"><a name="table.5.2"></a>
+				Таблица 5.2. Таблица истинности шифратора ИВ1</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="9" width="244" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>Входы</b></p>
+			</td>
+			<td colspan="5" width="165" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>Выходы</b></p>
+			</td>
+		</tr>
+		<tr>
+			<td width="41" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>-E1</b></p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>0</b></p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>1</b></п>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>2</b></p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>3</b></p>
+			</td>
+			<td width="20" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>4</b></p>
+			</td>
+			<td width="22" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>5</b></p>
+			</td>
+			<td width="20" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>6</b></p>
+			</td>
+			<td width="29" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>7</b></p>
+			</td>
+			<td width="29" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>-GS</b></p>
+			</td>
+			<td width="26" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>4</b></p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>2</b></p>
+			</td>
+			<td width="32" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>1</b></p>
+			</td>
+			<td width="38" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>-EO</b></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="41" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="20" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="22" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="20" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="29" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="29" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="26" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="32" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="38" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="41" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><п class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="22" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="29" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="29" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="26" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="32" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="38" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="41" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="20" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="22" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="20" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="29" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="29" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="26" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="32" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="38" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="41" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="22" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="29" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="29" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="26" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="32" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="38" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="41" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="22" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="29" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="29" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="26" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="32" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="38" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="41" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</п>
+			</td>
+			<td width="22" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="29" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="29" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="26" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="32" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="38" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="41" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="22" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="29" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="29" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="26" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="32" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="38" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="41" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="22" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="29" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="29" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="26" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="32" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="38" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="41" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="20" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="22" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="29" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="29" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</п>
+			</td>
+			<td width="26" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="32" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="38" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="41" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="19" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="21" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="22" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="20" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="29" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="29" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="26" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="24" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="32" style="border: 1px solid #000000; padding: 0.02in"><п class="western" align="center">
+				1</p>
+			</td>
+			<td width="38" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+		</tr>
+	</table>
+</center>
+<p>
+Из таблицы видно, что на выходах кода 1, 2, 4 формируется инверсный двоичный код номера входной линии, на который приходит отрицательный входной сигнал. При одновременном поступлении нескольких входных сигналов формируется выходной код, соответствующий входу с наибольшим номером, то есть старшие входы имеют приоритет перед младшими. Поэтому такой шифратор называется приоритетным. При отсутствии входных сигналов (вторая строчка таблицы) формируется выходной код 111. Единичный сигнал –EI (первая строчка) запрещает работу шифратора (все выходные сигналы устанавливаются в единицу). На выходе –GS вырабатывается нуль при приходе любого входного сигнала, что позволяет, в частности, отличить ситуацию прихода нулевого входного сигнала от ситуации отсутствия любых входных сигналов. Выход -EO становится активным (нулевым) при отсутствии входных сигналов, но разрешении работы шифратора сигналом –EI.
+</p>
+<p>
+Стандартное применение шифраторов состоит в сокращении количества сигналов. Например, в случае шифратора ИВ1 информация о восьми входных сигналах сворачивается в три выходных сигнала. Это очень удобно, например, при передаче сигналов на большие расстояния. Правда, входные сигналы не должны приходить одновременно. На <a href="#image.5.10"><font color="#0000ff"><u>рис. 5.10</u></font></a> показаны стандартная схема включения шифратора и временные диаграммы его работы.
+</p>
+<p align="center">
+<a name="image.5.10"></a>
+<img src="img/les5_10.png" name="Image12" align="bottom" width="496" height="127" border="0"/>
+</p>
+<span class="caption">Рис. 5.10.&nbsp; Стандартное включение шифратора</span>
+<p>
+Инверсия выходного кода приводит к тому, что при приходе нулевого входного сигнала на выходе формируется не нулевой код, а код 111, то есть 7. Точно так же при приходе, например, третьего входного сигнала на выходе образуется код 100, то есть 4, а при приходе пятого выходного сигнала — код 010, то есть 2.
+</p>
+<p>
+Наличие у шифраторов входов EI и EO позволяет увеличивать количество входов и разрядов шифратора, правда, с помощью дополнительных элементов на выходе. На рис. 5.11 показан пример построения шифратора 16–4 на двух микросхемах шифраторов ИВ1 и трех элементах 2И-НЕ (ЛА3).
+</p>
+<p align="center">
+<a name="image.5.11"></a>
+<img src="img/les5_11.png" name="Image13" align="bottom" width="463" height="169" border="0"/>
+</p>
+<span class="caption">Рис. 5.11.&nbsp; Шифратор 16–4 на двух шифраторах 8–3</span>
+<p>
+Одновременное или почти одновременное изменение сигналов на входе шифратора приводит к появлению периодов неопределенности на выходах. Выходной код может на короткое время принимать значение, не соответствующее ни одному из входных сигналов. Поэтому в тех случаях, когда входные сигналы могут приходить одновременно, необходима синхронизация выходного кода, например, с помощью разрешающего сигнала EI, который должен приходить только тогда, когда состояние неопределенности уже закончилось.
+</p>
+<p>
+Задержка шифратора от входа до выхода кода примерно в полтора раза превышает задержку логического элемента, а задержка до выхода GS — примерно в два раза больше. Точные величины задержек микросхем надо смотреть в справочниках.
+</p>
+<p>
+<b>Мультиплексоры</b>
+</p>
+<p>
+Мультиплексоры (английское Multiplexer) предназначены для поочередной передачи на один выход одного из нескольких входных сигналов, то есть для их мультиплексирования. Количество мультиплексируемых входов называется количеством каналов мультиплексора, а количество выходов называется числом разрядов мультиплексора. Например, 2-канальный 4-разрядный мультиплексор имеет 4 выхода, на каждый из которых может передаваться один из двух входных сигналов. А 4-канальный 2-разрядный мультиплексор имеет 2 выхода, на каждый из которых может передаваться один из четырех входных сигналов. Число каналов мультиплексоров, входящих в стандартные серии, составляет от 2 до 16, а число разрядов — от 1 до 4, причем чем больше каналов имеет мультиплексор, тем меньше у него разрядов.
+</p>
+<p>
+Управление работой мультиплексора (выбор номера канала) осуществляется с помощью входного кода адреса. Например, для 4-канального мультиплексора необходим 2-разрядный управляющий (адресный) код, а для 16-канального — 4-разрядный код. Разряды кода обозначаются 1, 2, 4, 8 или А0, А1, А2, А5. Мультиплексоры бывают с выходом 2С и с выходом 3С. Выходы мультиплексоров бывают прямыми и инверсными. Выход 3С позволяет объединять выходы мультиплексоров с выходами других микросхем, а также получать двунаправленные и мультиплексированные линии. Некоторые микросхемы мультиплексоров имеют вход разрешения/запрета С (другое обозначение — S), который при запрете устанавливает прямой выход в нулевой уровень.
+</p>
+<p>
+На <a href="#image.5.12"><font color="#0000ff"><u>рис. 5.12</u></font></a> показаны для примера несколько микросхем мультиплексоров из состава стандартных серий. В отечественных сериях мультиплексоры имеют код типа микросхемы КП. На схемах микросхемы мультиплексоров обозначаются буквами MS.
+</p>
+<p align="center">
+<a name="image.5.12"></a>
+<img src="img/les5_12.png" name="Image14" align="bottom" width="491" height="250" border="0"/>
+</p>
+<span class="caption">Рис. 5.12.&nbsp; Примеры микросхем мультиплексоров</span>
+<center>
+	<table width="444" cellpadding="2" cellspacing="0">
+		<col width="58"/>
+		<col width="57"/>
+		<col width="57"/>
+		<col width="109"/>
+		<col width="60"/>
+		<col width="79"/>
+		<tr>
+			<td colspan="6" width="440" style="border: none; padding: 0in"><p class="western"><a name="table.5.3"></a>
+				Таблица 5.3. Таблица истинности 8-канального мультиплексора</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" width="293" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>Входы</b></p>
+			</td>
+			<td colspan="2" width="143" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>Выходы</b></p>
+			</td>
+		</tr>
+		<tr>
+			<td width="58" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>4</b></p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>2</b></p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>1</b></p>
+			</td>
+			<td width="109" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>-EZ</b></p>
+			</td>
+			<td width="60" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>Q</b></p>
+			</td>
+			<td width="79" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>-Q</b></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="58" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="57" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="109" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</п>
+			</td>
+			<td width="60" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				Z</p>
+			</td>
+			<td width="79" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				Z</p>
+			</td>
+		</tr>
+	</table>
+</center>
+<p>
+В <a href="#table.5.3"><font color="#0000ff"><u>табл. 5.3</u></font></a> в качестве примера приведена таблица истинности одноразрядного 8-канального мультиплексора с выходами 3С (КП15).
+</p>
+<p>
+В таблице сигналы на входах 0...7 обозначены D0...D7, прямой выход — Q, инверсный выход — –Q, Z — третье состояние выхода. При единице на входе –EZ оба выхода находятся в третьем состоянии. При нуле на входе –EZ выходной сигнал на прямом выходе повторяет состояние входного сигнала, номер которого задается входным кодом на входах 1, 2, 4. Сигнал на инверсном выходе противоположен по полярности сигналу на прямом выходе.
+</p>
+<p>
+На <a href="#image.5.13"><font color="#0000ff"><u>рис. 5.13</u></font></a> приведена временная диаграмма работы 4-канального мультиплексора. В зависимости от входного кода на выход передается один из четырех входных сигналов. При запрещении работы на выходе устанавливается нулевой сигнал вне зависимости от входных сигналов.
+</p>
+<p align="center">
+<a name="image.5.13"></a>
+<img src="img/les5_13.png" name="Image15" align="bottom" width="419" height="185" border="0"/>
+</p>
+<span class="caption">Рис. 5.13.&nbsp; Временная диаграмма работы 4-канального мультиплексора с разрешением</span>
+<p>
+Микросхемы мультиплексоров можно объединять для увеличения количества каналов. Например, два 8-канальных мультиплексора легко объединяются в 16-канальный с помощью инвертора на входах разрешения и элемента 2И-НЕ для смешивания выходных сигналов <a href="#image.5.14"><font color="#0000ff"><u>(рис. 5.14)</u></font></a>. Старший разряд кода будет при этом выбирать один из двух мультиплексоров. Точно так же из двух 16-канальных мультиплексоров можно сделать 32-канальный. Если нужно большее число каналов, то необходимо вместо инвертора включать дешифратор, на который подаются старшие разряды кода. Выходные сигналы дешифратора будут выбирать один из мультиплексоров.
+</p>
+<p align="center">
+<a name="image.5.14"></a>
+<img src="img/les5_14.png" name="Image16" align="bottom" width="466" height="212" border="0"/>
+</p>
+<span class="caption">Рис. 5.14.&nbsp; Объединение мультиплексоров для увеличения количества каналов</span>
+<p>
+Состояния неопределенности, сопровождающиеся короткими паразитными импульсами, могут возникать на выходе мультиплексоров при почти одновременном изменении входных сигналов. Здесь возможны две ситуации. Во-первых, управляющий код может переключаться сразу после изменения передаваемого в данный момент на выход входного сигнала или сразу перед изменением входного сигнала, который будет передавать на выход следующий код. Во-вторых, сигналы (разряды) управляющего кода могут переключаться не одновременно, что приведет к кратковременной передаче на выход входного сигнала, не соответствующего ни одному из значений кода. В любом случае, в момент переключения каналов сигнал на выходе мультиплексора не определен <font color="#0000ff"><u>(рис. 5.15)</u></font>.
+</p>
+<p>
+Чтобы избежать состояния неопределенности, лучше всего задавать состояние управляющего кода еще до начала работы схемы (до прихода входных сигналов) и в дальнейшем его не менять. Если же это невозможно, то необходима синхронизация, стробирование выходного сигнала, то есть его разрешение только тогда, когда все переходные процессы, связанные с изменением кода, уже закончились. Правда, обычно применять стробирование довольно непросто, так как мультиплексор, как правило, должен без изменений передавать любой входной сигнал.
+</p>
+<p>
+Задержки выходного сигнала мультиплексора по входам управляющего (адресного) кода примерно в два раза превышают задержки логических элементов, а по информационным входам — примерно в полтора раза. Точные величины задержек надо смотреть в справочниках.
+</p>
+<p align="center">
+<a name="image.5.15"></a>
+<img src="img/les5_15.png" name="Image17" align="bottom" width="319" height="60" border="0"/>
+</p>
+<span class="caption">Рис. 5.15.&nbsp; Неопределенные состояния на выходе мультиплексора</span>
+<p>
+<b>Компараторы кодов</b>
+</p>
+<p>
+Микросхемы компараторов кодов (английское Comparator) применяются для сравнения двух входных кодов и выдачи на выходы сигналов о результатах этого сравнения (о равенстве или неравенстве кодов). На схемах компараторы кодов обозначаются двумя символами равенства: "=". Код типа микросхемы компаратора кода в отечественных сериях — СП.
+</p>
+<p>
+Примером такой микросхемы может служить СП1 — 4-х разрядный компаратор кодов, сравнивающий величины кодов и выдающий информацию о том, какой код больше, или о равенстве кодов <font color="#0000ff"><u>(рис. 5.16)</u></font>.
+</p>
+<p>
+Помимо восьми входов для сравниваемых кодов (два 4-х разрядных кода, обозначаемых А0...А3 и В0...В3), компаратор СП1 имеет три управляющих входа для наращивания разрядности (А&gt;B, A&lt;B, A=B) и три выхода результирующих сигналов (А&gt;B, A&lt;B, A=B). Для удобства на схемах управляющие входы и выходы иногда обозначают просто "&gt;", "&lt;" и "=". Нулевые разряды кодов (А0 и В0) — младшие, третьи разряды (А3 и В3) — старшие.
+</p>
+<p align="center">
+<a name="image.5.16"></a>
+<img src="img/les5_16.png" name="Image18" align="bottom" width="391" height="181" border="0"/>
+</p>
+<span class="caption">Рис. 5.16.&nbsp; 4-х разрядный компаратор кодов СП1 (два варианта обозначения)</span>
+<p>
+Таблица истинности компаратора кодов <a href="#table.5.4"><font color="#0000ff"><u>(табл. 5.4)</u></font></a> кажется на первый взгляд довольно сложной, но на самом деле все просто.
+</p>
+<p>
+Если используется одиночная микросхема, то для ее правильной работы достаточно подать единицу на вход A = B, а состояния входов A&lt;B и A&gt;B не важны, на них можно подать как нуль, так и единицу. Назначение выходов понятно из их названия, а полярность выходных сигналов положительная (активный уровень — единица). Если микросхемы компараторов кодов каскадируются (объединяются) для увеличения числа разрядов сравниваемых кодов, то надо выходные сигналы микросхемы, обрабатывающей младшие разряды кода, подать на одноименные входы микросхемы, обрабатывающей старшие разряды кода <a href="#image.5.17"><font color="#0000ff"><u>(рис. 5.17)</u></font></a>.
+</p>
+<center>
+	<table width="492" cellpadding="2" cellspacing="0">
+		<col width="51"/>
+		<col width="50"/>
+		<col width="50"/>
+		<col width="50"/>
+		<col width="49"/>
+		<col width="49"/>
+		<col width="49"/>
+		<col width="34"/>
+		<col width="34"/>
+		<col width="35"/>
+		<tr>
+			<td colspan="10" width="488" style="border: none; padding: 0in"><p class="western"><a name="table.5.4"></a>
+				Таблица 5.4. Таблица истинности компаратора СП1</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" width="213" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>Входы сравниваемых кодов</b></p>
+			</td>
+			<td colspan="3" width="155" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>Входы наращивания</b></p>
+			</td>
+			<td colspan="3" width="111" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>Выходы</b></p>
+			</td>
+		</tr>
+		<tr>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>A3,B3</b></p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>A2,B2</b></p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>A1,B1</b></p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>A0,B0</b></p>
+			</td>
+			<td width="49" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>A&gt;B</b></p>
+			</td>
+			<td width="49" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>A&lt;B</b></p>
+			</td>
+			<td width="49" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>A=B</b></p>
+			</td>
+			<td width="34" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>A&gt;B</b></p>
+			</td>
+			<td width="34" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				<b>A&lt;B</b></p>
+			</td>
+			<td width="35" style="border: 1px solid #000000; padding: 0.02in"><п class="western" align="center">
+				<b>A=B</b></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A3&gt;B3</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><п class="western" align="center">
+				X</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A3&lt;B3</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A3=B3</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A2&gt;B2</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A3=B3</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A2&lt;B2</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><п class="western" align="center">
+				X</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A3=B3</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A2=B2</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A1&gt;B1</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A3=B3</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><п class="western" align="center">
+				A2=B2</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A1&lt;B1</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A3=B3</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A2=B2</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A1=B1</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A0&gt;B0</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A3=B3</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A2=B2</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A1=B1</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A0&lt;B0</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A3=B3</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A2=B2</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A1=B1</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A0=B0</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				X</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A3=B3</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A2=B2</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A1=B1</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A0=B0</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A3=B3</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A2=B2</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A1=B1</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A0=B0</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</п>
+			</td>
+		</tr>
+		<tr>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A3=B3</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A2=B2</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A1=B1</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A0=B0</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="35" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="51" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A3=B3</p>
+			</td>
+			<td width="50" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A2=B2</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A1=B1</p>
+			</td>
+			<td width="50" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				A0=B0</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="49" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><п class="western" align="center">
+				1</p>
+			</td>
+			<td width="34" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				1</p>
+			</td>
+			<td width="35" valign="top" style="border: 1px solid #000000; padding: 0.02in"><p class="western" align="center">
+				0</p>
+			</td>
+		</tr>
+	</table>
+</center>
+<p>
+В зарубежные стандартные серии входят также и 8-разрядные компараторы, сравнивающие два кода по величине (то есть имеющие выходы "=", "&gt;" и "&lt;"). Примером может служить микросхема SN74AS885.
+</p>
+<p align="center"><a name="image.5.17"></a>
+<img src="img/les5_17.png" name="Image19" align="bottom" width="567" height="197" border="0"/>
+<br/>
+<b>Рис. 5.17.</b>&nbsp; Каскадирование компараторов кодов</p>
+<p>
+Одно из основных применений компараторов кодов состоит в селектировании входных кодов. В этом случае достаточно иметь информацию только о совпадении кодов на входах компаратора, а не о соотношении их величин. Интересующий нас код (эталонный) подается на один вход компаратора, а изменяющийся код (входной) — на другой вход. Используется только выход равенства кодов А = В. Для подобных применений выпускаются и специальные компараторы, определяющие только совпадение кодов. Примерами могут служить 8-разрядные микросхемы SN74ALS520, SN74ALS521, DC102A фирмы Dionics (отечественный аналог — КР559СК1), а также 6-разрядная микросхема DM8136 фирмы National Semiconductors (отечественный аналог — КР559СК2).
+</p>
+<p align="center">
+<a name="image.5.18"></a>
+<img src="img/les5_18.png" name="Image20" align="bottom" width="420" height="232" border="0"/>
+</p>
+<span class="caption">Рис. 5.18.&nbsp; Селектирование 16-разрядных кодов</span>
+<p>
+На <a href="#image.5.18"><font color="#0000ff"><u>рис. 5.18</u></font></a> показано применение компараторов SN74ALS521 для селектирования 16-разрядных кодов. Инверсный сигнал с выхода первой микросхемы подается на инверсный вход разрешения второй микросхемы, выходной сигнал которой (отрицательный) говорит о совпадении входного и эталонного 16-разрядных кодов.
+</p>
+<p>
+Неопределенные состояния на выходах компараторов кодов могут возникать при любом изменении любого из двух входных кодов. Это связано с неодновременным изменением разрядов кодов <a href="#image.5.19"><font color="#0000ff"><u>(рис. 5.19)</u></font></a>. На всех выходах компаратора СП1 могут появляться короткие паразитные импульсы. Чтобы устранить их влияние на дальнейшую часть схемы, применяется синхронизация и стробирование. Но для этого надо точно знать момент изменения входных кодов, что далеко не всегда возможно.
+</p>
+<p align="center">
+<a name="image.5.19"></a>
+<img src="img/les5_19.png" name="Image21" align="bottom" width="385" height="119" border="0"/>
+</p>
+<span class="caption">Рис. 5.19.&nbsp; Неопределенные состояния на выходах компаратора при изменении входных кодов</span>
+<p>
+При применении компараторов надо учитывать также, что при каскадировании задержки микросхем суммируются и объединенный компаратор будет во столько раз медленнее одиночного, сколько микросхем в нем используется. Задержки компараторов кодов по входам разрядов кодов примерно вчетверо больше задержек логических элементов, а по входам расширения — примерно втрое. Так что эти микросхемы довольно медленные по сравнению с другими комбинационными микросхемами. Точные значения задержек надо смотреть в справочниках.
+</p>
+<p>
+Если нам важен только факт равенства или неравенства входных кодов, то увеличить быстродействие при объединении компараторов можно, если подавать их выходные сигналы на элемент И <a href="#image.5.20"><font color="#0000ff"><u>(рис. 5.20)</u></font></a>. В этом случае суммарная задержка схемы превысит задержку одного компаратора всего лишь на задержку элемента И. При применении компараторов с инверсным выходом (например, SN74ALS521) надо брать элемент ИЛИ с нужным числом входов.
+</p>
+<p align="center">
+<a name="image.5.20"></a>
+<img src="img/les5_20.png" name="Image22" align="bottom" width="594" height="136" border="0"/>
+</p>
+<span class="caption">Рис. 5.20.&nbsp; Уменьшение задержки при каскадировании компараторов</span>
+<p>
+При необходимости сравнения кодов не только на совпадение, но еще и по величине, такого простого решения не существует. Однако эта задача встречается гораздо реже.
+</p>
+
+</body>
+</html>

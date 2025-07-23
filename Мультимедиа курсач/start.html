@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Схемотехника</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Yanone+Kaffeesatz:wght@200..700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: url('img/back_start.png') no-repeat center center fixed;
+            background-size: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 600px;
+            margin: 400px auto;
+            animation: fadeIn 1.5s;
+        h1 {
+            font-size: 2.8em;
+            margin: 0 0 10px;
+            color: #61dafb;
+            font-family: 'Oswald', sans-serif;
+        }
+        }
+        p {
+            font-size: 1.2em;
+            margin: 10px 0 30px;
+            color: #61dafb;
+            font-family: 'Yanone Kaff';
+        }
+        .start-btn {
+            background: #61dafb;
+            color: #181a1f;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: transform 0.3s, background 0.3s;
+        }
+        .start-btn:hover {
+            transform: scale(1.1);
+            background: #ffffff;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Схемотехника</h1>
+        <p>Логические элементы</p>
+        <p>Выполнил: Саликов Захар</p>
+        <button class="start-btn" onclick="goToMain()">Перейти к лекциям</button>
+    </div>
+    <script>
+        function goToMain() {
+            // Replace 'main.html' with the actual filename of your textbook
+            window.location.href = 'main.html';
+        }
+    </script>
+</body>
+</html>

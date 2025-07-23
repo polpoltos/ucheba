@@ -1,0 +1,2498 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title>Введение в цифровую схемотехнику</title>
+	<meta name="generator" content="LibreOffice 24.8.3.2 (Linux)"/>
+	<meta name="author" content="MyComputer"/>
+	<meta name="created" content="2008-12-11T18:55:00"/>
+	<meta name="changedby" content="VSA"/>
+	<meta name="changed" content="2020-08-19T07:43:00"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin-left: 0.88in; margin-right: 0.59in; margin-top: 0.79in; margin-bottom: 0.79in }
+		p { color: #000000; line-height: 115%; orphans: 2; widows: 2; margin-bottom: 0.1in; direction: ltr; background: transparent }
+		p.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ru-RU }
+		p.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+		p.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+		h3 { color: #000000; orphans: 2; widows: 2; margin-bottom: 0.04in; direction: ltr; background: transparent; page-break-after: avoid }
+		h3.western { font-family: "Arial", sans-serif; font-size: 13pt; so-language: ru-RU; font-weight: bold }
+		h3.cjk { font-family: "Times New Roman", serif; font-size: 13pt; font-weight: bold }
+		h3.ctl { font-family: "Arial", sans-serif; font-size: 13pt; so-language: ar-SA; font-weight: bold }
+		a:link { color: #0000ff; text-decoration: underline }
+	</style>
+</head>
+<body lang="en-US" text="#000000" link="#0000ff" vlink="#800000" dir="ltr"><p lang="ru-RU" class="western" align="center" style="line-height: 100%; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Введение в цифровую
+схемотехнику</font></p>
+<p lang="ru-RU" class="western" align="center" style="line-height: 0.04in; margin-bottom: 0in">
+<img name="Image1" align="bottom" width="1" height="4" border="0"/>
+<img name="Image2" align="bottom" width="1" height="8" border="0"/>
+<font size="2" style="font-size: 11pt">2.
+Лекция:</font></p>
+<p lang="ru-RU" class="western" align="center" style="line-height: 0.04in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Микросхемы и их
+функционирование.</font></p>
+<p lang="ru-RU" class="western" align="justify" style="line-height: 0.04in; text-indent: 0.38in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">В лекции
+рассматриваются обозначения цифровых
+микросхем, их выводов и сигналов на
+принципиальных схемах, особенности
+основных серий простейших цифровых
+микросхем, базовые типы корпусов
+микросхем, а также принципы двоичного
+кодирования и принципы работы цифровых
+устройств. </font>
+</p>
+<h3 lang="ru-RU" class="western" align="center"><font size="2" style="font-size: 11pt">Основные
+обозначения на схемах</font></h3>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.36in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Для изображения
+электронных устройств и их узлов
+применяется три основных типа схем:</font></p>
+<ul>
+	<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+	<font size="2" style="font-size: 11pt">принципиальная
+	схема</font><font size="2" style="font-size: 11pt">; </font>
+	</p></li>
+	<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+	<font size="2" style="font-size: 11pt">структурная схема</font><font size="2" style="font-size: 11pt">;
+	</font>
+	</p></li>
+	<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+	<font size="2" style="font-size: 11pt">функциональная
+	схема</font><font size="2" style="font-size: 11pt">.</font></p></li>
+</ul>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.36in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Различаются они
+своим назначением и, самое главное,
+степенью детализации изображения
+устройств.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.36in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Принципиальная
+схема</font><font size="2" style="font-size: 11pt"> — наиболее
+подробная. Она обязательно показывает
+все использованные в устройстве элементы
+и все связи между ними. Если схема
+строится на основе микросхем, то должны
+быть показаны номера выводов всех входов
+и выходов этих микросхем. Принципиальная
+схема должна позволять полностью
+воспроизвести устройство. Обозначения
+принципиальной схемы наиболее жестко
+стандартизованы, отклонения от стандартов
+не рекомендуются.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.36in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Структурная схема</font><font size="2" style="font-size: 11pt">
+— наименее подробная. Она предназначена
+для отображения общей структуры
+устройства, то есть его основных блоков,
+узлов, частей и главных связей между
+ними. Из структурной схемы должно быть
+понятно, зачем нужно данное устройство
+и что оно делает в основных режимах
+работы, как взаимодействуют его части.
+Обозначения структурной схемы могут
+быть довольно произвольными, хотя
+некоторые общепринятые правила все-таки
+лучше выполнять.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.36in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Функциональная
+схема</font><font size="2" style="font-size: 11pt"> представляет
+собой гибрид структурной и принципиальной.
+Некоторые наиболее простые блоки, узлы,
+части устройства отображаются на ней,
+как на структурной схеме, а остальные
+— как на принципиальной схеме.
+Функциональная схема дает возможность
+понять всю логику работы устройства,
+все его отличия от других подобных
+устройств, но не позволяет без
+дополнительной самостоятельной работы
+воспроизвести это устройство. Что
+касается обозначений, используемых на
+функциональных схемах, то в части,
+показанной как структура, они не
+стандартизованы, а в части, показанной
+как принципиальная схема, — стандартизованы.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.36in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">В технической
+документации обязательно приводятся
+структурная или функциональная схема,
+а также обязательно принципиальная
+схема. В научных статьях и книгах чаще
+всего ограничиваются структурной или
+функциональной схемой, приводя
+принципиальные схемы только некоторых
+узлов.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.36in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">А теперь рассмотрим
+основные обозначения, используемые на
+схемах.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.36in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Все узлы, блоки,
+части, элементы, микросхемы показываются
+в виде прямоугольников с соответствующими
+надписями. Все связи между ними, все
+передаваемые сигналы изображаются в
+виде линий, соединяющих эти прямоугольники.
+Входы и входы/выходы должны быть
+расположены на левой стороне прямоугольника,
+выходы — на правой стороне, хотя это
+правило часто нарушают, когда необходимо
+упростить рисунок схемы. Выводы и связи
+питания, как правило, не прорисовывают,
+если, конечно, не используются нестандартные
+включения элементов схемы. Это самые
+общие правила, касающиеся любых схем.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.36in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Прежде чем перейти
+к более частным правилам, дадим несколько
+определений.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.36in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Положительный
+сигнал</font><font size="2" style="font-size: 11pt"> (сигнал
+положительной полярности) — это сигнал,
+активный уровень которого — логическая
+единица. То есть нуль — это отсутствие
+сигнала, единица — сигнал пришел </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5Cdigs_2.html#image.2.1%23image.2.1"><font size="2" style="font-size: 11pt">(рис.
+2.1)</font></a></u></font><font size="2" style="font-size: 11pt">.</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in"><a name="image.2.1"></a>
+<img src="07a325e2bff2ea9d4157dece38d27d68_html_ce3e88b6.png" name="Image3" align="bottom" width="527" height="185" border="0"/>
+<font size="2" style="font-size: 11pt"><br/>
+</font><font size="2" style="font-size: 11pt"><b>Рис.
+2.1.</b></font><font size="2" style="font-size: 11pt">&nbsp; Элементы
+цифрового сигнала</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Отрицательный
+сигнал </font><font size="2" style="font-size: 11pt">(сигнал
+отрицательной полярности) — это сигнал,
+активный уровень которого — логический
+нуль. То есть единица — это отсутствие
+сигнала, нуль — сигнал пришел (</font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5Cdigs_2.html#image.2.1%23image.2.1"><font size="2" style="font-size: 11pt">рис.
+2.1</font></a></u></font><font size="2" style="font-size: 11pt">).</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Активный уровень
+сигнала</font><font size="2" style="font-size: 11pt"> — это
+уровень, соответствующий приходу
+сигнала, то есть выполнению этим сигналом
+соответствующей ему функции.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Пассивный уровень
+сигнала</font><font size="2" style="font-size: 11pt"> — это
+уровень, в котором сигнал не выполняет
+никакой функции.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in"><a name="keyword-context.5"></a>
+<font size="2" style="font-size: 11pt">Инвертирование
+или инверсия сигнала</font><font size="2" style="font-size: 11pt">
+— это изменение его полярности. </font>
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in"><a name="keyword-context.6"></a>
+<font size="2" style="font-size: 11pt">Инверсный выход</font><font size="2" style="font-size: 11pt">
+— это выход, выдающий сигнал инверсной
+полярности по сравнению с входным
+сигналом. </font>
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in"><a name="keyword-context.7"></a>
+<font size="2" style="font-size: 11pt">Прямой выход </font><font size="2" style="font-size: 11pt">—
+это выход, выдающий сигнал такой же
+полярности, какую имеет входной сигнал.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in"><a name="keyword-context.8"></a>
+<font size="2" style="font-size: 11pt">Положительный
+фронт сигнала</font><font size="2" style="font-size: 11pt">
+— это переход сигнала из нуля в единицу.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in"><a name="keyword-context.9"></a>
+<font size="2" style="font-size: 11pt">Отрицательный
+фронт сигнала (спад)</font><font size="2" style="font-size: 11pt">
+— это переход сигнала из единицы в нуль.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in"><a name="keyword-context.10"></a>
+<font size="2" style="font-size: 11pt">Передний фронт
+сигнала</font><font size="2" style="font-size: 11pt"> — это
+переход сигнала из пассивного уровня
+в активный. </font>
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in"><a name="keyword-context.11"></a>
+<font size="2" style="font-size: 11pt">Задний фронт
+сигнала</font><font size="2" style="font-size: 11pt"> — это
+переход сигнала из активного уровня в
+пассивный. </font>
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in"><a name="keyword-context.12"></a>
+<font size="2" style="font-size: 11pt">Тактовый сигнал
+(или строб) </font><font size="2" style="font-size: 11pt">—
+управляющий сигнал, который определяет
+момент выполнения элементом или узлом
+его функции.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in"><a name="keyword-context.13"></a>
+<font size="2" style="font-size: 11pt">Шина </font><font size="2" style="font-size: 11pt">—
+группа сигналов, объединенных по
+какому-то принципу, например, шиной
+называют сигналы, соответствующие всем
+разрядам какого-то двоичного кода.</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in"><a name="image.2.2"></a>
+<img src="07a325e2bff2ea9d4157dece38d27d68_html_4a094cd2.png" name="Image4" align="bottom" width="466" height="267" border="0"/>
+<font size="2" style="font-size: 11pt"><br/>
+</font><font size="2" style="font-size: 11pt"><b>Рис.
+2.2.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Обозначение входов и выходов</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Для обозначения
+полярности сигнала на схемах используется
+простое правило: если сигнал отрицательный,
+то перед его названием ставится знак
+минус, например, -WR или -OE, или же (реже)
+над названием сигнала ставится черта.
+Если таких знаков нет, то сигнал считается
+положительным. Для названий сигналов
+обычно используются латинские буквы,
+представляющие собой сокращения
+английских слов, например, WR — сигнал
+записи (от &quot;write&quot; — &quot;писать&quot;).</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Инверсия сигнала
+обозначается кружочком на месте входа
+или выхода. Существуют инверсные входы
+и инверсные выходы </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5Cdigs_2.html#image.2.2%23image.2.2"><font size="2" style="font-size: 11pt">(рис.
+2.2)</font></a></u></font><font size="2" style="font-size: 11pt">.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Если какая-то
+микросхема выполняет функцию по фронту
+входного сигнала, то на месте входа
+ставится косая черта (под углом 45°),
+причем наклон вправо или влево определяется
+тем, положительный или отрицательный
+фронт используется в данном случае
+</font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5Cdigs_2.html#image.2.2%23image.2.2"><font size="2" style="font-size: 11pt">(рис.
+2.2)</font></a></u></font><font size="2" style="font-size: 11pt">.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Тип выхода микросхемы
+помечается специальным значком: выход
+3С — перечеркнутым ромбом, а выход ОК —
+подчеркнутым ромбом </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5Cdigs_2.html#image.2.2%23image.2.2"><font size="2" style="font-size: 11pt">(рис.
+2.2)</font></a></u></font><font size="2" style="font-size: 11pt">.
+Стандартный выход (2С) никак не помечается.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Наконец, если у
+микросхемы необходимо показать
+неинформационные выводы, то есть выводы,
+не являющиеся ни логическими входами,
+ни логическими выходами, то такой вывод
+помечается косым крестом (две
+перпендикулярные линии под углом 45°).
+Это могут быть, например, выводы для
+подключения внешних элементов (резисторов,
+конденсаторов) или выводы питания </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5Cdigs_2.html#image.2.3%23image.2.3"><font size="2" style="font-size: 11pt">(рис.
+2.3)</font></a></u></font><font size="2" style="font-size: 11pt">.</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in"><a name="image.2.3"></a>
+<img src="07a325e2bff2ea9d4157dece38d27d68_html_b3f6dc6c.png" name="Image5" align="bottom" width="232" height="138" border="0"/>
+<font size="2" style="font-size: 11pt"><br/>
+</font><font size="2" style="font-size: 11pt"><b>Рис.
+2.3.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Обозначение неинформационных выводов</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">В схемах также
+предусматриваются специальные обозначения
+для шин </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5Cdigs_2.html#image.2.4%23image.2.4"><font size="2" style="font-size: 11pt">(рис.
+2.4)</font></a></u></font><font size="2" style="font-size: 11pt">. На
+структурных и функциональных схемах
+шины обозначаются толстыми линиями или
+двойными стрелками, причем количество
+сигналов, входящих в шину, указывается
+рядом с косой чертой, пересекающей шину.
+На принципиальных схемах шина тоже
+обозначается толстой линией, а входящие
+в шину и выходящие из шины сигналы
+изображаются в виде перпендикулярных
+к шине тонких линий с указанием их номера
+или названия </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5Cdigs_2.html#image.2.4%23image.2.4"><font size="2" style="font-size: 11pt">(рис.
+2.4)</font></a></u></font><font size="2" style="font-size: 11pt">.
+При передаче по шине двоичного кода
+нумерация начинается с младшего разряда
+кода.</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in"><a name="image.2.4"></a>
+<img src="07a325e2bff2ea9d4157dece38d27d68_html_b52aaf34.png" name="Image6" align="bottom" width="451" height="112" border="0"/>
+<font size="2" style="font-size: 11pt"><br/>
+</font><font size="2" style="font-size: 11pt"><b>Рис.
+2.4.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Обозначение шин</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">При изображении
+микросхем используются сокращенные
+названия входных и выходных сигналов,
+отражающие их функцию. Эти названия
+располагаются на рисунке рядом с
+соответствующим выводом. Также на
+изображении микросхем указывается
+выполняемая ими функция (обычно в центре
+вверху). Изображение микросхемы иногда
+делят на три вертикальные поля. Левое
+поле относится к входным сигналам,
+правое — к выходным сигналам. В центральном
+поле помещается название микросхемы и
+символы ее особенностей. Неинформационные
+выводы могут указываться как на левом,
+так и на правом поле; иногда их показывают
+на верхней или нижней стороне
+прямоугольника, изображающего микросхему.
+</font>
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">В </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5Cdigs_2.html#table.2.1%23table.2.1"><font size="2" style="font-size: 11pt">табл.
+2.1</font></a></u></font><font size="2" style="font-size: 11pt">
+приведены некоторые наиболее часто
+встречающиеся обозначения сигналов и
+функций микросхем. Микросхема в целом
+обозначается на схемах буквами DD (от
+английского &quot;digital&quot; — &quot;цифровой&quot;)
+с соответствующим номером, например,
+DD1, DD20.1, DD38.2 (после точки указывается
+номер элемента или узла внутри микросхемы).</font></p>
+<p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in"><a name="table.2.1"></a>
+<br/>
+
+</p>
+<center>
+	<table width="422" cellpadding="2" cellspacing="0">
+		<col width="97"/>
+		<col width="128"/>
+		<col width="186"/>
+		<tr>
+			<td colspan="3" width="418" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center" style="margin-top: 0.08in">
+				<font size="2" style="font-size: 11pt">Таблица 2.1.
+				Некоторые обозначения сигналов и
+				микросхем</font></p>
+			</td>
+		</tr>
+		<tr>
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt"><b>Обозначение</b></font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt"><b>Название</b></font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt"><b>Назначение</b></font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">&amp;</font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">And</font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Элемент И</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">=1</font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Exclusive Or</font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Элемент Исключающее
+				ИЛИ</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Or</font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Элемент ИЛИ</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">А</font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Address</font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Адресные разряды</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">BF</font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Buffer</font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Буфер</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">C</font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Clock</font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Тактовый сигнал
+				(строб)</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">CE</font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Clock Enable</font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Разрешение
+				тактового сигнала</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">CT</font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Counter</font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Счетчик</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">CS</font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Chip Select</font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Выбор микросхемы</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">D</font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Data</font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Разряды данных,
+				данные</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">DC</font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Decoder</font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Дешифратор</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">EZ</font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Enable Z-state</font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Разрешение
+				третьего состояния</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">G</font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Generator</font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Генератор</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">I</font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Input</font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Вход</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">I/O</font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Input/Output</font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Вход/Выход</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">OE</font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Output Enable</font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Разрешение
+				выхода</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">MS</font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Multiplexer</font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Мультиплексор</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Q</font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Quit</font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Выход</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">R</font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Reset</font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Сброс (установка
+				в нуль)</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">RG</font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Register</font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Регистр</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">S</font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Set</font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Установка в
+				единицу</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">SUM</font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Summator</font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Сумматор</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">T</font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Trigger</font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Тригер</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">TC</font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Terminal Count</font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Окончание счета</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="97" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Z</font></p>
+			</td>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Z-state</font></p>
+			</td>
+			<td width="186" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">Третье состояние
+				выхода</font></p>
+			</td>
+		</tr>
+	</table>
+</center>
+<p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+<br/>
+
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Более полная
+таблица обозначений сигналов и микросхем,
+используемых в принципиальных схемах,
+приведена в приложении.</font></p>
+<h3 lang="ru-RU" class="western" align="justify" style="margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Серии цифровых
+микросхем</font></h3>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">В настоящее время
+выпускается огромное количество
+разнообразных цифровых микросхем: от
+простейших логических элементов до
+сложнейших процессоров, микроконтроллеров
+и специализированных БИС (Больших
+Интегральных Микросхем). Производством
+цифровых микросхем занимается множество
+фирм — как у нас в стране, так и за
+рубежом. Поэтому даже классификация
+этих микросхем представляет собой
+довольно трудную задачу.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Однако в качестве
+базиса в цифровой схемотехнике принято
+рассматривать классический набор
+микросхем малой и средней степени
+интеграции, в основе которого лежат ТТЛ
+серии семейства 74, выпускаемые уже
+несколько десятилетий рядом фирм,
+например, американской фирмой Texas
+Instruments (TII). Эти серии включают в себя
+функционально полный комплект микросхем,
+используя который, можно создавать
+самые разные цифровые устройства. Даже
+при компьютерном проектировании
+современных сложных микросхем с
+программируемой логикой (ПЛИС) применяются
+модели простейших микросхем этих серий
+семейства 74. При этом разработчик рисует
+на экране компьютера схему в привычном
+для него элементном базисе, а затем
+программа создает прошивку ПЛИС,
+выполняющую требуемую функцию.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in"><a name="image.2.5"></a>
+<img src="07a325e2bff2ea9d4157dece38d27d68_html_72fcda07.png" name="Image7" align="bottom" width="416" height="163" border="0"/>
+<font size="2" style="font-size: 11pt"><br/>
+</font><font size="2" style="font-size: 11pt"><b>Рис.
+2.5.</b></font><font size="2" style="font-size: 11pt">&nbsp; Система
+обозначений фирмы Texas Instruments</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Каждая микросхема
+серий семейства 74 имеет свое обозначение,
+и система обозначений отечественных
+серий существенно отличается от принятой
+за рубежом.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">В качестве примера
+рассмотрим систему обозначений фирмы
+Texas Instruments </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5Cdigs_2.html#image.2.5%23image.2.5"><font size="2" style="font-size: 11pt">(рис.
+2.5)</font></a></u></font><font size="2" style="font-size: 11pt">.
+Полное обозначение состоит из шести
+элементов:</font></p>
+<ol>
+	<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+	<font size="2" style="font-size: 11pt">Идентификатор
+	фирмы SN (для серий AC и ACT отсутствует). </font>
+	</p></li>
+	<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+	<font size="2" style="font-size: 11pt">Температурный
+	диапазон (тип семейства): </font>
+	</p>
+	<ul>
+		<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+		<font size="2" style="font-size: 11pt">74 — коммерческие
+		микросхемы (температура окружающей
+		среды для биполярных микросхем —
+		0...70°С, для КМОП микросхем — – 40...+85°С),
+		</font>
+		</p></li>
+		<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+		<font size="2" style="font-size: 11pt">54 — микросхемы
+		военного назначения (температура —
+		–55...+125°С).</font></p></li>
+	</ul>
+	<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+	<font size="2" style="font-size: 11pt">Код серии (до трех
+	символов): </font>
+	</p>
+	<ul>
+		<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+		<font size="2" style="font-size: 11pt">Отсутствует —
+		стандартная ТТЛ–серия. </font>
+		</p></li>
+		<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+		<font size="2" style="font-size: 11pt">LS (Low Power Schottky) —
+		маломощная серия ТТЛШ. </font>
+		</p></li>
+		<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+		<font size="2" style="font-size: 11pt">S (Schottky) — серия
+		ТТЛШ. </font>
+		</p></li>
+		<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+		<font size="2" style="font-size: 11pt"><span lang="en-US">ALS
+		(Advanced Schottky) — </span></font><font size="2" style="font-size: 11pt">улучшенная</font><font size="2" style="font-size: 11pt"><span lang="en-US">
+		</span></font><font size="2" style="font-size: 11pt">серия</font><font size="2" style="font-size: 11pt"><span lang="en-US">
+		</span></font><font size="2" style="font-size: 11pt">ТТЛШ</font><font size="2" style="font-size: 11pt"><span lang="en-US">.
+		</span></font>
+		</p></li>
+		<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+		<font size="2" style="font-size: 11pt">F (FAST) — быстрая
+		серия. </font>
+		</p></li>
+		<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+		<font size="2" style="font-size: 11pt">HC (High Speed CMOS) —
+		высокоскоростная КМОП–серия. </font>
+		</p></li>
+		<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+		<font size="2" style="font-size: 11pt">HCT (High Speed CMOS with
+		TTL inputs) — серия HC, совместимая по входу
+		с ТТЛ. </font>
+		</p></li>
+		<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+		<font size="2" style="font-size: 11pt">AC (Advanced CMOS) —
+		улучшенная серия КМОП. </font>
+		</p></li>
+		<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+		<font size="2" style="font-size: 11pt">ACT (Advanced CMOS with TTL
+		inputs) — серия AC, совместимая по входу с
+		ТТЛ. </font>
+		</p></li>
+		<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+		<font size="2" style="font-size: 11pt">BCT (BiCMOS Technology) —
+		серия с БиКМОП–технологией. </font>
+		</p></li>
+		<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+		<font size="2" style="font-size: 11pt">ABT (Advanced BiCMOS
+		Technology) — улучшенная серия с
+		БиКМОП–технологией. </font>
+		</p></li>
+		<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+		<font size="2" style="font-size: 11pt">LVT (Low Voltage Technology)
+		— серия с низким напряжением питания.</font></p></li>
+	</ul>
+	<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+	<font size="2" style="font-size: 11pt">Идентификатор
+	специального типа (2 символа) — может
+	отсутствовать. </font>
+	</p></li>
+	<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+	<font size="2" style="font-size: 11pt">Тип микросхемы
+	(от двух до шести цифр). Перечень некоторых
+	типов микросхем приведен в приложении.
+	</font>
+	</p></li>
+	<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+	<font size="2" style="font-size: 11pt">Код типа корпуса
+	(от одного до двух символов) — может
+	отсутствовать. Например, N — пластмассовый
+	корпус DIL (DIP), J — керамический DIL (DIC), T
+	— плоский металлический. </font>
+	</p></li>
+</ol>
+<p lang="ru-RU" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Примеры обозначений:
+SN74ALS373, SN74ACT7801, SN7400. </font>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in"><a name="image.2.6"></a>
+<img src="07a325e2bff2ea9d4157dece38d27d68_html_88cf1ef4.png" name="Image8" align="bottom" width="437" height="143" border="0"/>
+<font size="2" style="font-size: 11pt"><br/>
+</font><font size="2" style="font-size: 11pt"><b>Рис.
+2.6.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Обозначения отечественных микросхем</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Отечественная
+система обозначений микросхем отличается
+от рассмотренной довольно существенно
+</font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5Cdigs_2.html#image.2.6%23image.2.6"><font size="2" style="font-size: 11pt">(рис.
+2.6)</font></a></u></font><font size="2" style="font-size: 11pt">.
+Основные элементы обозначения следующие:</font></p>
+<ol>
+	<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+	<font size="2" style="font-size: 11pt">Буква К обозначает
+	микросхемы широкого применения, для
+	микросхем военного назначения буква
+	отсутствует. </font>
+	</p></li>
+	<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+	<font size="2" style="font-size: 11pt">Тип корпуса
+	микросхемы (один символ) — может
+	отсутствовать. Например, Р — пластмассовый
+	корпус, М — керамический, Б — бескорпусная
+	микросхема. </font>
+	</p></li>
+	<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+	<font size="2" style="font-size: 11pt">Номер серии
+	микросхем (от трех до четырех цифр). </font>
+	</p></li>
+	<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+	<font size="2" style="font-size: 11pt">Функция микросхемы
+	(две буквы). </font>
+	</p></li>
+	<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+	<font size="2" style="font-size: 11pt">Номер микросхемы
+	(от одной до трех цифр). Таблица функций
+	и номеров микросхем, а также таблица
+	их соответствия зарубежным аналогам
+	приведены в приложении.</font></p></li>
+</ol>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Например, КР1533ЛА3,
+КМ531ИЕ17, КР1554ИР47. </font>
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Главное достоинство
+отечественной системы обозначений
+состоит в том, что по обозначению
+микросхемы можно легко понять ее функцию.
+Зато в системе обозначений Texas Instruments
+виден тип серии с его особенностями.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0.17in">
+Чем отличается одна серия от другой?</p>
+<center>
+	<table width="571" cellpadding="2" cellspacing="0">
+		<col width="128"/>
+		<col width="85"/>
+		<col width="107"/>
+		<col width="119"/>
+		<col width="111"/>
+		<tr>
+			<td colspan="5" width="567" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="justify"><a name="table.2.2"></a>
+				<font size="2" style="font-size: 11pt">Таблица 2.2.
+				Сравнение параметров одинаковых
+				микросхем в разных стандартных сериях</font></p>
+			</td>
+		</tr>
+		<tr>
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="justify">
+				<br/>
+
+				</p>
+			</td>
+			<td width="85" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt"><b>К155ЛА3<br/>
+(SN7400N)</b></font></p>
+			</td>
+			<td width="107" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt"><b>К555ЛА3<br/>
+(SN74LS00N)</b></font></p>
+			</td>
+			<td width="119" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt"><b>КР1533ЛА3<br/>
+(SN74ALS00N)</b></font></p>
+			</td>
+			<td width="111" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt"><b>КР1554ЛА3<br/>
+(SN74AC00N)</b></font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="justify">
+				<font size="2" style="font-size: 11pt">t</font><sub><font size="2" style="font-size: 11pt">PLH</font></sub><font size="2" style="font-size: 11pt">,
+				нс не более</font></p>
+			</td>
+			<td width="85" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">22</font></p>
+			</td>
+			<td width="107" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">15</font></p>
+			</td>
+			<td width="119" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">11</font></p>
+			</td>
+			<td width="111" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">8,5</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="justify">
+				<font size="2" style="font-size: 11pt">t</font><sub><font size="2" style="font-size: 11pt">PHL</font></sub><font size="2" style="font-size: 11pt">,
+				нс не более</font></p>
+			</td>
+			<td width="85" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">15</font></p>
+			</td>
+			<td width="107" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">15</font></p>
+			</td>
+			<td width="119" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">8</font></p>
+			</td>
+			<td width="111" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">7,0</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="justify">
+				<font size="2" style="font-size: 11pt">I</font><sub><font size="2" style="font-size: 11pt">IL</font></sub><font size="2" style="font-size: 11pt">,
+				мА не более</font></p>
+			</td>
+			<td width="85" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">-1,6</font></p>
+			</td>
+			<td width="107" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">-0,45</font></p>
+			</td>
+			<td width="119" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">-0,1</font></p>
+			</td>
+			<td width="111" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">-0,001</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="justify">
+				<font size="2" style="font-size: 11pt">I</font><sub><font size="2" style="font-size: 11pt">IH</font></sub><font size="2" style="font-size: 11pt">,
+				мА не более </font>
+				</p>
+			</td>
+			<td width="85" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0,04</font></p>
+			</td>
+			<td width="107" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0,02</font></p>
+			</td>
+			<td width="119" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0,02</font></p>
+			</td>
+			<td width="111" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0,001</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="justify">
+				<font size="2" style="font-size: 11pt">I</font><sub><font size="2" style="font-size: 11pt">OL</font></sub><font size="2" style="font-size: 11pt">,
+				мА не менее </font>
+				</p>
+			</td>
+			<td width="85" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">16</font></p>
+			</td>
+			<td width="107" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">8</font></p>
+			</td>
+			<td width="119" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">15</font></p>
+			</td>
+			<td width="111" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">86</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="justify">
+				<font size="2" style="font-size: 11pt">I</font><sub><font size="2" style="font-size: 11pt">OH</font></sub><font size="2" style="font-size: 11pt">,
+				мА не менее</font></p>
+			</td>
+			<td width="85" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">-0,4</font></p>
+			</td>
+			<td width="107" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">-0,4</font></p>
+			</td>
+			<td width="119" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">-0,4</font></p>
+			</td>
+			<td width="111" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">-75</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="justify">
+				<font size="2" style="font-size: 11pt">U</font><sub><font size="2" style="font-size: 11pt">OL</font></sub><font size="2" style="font-size: 11pt">,
+				В не более</font></p>
+			</td>
+			<td width="85" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0,4</font></p>
+			</td>
+			<td width="107" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0,5</font></p>
+			</td>
+			<td width="119" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0,5</font></p>
+			</td>
+			<td width="111" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0,3</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="justify">
+				<font size="2" style="font-size: 11pt">U</font><sub><font size="2" style="font-size: 11pt">OH</font></sub><font size="2" style="font-size: 11pt">,
+				В не менее</font></p>
+			</td>
+			<td width="85" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">2,4</font></p>
+			</td>
+			<td width="107" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">2,7</font></p>
+			</td>
+			<td width="119" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">2,5</font></p>
+			</td>
+			<td width="111" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">4,4</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="128" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="justify">
+				<font size="2" style="font-size: 11pt">I</font><sub><font size="2" style="font-size: 11pt">CC</font></sub><font size="2" style="font-size: 11pt">,
+				мА не более</font></p>
+			</td>
+			<td width="85" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">12</font></p>
+			</td>
+			<td width="107" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">4,4</font></p>
+			</td>
+			<td width="119" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">3</font></p>
+			</td>
+			<td width="111" style="border: 1px solid #000000; padding: 0.02in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0,04</font></p>
+			</td>
+		</tr>
+	</table>
+</center>
+<p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-bottom: 0in">
+<br/>
+
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">На первом уровне
+представления (логическая модель) серии
+не различаются ничем. То есть одинаковые
+микросхемы разных серий работают по
+одним и тем же таблицам истинности, по
+одним и тем же алгоритмам. Правда, надо
+учитывать, что некоторые микросхемы
+имеются только в одной из серий, а
+некоторых нет в нескольких сериях.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">На втором уровне
+представления (модель с учетом задержек)
+серии отличаются величиной задержки
+распространения сигнала. Это различие
+может быть довольно существенным.
+Поэтому в тех схемах, где величина
+задержки принципиальна, надо использовать
+микросхемы более быстрых серий </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5C2.html#image.2.3"><font size="2" style="font-size: 11pt">(табл.
+1.3)</font></a></u></font><font size="2" style="font-size: 11pt">.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">На третьем уровне
+представления (электрическая модель)
+серии различаются величинами входных
+и выходных токов и напряжений, а также,
+что не менее важно, токами потребления
+</font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5C2.html#image.2.3"><font size="2" style="font-size: 11pt">(табл.
+1.3)</font></a></u></font><font size="2" style="font-size: 11pt">.
+Поэтому в тех устройствах, где эти
+параметры принципиальны, надо применять
+микросхемы, обеспечивающие, к примеру,
+низкие входные токи, высокие выходные
+токи и малое потребление.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Серия </font><font size="2" style="font-size: 11pt">К155
+(SN74)</font><font size="2" style="font-size: 11pt"> — это
+наиболее старая серия, которая постепенно
+снимется с производства. Она отличается
+не слишком хорошими параметрами по
+сравнению с другими сериями. С этой
+классической серией принято сравнивать
+все остальные.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Серия </font><font size="2" style="font-size: 11pt">К555
+(SN74LS)</font><font size="2" style="font-size: 11pt"> отличается
+от серии</font><font size="2" style="font-size: 11pt"> К155
+</font><font size="2" style="font-size: 11pt">малыми входными
+токами и меньшей потребляемой мощностью
+(ток потребления — почти втрое меньше,
+чем у</font><font size="2" style="font-size: 11pt"> К155</font><font size="2" style="font-size: 11pt">).
+По быстродействию (по временам задержек)
+она близка к </font><font size="2" style="font-size: 11pt">К155</font><font size="2" style="font-size: 11pt">.
+</font>
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Серия </font><font size="2" style="font-size: 11pt">КР531
+(SN74S)</font><font size="2" style="font-size: 11pt"> отличается
+высоким быстродействием (ее задержки
+примерно в 3–4 раза меньше, чем у серии
+К155), но большими входными токами (на 25%
+больше, чем у </font><font size="2" style="font-size: 11pt">К155</font><font size="2" style="font-size: 11pt">)
+и большой потребляемой мощностью (ток
+потребления — больше в полтора раза по
+сравнению с </font><font size="2" style="font-size: 11pt">К155)</font><font size="2" style="font-size: 11pt">.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Серия </font><font size="2" style="font-size: 11pt">КР1533
+(SN74ALS)</font><font size="2" style="font-size: 11pt"> отличается
+повышенным примерно вдвое по сравнению
+с </font><font size="2" style="font-size: 11pt">К155</font><font size="2" style="font-size: 11pt">
+быстродействием и малой потребляемой
+мощностью (в четыре раза меньше, чем у
+</font><font size="2" style="font-size: 11pt">К155</font><font size="2" style="font-size: 11pt">).
+Входные токи еще меньше, чем у </font><font size="2" style="font-size: 11pt">К555</font><font size="2" style="font-size: 11pt">.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Серия </font><font size="2" style="font-size: 11pt">КР1531
+(SN74F</font><font size="2" style="font-size: 11pt">) отличается
+высоким быстродействием (на уровне
+</font><font size="2" style="font-size: 11pt">КР531</font><font size="2" style="font-size: 11pt">),
+но малой потребляемой мощностью. Входные
+токи и ток потребления примерно вдвое
+меньше, чем у </font><font size="2" style="font-size: 11pt">К155</font><font size="2" style="font-size: 11pt">.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Серия </font><font size="2" style="font-size: 11pt">КР1554
+(SN74AC</font><font size="2" style="font-size: 11pt">) отличается
+от всех предыдущих тем, что она выполнена
+по КМОП-технологии. Поэтому она имеет
+сверхмалые входные токи и сверхмалое
+потребление при малых рабочих частотах.
+Задержки примерно вдвое меньше, чем у
+</font><font size="2" style="font-size: 11pt">К155</font><font size="2" style="font-size: 11pt">.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Наибольшим
+разнообразием имеющихся микросхем
+отличаются серии </font><font size="2" style="font-size: 11pt">К155</font><font size="2" style="font-size: 11pt">
+и</font><font size="2" style="font-size: 11pt"> КР1533</font><font size="2" style="font-size: 11pt">,
+наименьшим —</font><font size="2" style="font-size: 11pt">
+КР1531</font><font size="2" style="font-size: 11pt"> и </font><font size="2" style="font-size: 11pt">КР1554</font><font size="2" style="font-size: 11pt">.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Надо отметить, что
+приведенные здесь соотношения по
+быстродействию стандартных серий
+довольно приблизительны и верны не для
+всех разновидностей микросхем, имеющихся
+в разных сериях. Точные значения задержек
+необходимо смотреть в справочниках,
+причем желательно в фирменных справочных
+материалах.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Микросхемы разных
+серий обычно легко сопрягаются между
+собой, то есть сигналы с выходов микросхем
+одной серии можно смело подавать на
+входы микросхем другой серии. Одно из
+исключений — соединение выходов
+ТТЛ-микросхем со входами КМОП-микросхем
+серии </font><font size="2" style="font-size: 11pt">КР1554
+(74AC)</font><font size="2" style="font-size: 11pt">. При таком
+соединении необходимо применение
+резистора номиналом 560 Ом между сигналом
+и напряжением питания </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5Cdigs_2.html#image.2.7%23image.2.7"><font size="2" style="font-size: 11pt">(рис.
+2.7)</font></a></u></font><font size="2" style="font-size: 11pt">.</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.2.7"></a>
+<img src="07a325e2bff2ea9d4157dece38d27d68_html_5e457580.png" name="Image9" align="bottom" width="392" height="163" border="0"/>
+<font size="2" style="font-size: 11pt"><br/>
+</font><font size="2" style="font-size: 11pt"><b>Рис.
+2.7.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Обозначения отечественных микросхем</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">При выборе той или
+иной серии микросхем следует также
+учитывать, что микросхемы мощной и
+быстрой серии </font><font size="2" style="font-size: 11pt">КР531</font><font size="2" style="font-size: 11pt">
+создают высокий уровень помех по шинам
+питания, а микросхемы маломощной серии
+</font><font size="2" style="font-size: 11pt">К555</font><font size="2" style="font-size: 11pt">
+очень чувствительны к таким помехам.
+Поэтому серию </font><font size="2" style="font-size: 11pt">КР531</font><font size="2" style="font-size: 11pt">
+рекомендуется использовать только в
+крайних случаях, при необходимости
+получения очень высокого быстродействия.
+Не рекомендуется также применять в
+одном устройстве мощные быстродействующие
+микросхемы и маломощные микросхемы.</font></p>
+<h3 lang="ru-RU" class="western" align="center"><font size="2" style="font-size: 11pt">Корпуса
+цифровых микросхем</font></h3>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+<font size="2" style="font-size: 11pt">Большинство
+микросхем имеют корпус, то есть
+прямоугольный контейнер (пластмассовый,
+керамический, металлокерамический) с
+металлическими выводами (ножками).
+Предложено множество различных типов
+корпусов, но наибольшее распространение
+получили два основных типа:</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.2.8"></a>
+<img src="07a325e2bff2ea9d4157dece38d27d68_html_bda5b4e8.png" name="Image10" align="bottom" width="476" height="146" border="0"/>
+<font size="2" style="font-size: 11pt"><br/>
+</font><font size="2" style="font-size: 11pt"><b>Рис.
+2.8.</b></font><font size="2" style="font-size: 11pt">&nbsp; Примеры
+корпусов DIL и Flat</font></p>
+<ul>
+	<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-bottom: 0in">
+	<font size="2" style="font-size: 11pt">Корпус с двухрядным
+	вертикальным расположением выводов,
+	например, DIP (Dual In Line Package, Plastic) —
+	пластмассовый корпус, DIC (Dual In Line Package,
+	Ceramic) — керамический корпус. Общее
+	название для таких корпусов — DIL (</font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5Cdigs_2.html#image.2.8%23image.2.8"><font size="2" style="font-size: 11pt">рис.
+	2.8</font></a></u></font><font size="2" style="font-size: 11pt">).
+	Расстояние между выводами составляет
+	0,1 дюйма (2,54 мм). Расстояние между рядами
+	выводов зависит от количества выводов.
+	</font>
+	</p></li>
+	<li><p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-bottom: 0.19in">
+	<font size="2" style="font-size: 11pt">Корпус с двухрядным
+	плоскостным расположением выводов,
+	например, FP (Flat-Package, Plastic) — пластмассовый
+	плоский корпус, FPC (Flat-Package, Ceramic) —
+	керамический плоский корпус. Общее
+	название для таких корпусов — Flat (</font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5Cdigs_2.html#image.2.8%23image.2.8"><font size="2" style="font-size: 11pt">рис.
+	2.8</font></a></u></font><font size="2" style="font-size: 11pt">).
+	Расстояние между выводами составляет
+	0,05 дюйма (1,27 мм) или 0,025 дюйма (0,0628 мм). </font>
+	</p></li>
+</ul>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Номера выводов
+всех корпусов отсчитываются начиная с
+вывода, помеченного ключом, по направлению
+против часовой стрелки (если смотреть
+на микросхему сверху). Ключом может
+служить вырез на одной из сторон
+микросхемы, точка около первого вывода
+или утолщение первого вывода (</font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5Cdigs_2.html#image.2.8%23image.2.8"><font size="2" style="font-size: 11pt">рис.
+2.8</font></a></u></font><font size="2" style="font-size: 11pt">).
+Первый вывод может находиться в левом
+нижнем или в правом верхнем углу (в
+зависимости от того, как повернут
+корпус). Микросхемы обычно имеют
+стандартное число выводов из ряда: 4, 8,
+14, 16, 20, 24, 28,.… Для микросхем стандартных
+цифровых серий используются корпуса с
+количеством выводов начиная с 14.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Назначение каждого
+из выводов микросхемы приводится в
+справочниках по микросхемам, которых
+сейчас имеется множество. Правда, лучше
+ориентироваться на справочники,
+издаваемые непосредственно
+фирмами-изготовителями. В данной книге
+назначение выводов не приводится.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Отечественные
+микросхемы выпускаются в корпусах,
+очень похожих на DIL и Flat, но расстояния
+между их выводами вычисляются по
+метрической шкале и поэтому чуть-чуть
+отличаются от принятых за рубежом.
+Например, 2,5 мм вместо 2,54 мм, 1,25 мм вместо
+1,27 мм и т.д. Для корпусов с малым числом
+выводов (до 20) это не слишком существенно,
+но для больших корпусов расхождение в
+расстоянии может стать существенным.
+В результате на плату, рассчитанную на
+зарубежные микросхемы, нельзя поставить
+отечественные микросхемы, и наоборот.</font></p>
+<h3 lang="ru-RU" class="western" align="justify"><font size="2" style="font-size: 11pt">Двоичное
+кодирование</font></h3>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in"><a name="keyword-context.14"></a>
+<font size="2" style="font-size: 11pt">Одиночный цифровой
+сигнал не слишком информативен, ведь
+он может принимать только два значения:
+нуль и единица. Поэтому в тех случаях,
+когда необходимо передавать, обрабатывать
+или хранить большие объемы информации,
+обычно применяют несколько параллельных
+цифровых сигналов. При этом все эти
+сигналы должны рассматриваться только
+одновременно, каждый из них по отдельности
+не имеет смысла. В таких случаях говорят
+о двоичных кодах, то есть о кодах,
+образованных цифровыми (логическими,
+двоичными) сигналами. Каждый из логических
+сигналов, входящих в код, называется
+</font><font size="2" style="font-size: 11pt">разрядом</font><font size="2" style="font-size: 11pt">.
+Чем больше разрядов входит в код, тем
+больше значений может принимать данный
+код.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in"><a name="keyword-context.15"></a>
+<font size="2" style="font-size: 11pt">В отличие от
+привычного для нас десятичного кодирования
+чисел, то есть кода с основанием десять,
+при двоичном кодировании в основании
+кода лежит число два (</font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5Cdigs_2.html#image.2.9%23image.2.9"><font size="2" style="font-size: 11pt">рис.
+2.9</font></a></u></font><font size="2" style="font-size: 11pt">). То
+есть каждая цифра кода (каждый разряд)
+двоичного кода может принимать не десять
+значений (как в десятичном коде: 0, 1, 2,
+3, 4, 5, 6, 7, 8, 9), а всего лишь два — 0 и 1.
+Система позиционной записи остается
+такой же, то есть справа пишется самый
+младший разряд, а слева — самый старший.
+Но если в десятичной системе вес каждого
+следующего разряда больше веса предыдущего
+в десять раз, то в двоичной системе (при
+двоичном кодировании) — в два раза.
+Каждый разряд двоичного кода называется
+</font><font size="2" style="font-size: 11pt">бит </font><font size="2" style="font-size: 11pt">(от
+английского &quot;Binary Digit&quot; — &quot;двоичное
+число&quot;).</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.2.9"></a>
+<img src="07a325e2bff2ea9d4157dece38d27d68_html_4ec2127f.png" name="Image11" align="bottom" width="476" height="140" border="0"/>
+<font size="2" style="font-size: 11pt"><br/>
+</font><font size="2" style="font-size: 11pt"><b>Рис.
+2.9.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Десятичное и двоичное кодирование</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+<font size="2" style="font-size: 11pt">В </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5Cdigs_2.html#table.2.3%23table.2.3"><font size="2" style="font-size: 11pt">табл.
+2.3</font></a></u></font><font size="2" style="font-size: 11pt">
+показано соответствие первых двадцати
+чисел в десятичной и двоичной системах.
+</font>
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+<font size="2" style="font-size: 11pt">Из таблицы видно,
+что требуемое количество разрядов
+двоичного кода значительно больше, чем
+требуемое количество разрядов десятичного
+кода. Максимально возможное число при
+количестве разрядов, равном трем,
+составляет при десятичной системе 999,
+а при двоичной — всего лишь 7 (то есть
+111 в двоичном коде). В общем случае
+n-разрядное двоичное число может принимать
+</font><font size="2" style="font-size: 11pt">2</font><sup><font size="2" style="font-size: 11pt">n</font></sup><font size="2" style="font-size: 11pt">
+различных значений, а n-разрядное
+десятичное число — </font><font size="2" style="font-size: 11pt">10</font><sup><font size="2" style="font-size: 11pt">n</font></sup><font size="2" style="font-size: 11pt">
+значений. То есть запись больших двоичных
+чисел (с количеством разрядов боль</font>ше
+десяти) становится не слишком удобной.
+</p>
+<center>
+	<table width="534" cellpadding="2" cellspacing="0">
+		<col width="136"/>
+		<col width="123"/>
+		<col width="136"/>
+		<col width="123"/>
+		<tr>
+			<td colspan="4" width="530" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="justify"><a name="table.2.3"></a>
+				<font size="2" style="font-size: 11pt">Таблица 2.3.
+				Соответствие чисел в десятичной и
+				двоичной системах</font></p>
+			</td>
+		</tr>
+		<tr>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt"><b>Десятичная
+				система</b></font></p>
+			</td>
+			<td width="123" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt"><b>Двоичная
+				система</b></font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt"><b>Десятичная
+				система</b></font></p>
+			</td>
+			<td width="123" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt"><b>Двоичная
+				система</b></font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+			<td width="123" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">10</font></p>
+			</td>
+			<td width="123" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1010</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+			<td width="123" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">11</font></p>
+			</td>
+			<td width="123" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1011</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">2</font></p>
+			</td>
+			<td width="123" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">10</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">12</font></p>
+			</td>
+			<td width="123" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1100</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">3</font></p>
+			</td>
+			<td width="123" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">11</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">13</font></p>
+			</td>
+			<td width="123" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1101</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">4</font></p>
+			</td>
+			<td width="123" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">100</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">14</font></p>
+			</td>
+			<td width="123" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1110</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">5</font></p>
+			</td>
+			<td width="123" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">101</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">15</font></p>
+			</td>
+			<td width="123" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1111</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">6</font></p>
+			</td>
+			<td width="123" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">110</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">16</font></p>
+			</td>
+			<td width="123" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">10000</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">7</font></p>
+			</td>
+			<td width="123" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">111</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">17</font></p>
+			</td>
+			<td width="123" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">10001</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">8</font></p>
+			</td>
+			<td width="123" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1000</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">18</font></p>
+			</td>
+			<td width="123" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">10010</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">9</font></p>
+			</td>
+			<td width="123" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1001</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">19</font></p>
+			</td>
+			<td width="123" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">10011</font></p>
+			</td>
+		</tr>
+	</table>
+</center>
+<p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-bottom: 0in">
+<br/>
+
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+<font size="2" style="font-size: 11pt">Для того чтобы
+упростить запись двоичных чисел, была
+предложена так называемая шестнадцатиричная
+система (16-ричное кодирование). В этом
+случае все двоичные разряды разбиваются
+на группы по четыре разряда (начиная с
+младшего), а затем уже каждая группа
+кодируется одним символом. Каждая такая
+группа называется </font><font size="2" style="font-size: 11pt"><b>полубайтом</b></font><font size="2" style="font-size: 11pt">
+(или </font><font size="2" style="font-size: 11pt"><b>нибблом</b></font><font size="2" style="font-size: 11pt">,
+</font><font size="2" style="font-size: 11pt"><b>тетрадой</b></font><font size="2" style="font-size: 11pt">),
+а две группы (8 разрядов) — байтом. Из
+</font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5Cdigs_2.html#table.2.3%23table.2.3"><font size="2" style="font-size: 11pt">табл.
+2.3</font></a></u></font><font size="2" style="font-size: 11pt">
+видно, что 4-разрядное двоичное число
+может принимать 16 разных значений (от
+0 до 15). Поэтому требуемое число символов
+для шестнадцатиричного кода тоже равно
+16, откуда и происходит название кода. В
+качестве первых 10 символов берутся
+цифры от 0 до 9, а затем используются 6
+начальных заглавных букв латинского
+алфавита: A, B, C, D, E, F.</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.2.10"></a>
+<img src="07a325e2bff2ea9d4157dece38d27d68_html_f67b69fe.png" name="Image12" align="bottom" width="442" height="99" border="0"/>
+<font size="2" style="font-size: 11pt"><br/>
+</font><font size="2" style="font-size: 11pt"><b>Рис.
+2.10.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Двоичная и 16-ричная запись числа</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+<font size="2" style="font-size: 11pt">В </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5Cdigs_2.html#table.2.4%23table.2.4"><font size="2" style="font-size: 11pt">табл.
+2.4</font></a></u></font><font size="2" style="font-size: 11pt">
+приведены примеры 16-ричного кодирования
+первых 20 чисел (в скобках приведены
+двоичные числа), а на </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5C4.html#image.2.10"><font size="2" style="font-size: 11pt">рис.
+2.10</font></a></u></font><font size="2" style="font-size: 11pt">
+показан пример записи двоичного числа
+в 16-ричном виде. Для обозначения 16-ричного
+кодирования иногда применяют букву &quot;h&quot;
+или &quot;H&quot; (от английского Hexadecimal) в
+конце числа, например, запись A17F h
+обозначает 16-ричное число A17F. Здесь А1
+представляет собой старший байт числа,
+а 7F — младший байт числа. Все число (в
+нашем случае — двухбайтовое) называется
+</font><font size="2" style="font-size: 11pt"><b>словом</b></font>.</p>
+<center>
+	<table width="539" cellpadding="2" cellspacing="0">
+		<col width="136"/>
+		<col width="125"/>
+		<col width="136"/>
+		<col width="126"/>
+		<tr>
+			<td colspan="4" width="535" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="justify"><a name="table.2.4"></a>
+				<font size="2" style="font-size: 11pt">Таблица 2.4.
+				16-ричная система кодирования</font></p>
+			</td>
+		</tr>
+		<tr>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt"><b>Десятичная
+				система</b></font></p>
+			</td>
+			<td width="125" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt"><b>16-ричная система</b></font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt"><b>Десятичная
+				система</b></font></p>
+			</td>
+			<td width="126" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt"><b>16-ричная система</b></font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+			<td width="125" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0 (0)</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">10</font></p>
+			</td>
+			<td width="126" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">A (1010)</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+			<td width="125" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1(1)</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">11</font></p>
+			</td>
+			<td width="126" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">B (1011)</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">2</font></p>
+			</td>
+			<td width="125" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">2 (10)</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">12</font></p>
+			</td>
+			<td width="126" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">C (1100)</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">3</font></p>
+			</td>
+			<td width="125" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">3 (11)</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">13</font></p>
+			</td>
+			<td width="126" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">D (1101)</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">4</font></p>
+			</td>
+			<td width="125" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">4 (100)</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">14</font></p>
+			</td>
+			<td width="126" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">E (1110)</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">5</font></p>
+			</td>
+			<td width="125" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">5 (101)</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">15</font></p>
+			</td>
+			<td width="126" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">F (1111)</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">6</font></p>
+			</td>
+			<td width="125" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">6 (110)</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">16</font></p>
+			</td>
+			<td width="126" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">10 (10000)</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">7</font></p>
+			</td>
+			<td width="125" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">7 (111)</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">17</font></p>
+			</td>
+			<td width="126" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">11 (10001)</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">8</font></p>
+			</td>
+			<td width="125" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">8 (1000)</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">18</font></p>
+			</td>
+			<td width="126" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">12 (10010)</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">9</font></p>
+			</td>
+			<td width="125" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">9 (1001)</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">19</font></p>
+			</td>
+			<td width="126" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">13 (10011)</font></p>
+			</td>
+		</tr>
+	</table>
+</center>
+<p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-bottom: 0in">
+<br/>
+
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+<font size="2" style="font-size: 11pt">Для перевода
+16-ричного числа в десятичное необходимо
+умножить значение младшего (нулевого)
+разряда на единицу, значение следующего
+(первого) разряда на 16, второго разряда
+на 256 (162) и т.д., а затем сложить все
+произведения. Например, возьмем число
+</font><font size="2" style="font-size: 11pt">A17F</font><font size="2" style="font-size: 11pt">:</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-bottom: 0in">
+<font face="Courier New, monospace"><font size="2" style="font-size: 10pt"><font size="2" style="font-size: 11pt">A17F=F*16</font><sup><font size="2" style="font-size: 11pt">0</font></sup><font size="2" style="font-size: 11pt">
++ 7*16</font><sup><font size="2" style="font-size: 11pt">1</font></sup><font size="2" style="font-size: 11pt">
++ 1*16</font><sup><font size="2" style="font-size: 11pt">2</font></sup><font size="2" style="font-size: 11pt">
++ A*16</font><sup><font size="2" style="font-size: 11pt">3</font></sup><font size="2" style="font-size: 11pt">
+= 15*1 + 7*16+1*256+10*4096=41343</font></font></font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; margin-bottom: 0in">
+<br/>
+
+</p>
+<center>
+	<table width="524" cellpadding="2" cellspacing="0">
+		<col width="136"/>
+		<col width="118"/>
+		<col width="136"/>
+		<col width="118"/>
+		<tr>
+			<td colspan="4" width="520" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center"><a name="table.2.5"></a>
+				<font size="2" style="font-size: 11pt">Таблица 2.5.
+				8-ричная система кодирования</font></p>
+			</td>
+		</tr>
+		<tr>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt"><b>Десятичная
+				система</b></font></p>
+			</td>
+			<td width="118" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt"><b>8-ричная система</b></font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt"><b>Десятичная
+				система</b></font></p>
+			</td>
+			<td width="118" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt"><b>8-ричная система</b></font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0</font></p>
+			</td>
+			<td width="118" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">0 (0)</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">10</font></p>
+			</td>
+			<td width="118" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">12 (1010)</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1</font></p>
+			</td>
+			<td width="118" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">1(1)</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">11</font></p>
+			</td>
+			<td width="118" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">13 (1011)</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">2</font></p>
+			</td>
+			<td width="118" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">2 (10)</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">12</font></p>
+			</td>
+			<td width="118" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">14 (1100)</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">3</font></p>
+			</td>
+			<td width="118" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">3 (11)</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">13</font></p>
+			</td>
+			<td width="118" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">15 (1101)</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">4</font></p>
+			</td>
+			<td width="118" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">4 (100)</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">14</font></p>
+			</td>
+			<td width="118" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">16 (1110)</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">5</font></p>
+			</td>
+			<td width="118" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">5 (101)</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">15</font></p>
+			</td>
+			<td width="118" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">17 (1111)</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">6</font></p>
+			</td>
+			<td width="118" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">6 (110)</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">16</font></p>
+			</td>
+			<td width="118" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">20 (10000)</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">7</font></p>
+			</td>
+			<td width="118" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">7 (111)</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">17</font></p>
+			</td>
+			<td width="118" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">21 (10001)</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">8</font></p>
+			</td>
+			<td width="118" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">10 (1000)</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">18</font></p>
+			</td>
+			<td width="118" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">22 (10010)</font></p>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">9</font></p>
+			</td>
+			<td width="118" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">11 (1001)</font></p>
+			</td>
+			<td width="136" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">19</font></p>
+			</td>
+			<td width="118" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+				<font size="2" style="font-size: 11pt">23 (10011)</font></p>
+			</td>
+		</tr>
+	</table>
+</center>
+<p lang="ru-RU" class="western" align="justify" style="line-height: 100%; margin-bottom: 0in">
+<br/>
+
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Но каждому
+специалисту по цифровой аппаратуре
+(разработчику, оператору, ремонтнику,
+программисту и т.д.) необходимо научиться
+так же свободно обращаться с 16-ричной
+и двоичной системами, как и с обычной
+десятичной, чтобы никаких переводов из
+системы в систему не требовалось.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Значительно реже,
+чем 16-ричное, используется восьмеричное
+кодирование, которое строится по такому
+же принципу, что и 16-ричное, но двоичные
+разряды разбиваются на группы по три
+разряда. Каждая группа (разряд кода)
+затем обозначается одним символом.
+Каждый разряд 8-ричного кода может
+принимать восемь значений: 0, 1, 2, 3, 4, 5,
+6, 7 </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5Cdigs_2.html#table.2.5%23table.2.5"><font size="2" style="font-size: 11pt">(табл.
+2.5)</font></a></u></font><font size="2" style="font-size: 11pt">.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in"><a name="table.2.6"></a>
+<font size="2" style="font-size: 11pt">Помимо рассмотренных
+кодов, существует также и так называемое
+двоично-десятичное представление чисел.
+Как и в 16-ричном коде, в двоично-десятичном
+коде каждому разряду кода соответствует
+четыре двоичных разряда, однако каждая
+группа из четырех двоичных разрядов
+может принимать не шестнадцать, а только
+десять значений, кодируемых символами
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9. То есть одному десятичному
+разряду соответствует четыре двоичных.
+В результате получается, что написание
+чисел в двоично-десятичном коде ничем
+не отличается от написания в обычном
+десятичном коде </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5Cdigs_2.html#table.2.6%23table.2.6"><font size="2" style="font-size: 11pt">(табл.
+2.6)</font></a></u></font><font size="2" style="font-size: 11pt">, но
+в реальности это всего лишь специальный
+двоичный код, каждый разряд которого
+может принимать только два значения: 0
+и 1. Двоично-десятичный код иногда очень
+удобен для организации десятичных
+цифровых индикаторов и табло.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.19in; margin-bottom: 0.19in">
+<br/>
+<br/>
+
+</p>
+<table width="653" cellpadding="2" cellspacing="0">
+	<col width="132"/>
+	<col width="187"/>
+	<col width="131"/>
+	<col width="187"/>
+	<tr>
+		<td colspan="4" width="649" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">Таблица 2.6.
+			Двоично-десятичная система кодирования</font></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="132" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt"><b>Десятичная
+			система</b></font></p>
+		</td>
+		<td width="187" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt"><b>Двоично-десятичная
+			система</b></font></p>
+		</td>
+		<td width="131" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt"><b>Десятичная
+			система</b></font></p>
+		</td>
+		<td width="187" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt"><b>Двоично-десятичная
+			система</b></font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="132" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">0</font></p>
+		</td>
+		<td width="187" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">0 (0)</font></p>
+		</td>
+		<td width="131" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">10</font></p>
+		</td>
+		<td width="187" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">10 (1000)</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="132" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">1</font></p>
+		</td>
+		<td width="187" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">1(1)</font></p>
+		</td>
+		<td width="131" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">11</font></p>
+		</td>
+		<td width="187" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">11 (1001)</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="132" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">2</font></p>
+		</td>
+		<td width="187" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">2 (10)</font></p>
+		</td>
+		<td width="131" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">12</font></p>
+		</td>
+		<td width="187" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">12 (10010)</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="132" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">3</font></p>
+		</td>
+		<td width="187" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">3 (11)</font></p>
+		</td>
+		<td width="131" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">13</font></p>
+		</td>
+		<td width="187" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">13 (10011)</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="132" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">4</font></p>
+		</td>
+		<td width="187" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">4 (100)</font></p>
+		</td>
+		<td width="131" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">14</font></p>
+		</td>
+		<td width="187" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">14 (10100)</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="132" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">5</font></p>
+		</td>
+		<td width="187" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">5 (101)</font></p>
+		</td>
+		<td width="131" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">15</font></p>
+		</td>
+		<td width="187" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">15 (10101)</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="132" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">6</font></p>
+		</td>
+		<td width="187" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">6 (110)</font></p>
+		</td>
+		<td width="131" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">16</font></p>
+		</td>
+		<td width="187" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">16 (10110)</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="132" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">7</font></p>
+		</td>
+		<td width="187" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">7 (111)</font></p>
+		</td>
+		<td width="131" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">17</font></p>
+		</td>
+		<td width="187" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">17 (10111)</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="132" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">8</font></p>
+		</td>
+		<td width="187" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">10 (1000)</font></p>
+		</td>
+		<td width="131" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">18</font></p>
+		</td>
+		<td width="187" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">18 (11000)</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="132" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">9</font></p>
+		</td>
+		<td width="187" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">11 (1001)</font></p>
+		</td>
+		<td width="131" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">19</font></p>
+		</td>
+		<td width="187" style="border: none; padding: 0in"><p lang="ru-RU" class="western" align="center">
+			<font size="2" style="font-size: 11pt">19 (11001)</font></p>
+		</td>
+	</tr>
+</table>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<br/>
+
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">В двоичном коде
+над числами можно проделывать любые
+арифметические операции: сложение,
+вычитание, умножение, деление.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Рассмотрим,
+например, сложение двух 4-разрядных
+двоичных чисел. Пусть надо сложить число
+0111 (десятичное 7) и 1011 (десятичное 11).
+Сложение этих чисел не сложнее, чем в
+десятичном представлении:</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+ <font face="Courier New, monospace"><font size="2" style="font-size: 11pt">0111</font></font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+<u> </u><font face="Courier New, monospace"><font size="2" style="font-size: 11pt"><u>1011</u></font></font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-bottom: 0in">
+<font face="Courier New, monospace"><font size="2" style="font-size: 11pt">10010</font></font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">При сложении 0 и 0
+получаем 0, при сложении 1 и 0 получаем
+1, при сложении 1 и 1 получаем 0 и перенос
+в следующий разряд 1. Результат — 10010
+(десятичное 18). При сложении любых двух
+n-разрядных двоичных чисел может
+получиться n-разрядное или </font><font size="2" style="font-size: 11pt">(n+1)</font><font size="2" style="font-size: 11pt">-разрядное
+число.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Точно так же
+производится вычитание. Пусть из числа
+10010 (18) надо вычесть число 0111 (7). Записываем
+числа с выравниванием по младшему
+разряду и вычитаем точно так же, как в
+случае десятичной системы:</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0in">
+<br/>
+
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<br/>
+
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-bottom: 0in">
+<font face="Courier New, monospace"><font size="2" style="font-size: 11pt">10010</font></font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-bottom: 0in">
+<font face="Courier New, monospace"><font size="2" style="font-size: 11pt"><u>00111</u></font></font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-bottom: 0in">
+<font face="Courier New, monospace"><font size="2" style="font-size: 11pt">01011</font></font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">При вычитании 0 из
+0 получаем 0, при вычитании 0 из 1 получаем
+1, при вычитании 1 из 1 получаем 0, при
+вычитании 1 из 0 получаем 1 и заем 1 в
+следующем разряде. Результат — 1011
+(десятичное 11).</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">При вычитании
+возможно получение отрицательных чисел,
+поэтому необходимо использовать двоичное
+представление отрицательных чисел.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Для одновременного
+представления как двоичных положительных,
+так и двоичных отрицательных чисел чаще
+всего используется так называемый
+дополнительный код. Отрицательные числа
+в этом коде выражаются таким числом,
+которое, будучи сложено с положительным
+числом такой же величины, даст в результате
+нуль. Для того чтобы получить отрицательное
+число, надо поменять все биты такого же
+положительного числа на противоположные
+(0 на 1, 1 на 0) и прибавить к результату 1.
+Например, запишем число –5. Число 5 в
+двоичном коде выглядит 0101. Заменяем
+биты на противоположные: 1010 и прибавляем
+единицу: 1011. Суммируем результат с
+исходным числом: </font>
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">1011 + 0101 = 0000 (перенос
+в пятый разряд игнорируем).</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Отрицательные
+числа в дополнительном коде отличаются
+от положительных значением старшего
+разряда: единица в старшем разряде
+определяет отрицательное число, а нуль
+— положительное.</font></p>
+<p lang="ru-RU" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Помимо стандартных
+арифметических операций, в двоичной
+системе счисления используются и
+некоторые специфические операции,
+например, сложение по модулю 2. Эта
+операция (обозначается A) является
+побитовой, то есть никаких переносов
+из разряда в разряд и заемов в старших
+разрядах здесь не существует. Правила
+сложения по модулю 2 следующие:</font></p>
+<p lang="ru-RU" style="line-height: 100%; margin-left: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">0<img src="07a325e2bff2ea9d4157dece38d27d68_html_2dac1294.gif" name="Object1" align="absmiddle" width="18" height="18"/>
+0
+= 0;<br/>
+0<img src="07a325e2bff2ea9d4157dece38d27d68_html_b12e2502.gif" name="Object2" align="absmiddle" width="18" height="18"/>
+1
+= 1<br/>
+1<img src="07a325e2bff2ea9d4157dece38d27d68_html_b12e2502.gif" name="Object3" align="absmiddle" width="18" height="18"/>
+0
+= 1<br/>
+1<img src="07a325e2bff2ea9d4157dece38d27d68_html_b12e2502.gif" name="Object4" align="absmiddle" width="18" height="18"/>
+1
+= 0</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Эта же операция
+называется логической функцией
+</font><font size="2" style="font-size: 11pt"><b>Исключающее
+ИЛИ</b></font><font size="2" style="font-size: 11pt">. Например,
+просуммируем по модулю 2 два двоичных
+числа 0111 и 1011:</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; margin-left: 0.38in; margin-bottom: 0in">
+<font face="Courier New, monospace"><font size="2" style="font-size: 11pt">0111</font></font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; margin-left: 0.38in; margin-bottom: 0in">
+<font face="Courier New, monospace"><font size="2" style="font-size: 11pt"><u>1011</u></font></font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; margin-left: 0.38in; margin-bottom: 0in">
+<font face="Courier New, monospace"><font size="2" style="font-size: 11pt">1100</font></font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.38in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Среди других
+побитовых операций над двоичными числами
+можно отметить функцию И и функцию ИЛИ.
+Функция И дает в результате единицу
+только тогда, когда в соответствующих
+битах двух исходных чисел обе единицы,
+в противном случае результат —0. Функция
+ИЛИ дает в результате единицу тогда,
+когда хотя бы один из соответствующих
+битов исходных чисел равен 1, в противном
+случае результат 0.</font></p>
+<h3 lang="ru-RU" class="western" align="justify"><font size="2" style="font-size: 11pt">Функции
+цифровых устройств</font></h3>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Любое цифровое
+устройство от самого простейшего до
+самого сложного всегда действует по
+одному и тому же принципу </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5Cdigs_2.html#image.2.11%23image.2.11"><font size="2" style="font-size: 11pt">(рис.
+2.11)</font></a></u></font><font size="2" style="font-size: 11pt">.
+Оно принимает входные сигналы, выполняет
+их обработку, передачу, хранение и выдает
+выходные сигналы. При этом совсем не
+обязательно любое изменение входных
+сигналов приводит к немедленному и
+однозначному изменению выходных
+сигналов. Реакция устройства может быть
+очень сложной, отложенной по времени,
+неочевидной, но суть от этого не меняется.</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">В качестве входных
+сигналов нашего устройства могут
+выступать сигналы с выходов других
+цифровых устройств, с тумблеров и клавиш
+или с датчиков физических величин.
+Причем в последнем случае, как правило,
+необходимо преобразование аналоговых
+сигналов с датчиков в потоки цифровых
+кодов </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5Cdigs_2.html#image.2.12%23image.2.12"><font size="2" style="font-size: 11pt">(рис.
+2.12)</font></a></u></font><font size="2" style="font-size: 11pt"> с
+помощью аналого-цифровых преобразователей
+(АЦП). Например, в случае персонального
+компьютера входными сигналами являются
+сигналы с клавиатуры, с датчиков
+перемещения мыши, с микрофона (давление
+воздуха, то есть звук, преобразуется в
+аналоговый электрический сигнал, а
+затем — в цифровые коды), из кабеля
+локальной сети и т.д.</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.2.11"></a>
+<img src="07a325e2bff2ea9d4157dece38d27d68_html_3ae8d108.png" name="Image13" align="bottom" width="518" height="150" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in">
+<font size="2" style="font-size: 11pt"><b>Рис. 2.11.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Включение цифрового устройства</font></p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in"><a name="image.2.12"></a>
+<img src="07a325e2bff2ea9d4157dece38d27d68_html_7d853613.png" name="Image14" align="bottom" width="482" height="157" border="0"/>
+</p>
+<p lang="ru-RU" align="center" style="line-height: 100%; margin-top: 0.19in; margin-bottom: 0.19in">
+<font size="2" style="font-size: 11pt"><b>Рис. 2.12.</b></font><font size="2" style="font-size: 11pt">&nbsp;
+Аналого-цифровое и цифро-аналоговое
+преобразование</font></p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Выходные сигналы
+цифрового устройства могут предназначаться
+для подачи на другие цифровые устройства,
+для индикации (на экране монитора, на
+цифровом индикаторе и т.д.), а также для
+формирования физических величин. Причем
+в последнем случае необходимо
+преобразовывать потоки кодов с цифрового
+устройства в непрерывные (аналоговые)
+сигналы </font><font color="#0000ff"><u><a href="/D:%5C%D0%B4%D0%B8%D1%81%D0%BA%20D%5C%D0%9D%D0%B5%20%D0%B2%D0%BB%D0%B5%D0%B7%D0%B0%D0%B9%20-%20%D1%83%D0%B1%D1%8C%D0%B5%D1%82!%5C%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B5%20%D1%84%D0%B0%D0%B9%D0%BB%D1%8B%5C%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D1%87%D0%BA%D0%B8%5C%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8%20%D0%B8%20%D0%BB%D0%B0%D0%B1%D1%8B%5C%D0%BA%D1%83%D1%80%D1%81%203%5C%D0%A1%D1%85%D0%B5%D0%BC%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%5Cdigs%5C2%5Cdigs_2.html#image.2.12%23image.2.12"><font size="2" style="font-size: 11pt">(рис.
+2.12)</font></a></u></font><font size="2" style="font-size: 11pt"> с
+помощью цифро-аналоговых преобразователей
+(ЦАП) и в физические величины. Например,
+в случае персонального компьютера
+выходными сигналами будут: сигналы,
+подаваемые компьютером на принтер;
+сигналы, идущие на видеомонитор
+(аналоговые или цифровые); звук,
+воспроизводимый динамиками компьютера
+(потоки кодов с компьютера преобразуются
+в аналоговый электрический сигнал,
+который затем преобразуется в давление
+воздуха — звук). </font>
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Одно цифровое
+устройство может состоять из нескольких
+более простых цифровых устройств. Часто
+эти составные элементы называют блоками,
+модулями, узлами, частями. Если объединяются
+несколько сложных цифровых устройств,
+то говорят уже о цифровых системах,
+комплексах, установках. Мы в основном
+будем использовать термин &quot;устройство&quot;,
+как занимающий промежуточное положение.
+</font>
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Связь между входными
+и выходными сигналами может быть жесткой,
+неизменной или гибко изменяемой
+(программируемой). То есть цифровое
+устройство может работать по жесткому,
+раз и навсегда установленному алгоритму
+или по алгоритму программируемому. Как
+правило, при этом выполняется один очень
+простой принцип: а чем больше возможностей
+для изменения связи входных и выходных
+сигналов, чем больше возможностей
+изменения алгоритма работы, тем цифровое
+устройство будет медленнее. Речь в
+данном случае, конечно же, идет о предельно
+достижимом быстродействии. </font>
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Иначе говоря,
+простые устройства с жесткой логикой
+работы всегда могут быть сконструированы
+с более высоким быстродействием по
+сравнению с программируемыми, гибкими
+устройствами со сложным алгоритмом
+работы. Жесткая логика также обеспечивает
+малый объем аппаратуры (малые аппаратурные
+затраты) для реализации простых функций.
+Зато программируемые, интеллектуальные
+устройства обеспечивают более высокую
+гибкость и меньшую стоимость при
+необходимости сложной обработки. А для
+реализации простых функций они часто
+оказываются избыточно сложными. Так
+что выбор между двумя этими типами
+цифровых устройств зависит от конкретной
+решаемой задачи. </font>
+</p>
+<p lang="ru-RU" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">Значительное число
+задач может быть решено как чисто
+аппаратным путем (с помощью устройств
+на жесткой логике), так и программно-аппаратным
+путем (с помощью программируемых
+устройств). В таких случаях надо смотреть,
+какие характеристики устройства являются
+самыми важными: скорость работы,
+стоимость, гибкость, простота проектирования
+и т.д. — и в зависимости от этого выбирать
+то или иное решение, так или иначе
+перераспределять функции между
+программным обеспечением и аппаратурой.</font></p>
+<p lang="ru-RU" class="western" align="justify" style="line-height: 100%; text-indent: 0.37in; margin-top: 0.08in; margin-bottom: 0in">
+<font size="2" style="font-size: 11pt">В данной книге
+основное внимание будет уделено
+устройствам и узлам с жесткой логикой
+работы. Однако уяснение принципов их
+работы и их проектирования может оказать
+большую помощь и при создании
+программируемых, интеллектуальных
+устройств.</font></p>
+</body>
+</html>
